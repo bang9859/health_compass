@@ -33,6 +33,16 @@
 		<servlet-name>error</servlet-name>
 		<url-pattern>/error</url-pattern>
 	</servlet-mapping>
+		
+	<servlet>
+		<servlet-name>nav</servlet-name>
+		<jsp-file>/views/module/nav.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>nav</servlet-name>
+		<url-pattern>/nav</url-pattern>
+	</servlet-mapping>
+	
 
 
 	<error-page>
