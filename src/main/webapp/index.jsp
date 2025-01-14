@@ -9,8 +9,9 @@
 <link rel="stylesheet" href= "/resources/style/globals.css">
 <title>Insert title here</title>
 </head>
-<c:import url="/header"/>
+ <c:import url="/header"/>
 <body>
-		
+	<c:import url="/nav"/>	
 </body>
+<c:import url="/footer"/>
 </html>
