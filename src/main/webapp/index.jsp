@@ -11,6 +11,7 @@
 </head>
  <c:import url="/header"/>
 <body>
-		
+	<c:import url="/nav"/>	
 </body>
+<c:import url="/footer"/>
 </html>
