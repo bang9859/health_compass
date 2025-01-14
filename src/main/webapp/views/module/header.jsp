@@ -13,17 +13,20 @@
 	</div>
 	
 	<div class = "title">
-	<input type="text" id="username" name="username"  value="${title}">
+	<input type="text" id="title" name="title"  value="${title}">
 	</div>
 	<div class = "log">
-	<c:if test = "${empty log}">
+	
+	<c:choose>
+	<c:when test = "${empty log}">
 		<h4 id = "login">로그인</h4>
 		<h4 id = "join">회원가입</h4>
-	</c:if>
-	<c:if test = "${!empty log}">
+	</c:when>
+	<c:otherwise>
 		<h4 id = "mypage">마이페이지</h4>
 		<h4 id = "logout">로그아웃</h4>
-	</c:if>
+	</c:otherwise>
+	</c:choose>
 	</div>
 	
 </body>
