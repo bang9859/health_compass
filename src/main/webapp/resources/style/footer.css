@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+.footer {
+	background-color: rgb(51, 51, 51);
+	color: rgb(255, 255, 255);
+	padding: 20px;
+	text-align: center;
+}
+
+.footer-content {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.footer-links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.footer-links li {
+	margin: 0 20px;
+}
+
+.footer-info {
+	margin-top: 15px;
+}
+
+.sns {
+	display: flex;
+    justify-content: left;
+    margin: 15px auto 15px auto;
+	list-style: none;
+}
+
+.sns li {
+	margin: 0 20px;
+}
+
+.btn-sns {
+    border: none;
+    background-color: #8f9191;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon.snsY {
+    background-repeat: no-repeat;
+    background-image: url(https://www.lotterentacar.net/lrhp/pc/images/icons/ico-main-sns-yt.png);
+    width: 16px;
+    height: 11px;
+    background-position: center center;
+    background-size: auto;
+}
+
+.icon.snsl {
+    background-repeat: no-repeat;
+    background-image: url(https://www.lotterentacar.net/lrhp/pc/images/icons/ico-main-sns-insta.png);
+    width: 16px;
+    height: 16px;
+    background-position: center center;
+    background-size: auto;
+}
+
+.icon.snsF {
+    background-repeat: no-repeat;
+    background-image: url(https://www.lotterentacar.net/lrhp/pc/images/icons/ico-main-sns-fb.png);
+    width: 10px;
+    height: 18px;
+    background-position: center center;
+    background-size: auto;
+}
+
+.icon.snsK {
+    background-repeat: no-repeat;
+    background-image: url(https://www.lotterentacar.net/lrhp/pc/images/icons/ico-main-sns-kakao.png);
+    width: 21px;
+    height: 18px;
+    background-position: center center;
+    background-size: auto;
+}
+
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    font: 0/0 a;
+    flex: none;
+}
