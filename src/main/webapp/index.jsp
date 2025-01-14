@@ -9,7 +9,7 @@
 <link rel="stylesheet" href= "/resources/style/globals.css">
 <title>Insert title here</title>
 </head>
-<c:import url="/header"/>
+ <c:import url="/header"/>
 <body>
 		
 </body>
