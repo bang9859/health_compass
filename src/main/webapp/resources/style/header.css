@@ -4,12 +4,14 @@
 	display: flex;
 	justify-content: space-between;
 	text-align: center;
-	background-color: rgb(51, 51, 51);
+	background-color: #4A628A;
 	color: rgb(255, 255, 255);
+	height:110px;
 }
 
 .logo {
-	margin-top: 20px;
+	font-size: 19px;
+	margin-top: 10px;
 	margin-left: 10px;
 	cursor: pointer;
 	padding: 5px;
@@ -17,15 +19,15 @@
 }
 
 .page-name {
-	margin-top: 70px;
-	margin-bottom : 40px;
+	margin-top: 50px;
+	margin-bottom : 25px;
 
 }
 
 .log {
 	display: flex;
 	gap: 10px;
-	margin-top: 30px;
+	margin-top: 8px;
 	margin-right: 10px;
 }
 
