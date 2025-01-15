@@ -9,3 +9,9 @@
 	display: flex;
 	border-top: solid 2px rgb(51, 51, 51);
 }
+
+#main {
+	width: 100vw;
+	background-color: rgb(101, 101, 101);
+	
+}
