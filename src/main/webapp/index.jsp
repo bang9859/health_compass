@@ -9,9 +9,12 @@
 <link rel="stylesheet" href= "/resources/style/globals.css">
 <title>Insert title here</title>
 </head>
- <c:import url="/header"/>
+<c:import url="/header"/>
 <body>
-	<c:import url="/nav"/>	
+	<div id="content-box">
+		<c:import url="/nav"/>	
+		<section>현재 페이지</section>
+	</div>
 </body>
 <c:import url="/footer"/>
 </html>
