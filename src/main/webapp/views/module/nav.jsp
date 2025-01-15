@@ -11,10 +11,10 @@
 	<nav>
 		<div id="menu-list">
 			<h3>메뉴목록</h3>
-			<ul>
-				<li>병원찾기</li>
-				<li>캘린더</li>
-				<li>북마크</li>
+			<ul id = "menu">
+				<li>🏥병원찾기</li>
+				<li>📅캘린더</li>
+				<li>🔖북마크</li>
 			</ul>
 		</div>
 		<div id="img-box">
