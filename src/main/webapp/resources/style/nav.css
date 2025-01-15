@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+h3 {
+	margin: 0;
+	border-bottom: solid 2px rgb(51, 51, 51);
+	background-color: rgb(151, 151, 151);
+}
+
+nav {
+	display: flex;
+	flex-direction: column;
+	border-right: solid 2px rgb(51, 51, 51);
+	background-color: rgb(181, 181, 181);
+	text-align: center;
+}
+
+li {
+	list-style: none;
+	margin: 10px auto;
+}
+
+.tips {
+	width: 200px;
+	height: 250px;
+}
+
+#img-box {
+	margin-top: auto;
+}
+
+#img1 {
+	display: block;
+}
+
+#img2 {
+	display: none;
+}
+
+#img3 {
+	display: none;
+}
