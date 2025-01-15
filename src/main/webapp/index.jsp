@@ -13,7 +13,7 @@
 <body>
 	<div id="content-box">
 		<c:import url="/nav"/>	
-		<section>현재 페이지</section>
+		<section id="main">현재 페이지</section>
 	</div>
 </body>
 <c:import url="/footer"/>
