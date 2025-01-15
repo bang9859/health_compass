@@ -3,18 +3,18 @@
 h3 {
 	line-height : 35px;
 	height: 35px;
-	background-color: #727474;
+	background-color: #B9E5E8;
 }
 
 nav {
 	display: flex;
 	flex-direction: column;
 	border-right: solid 2px rgb(51, 51, 51);
-	background-color: #8F9191;
+	background-color: #59a3cf;
 	text-align: center;
 }
 
-ul {
+#menu {
 	border-top: solid 2px rgb(51, 51, 51);	
 }
 
