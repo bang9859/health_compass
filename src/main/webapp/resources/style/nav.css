@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+h3 {
+	line-height : 35px;
+	height: 35px;
+	background-color: #B9E5E8;
+}
+
+nav {
+	display: flex;
+	flex-direction: column;
+	border-right: solid 2px rgb(51, 51, 51);
+	background-color: #59a3cf;
+	text-align: center;
+}
+
+#menu {
+	border-top: solid 2px rgb(51, 51, 51);	
+}
+
+li {
+	list-style: none;
+	margin: 10px auto;
+}
+
+.tips {
+	width: 200px;
+	height: 250px;
+}
+
+#menu-list {
+	margin-bottom: 100px;	
+}
+
+#img-box {
+	border-top: solid 2px rgb(51, 51, 51);
+	margin-top: auto;
+}
+
+#img1 {
+	display: block;
+}
+
+#img2 {
+	display: none;
+}
+
+#img3 {
+	display: none;
+}
