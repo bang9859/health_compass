@@ -27,6 +27,14 @@ public class ActionFactory {
 		
 		if(command.equals("join") && method == HttpMethod.POST)
 			return new JoinFormAction();
+		if(command.equals("login") && method == HttpMethod.POST)
+			return new LoginFormAction();
+		if(command.equals("update") && method == HttpMethod.POST)
+			return new JoinFormAction();
+		if(command.equals("delete") && method == HttpMethod.POST)
+			return new JoinFormAction();
+		if(command.equals("logout") && method == HttpMethod.GET)
+			return new JoinFormAction();
 		
 		return action;
 	}
