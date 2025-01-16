@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/main.css">
-<title>Insert title here</title>
+<title>메인 페이지(증상선택)</title>
 </head>
 <c:import url="/header" />
 <body>
@@ -292,6 +292,7 @@
 			</div>
 
 			<button id="search-button">근처병원 검색</button>
+		</section>
 	</div>
 </body>
 <c:import url="/footer" />
