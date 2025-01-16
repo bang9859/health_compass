@@ -58,7 +58,7 @@
 					</div>
 					<div id="paging">
 						<p>1페이지</p>
-						<div>
+						<div id="paging-buts">
 							<button>◀</button>
 							<button>▶</button>
 						</div>
