@@ -12,12 +12,11 @@
 <c:import url="/header" />
 <body>
 
-
 	<div id="content-box">
 		<c:import url="/nav" />
 		<section id="main">현재 페이지</section>
 	</div>
-
+	
 </body>
 <c:import url="/footer" />
 </html>
