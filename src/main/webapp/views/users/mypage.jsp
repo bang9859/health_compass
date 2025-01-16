@@ -11,7 +11,8 @@
 	<div id="content-box">
 		<c:import url="/nav" />
 		<section id="main">
-			<form id="form-join" method="POST" action="/users/join">
+			<form id="form-update" method="POST" action="/service/users">
+				<input type="hidden" name="command" value="update">
 				<input id="username" name="username" type="text" disabled>
 				<input id="password" name="password" type="password">
 				<input id="email" name="email" type="email">
