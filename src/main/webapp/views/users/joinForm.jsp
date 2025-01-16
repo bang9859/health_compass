@@ -21,9 +21,17 @@
 				<input id="email" name="email" type="email" placeholder="이메일 입력">
 				<input id="name" name="name" type="text" placeholder="이름 입력">
 				<input id="birth" name="birth" type="date">
+				<label for="userSex" class="form-label">성별</label>
 				<div id="select-gender">
-					<input type="radio" name="gender" value="남자"><lable for="male">남자</lable>
-					<input type="radio" name="gender" value="여자"><lable for="female">여자</lable>
+					<div class="form_radio_btn radio_male">
+						<input id="radio-1" type="radio" name="userSex" value="male" checked>
+						<label for="radio-1">남자</label>
+					</div>
+												 
+					<div class="form_radio_btn">
+						<input id="radio-2" type="radio" name="userSex" value="female">
+						<label for="radio-2">여자</label>
+					</div>
 				</div>
 				<input id="tel" name="tel" type="text" placeholder="전화번호 입력">
 				<input id="submit" type="submit">
