@@ -1,15 +1,18 @@
 @charset "UTF-8";
 
+* {
+	
+}
+
 form {
-	border: solid 1px black;
+	width: 150px;
 }
 
 input {
-	padding: 0;
-	width: 350px;
-	height: 40px;
+	width: 150px;
+	box-sizing: border-box;
 }
 
-#form-join {
-	width: 350px;
+#select-gender {
+	display: flex;
 }
