@@ -3,13 +3,13 @@ package user.model;
 import java.util.Date;
 
 public class User {
-	String username;
-	String password;
-	String email;
-	String name;
-	Date birth;
-	String gender;
-	String tel;
+	private String username;
+	private String password;
+	private String email;
+	private String name;
+	private Date birth;
+	private String gender;
+	private String tel;
 	
 	public User(String username, String password, String email, String name, Date birth, String gender, String tel) {
 		this.username = username;
