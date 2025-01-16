@@ -2,6 +2,8 @@ package user.model;
 
 import java.util.Date;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class User {
 	private String username;
 	private String password;
@@ -47,5 +49,23 @@ public class User {
 
 	public String getTel() {
 		return tel;
+	}
+	
+	public boolean checkCryptPassword(String password) {
+		boolean isChecked = false;
+		try {
+			isChecked = BCrypt.checkpw(password, this.password);
+		} catch (Exception e) {
+			System.err.println("암호화되지 않은 값이 저장되어 있습니다.");
+		}
+		return isChecked;
+	}
+	
+	public boolean checkPassword(String password) {
+		boolean isChecked = false;
+		if(this.password.equals(password)) {
+			isChecked = true;
+		}
+		return isChecked;
 	}
 }
