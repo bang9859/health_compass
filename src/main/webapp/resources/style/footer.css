@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .footer {
-	background-color: #4A628A;
+	background-color: #2f3f58;
 	color: rgb(255, 255, 255);
 	padding: 20px;
 }
@@ -63,7 +63,7 @@
 
 .btn-sns {
 	border: none;
-	background-color: #8f9191;
+	background-color: #6f88b2;
 	padding: 0;
 	width: 30px;
 	height: 30px;
