@@ -14,10 +14,9 @@
 	<div id="content-box">
 		<c:import url="/nav" />
 		<section id="main">
-			<h2>진료 과목별 증상 선택</h2>
 			<div class="departments-container">
 				<div class="department">
-					<div class="department-title">내과</div>
+					<div class="department-title"><h2>내과</h2></div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="internal-medicine-symptom1"> <label
@@ -60,7 +59,7 @@
 				</div>
 
 				<div class="department">
-					<div class="department-title">피부과</div>
+					<div class="department-title"><h2>피부과</h2></div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="dermatology-symptom1"> <label
@@ -107,7 +106,7 @@
 				</div>
 
 				<div class="department">
-					<div class="department-title">정형외과</div>
+					<div class="department-title"><h2>정형외과</h2></div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="orthopedics-symptom1"> <label
@@ -130,7 +129,7 @@
 				</div>
 
 				<div class="department">
-					<div class="department-title">신경외과</div>
+					<div class="department-title"><h2>신경외과</h2></div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="neurosurgery-symptom1"> <label
@@ -163,7 +162,7 @@
 
 			<div class="departments-container">
 				<div class="department">
-					<div class="department-title">산부인과</div>
+					<div class="department-title"><h2>산부인과</h2></div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="gynecology-symptom1"> <label
@@ -198,7 +197,7 @@
 				</div>
 
 				<div class="department">
-					<div class="department-title">안과</div>
+					<div class="department-title"><h2>안과</h2></div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="ophthalmology-symptom1"> <label
@@ -225,7 +224,7 @@
 				</div>
 
 				<div class="department">
-					<div class="department-title">이비인후과</div>
+					<div class="department-title"><h2>이비인후과</h2></div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="otolaryngology-symptom1"> <label
@@ -264,7 +263,7 @@
 				</div>
 
 				<div class="department">
-					<div class="department-title">치과</div>
+					<div class="department-title"><h2>치과</h2></div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="dentistry-symptom1"> <label
