@@ -36,7 +36,7 @@
     	<groupId>jakarta.servlet</groupId>
     	<artifactId>jakarta.servlet-api</artifactId>
     	<version>${servlet.version}</version>
-   		 <scope>provided</scope>
+   		<scope>provided</scope>
 	</dependency>
 	
 	<!-- jakarta -->
@@ -48,9 +48,9 @@
 	
 	<!-- jstl -->
 	<dependency>
-    <groupId>org.glassfish.web</groupId>
-    <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-    <version>3.0.1</version>
+	    <groupId>org.glassfish.web</groupId>
+	    <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+	    <version>3.0.1</version>
 	</dependency>
 	
 	<!-- json -->
