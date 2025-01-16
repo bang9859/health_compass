@@ -25,10 +25,10 @@ public class JoinFormAction implements Action{
 		if(userDao.findUserByUsername(username) == null) {
 			UserRequestDto userDto = new UserRequestDto(username, password, email, name, birth, gender, tel);
 			userDao.createUser(userDto);
-			System.out.println("회원가입이 완료되었습니다.");
+			System.err.println("회원가입이 완료되었습니다.");
 		} else {
 			response.sendRedirect("/index.jsp");
-			System.out.println("아이디가 중복됩니다.");
+			System.err.println("아이디가 중복됩니다.");
 		}
 	}
 }
