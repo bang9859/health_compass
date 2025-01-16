@@ -23,8 +23,8 @@
 
 .hospitals-container {
 	gap: 20px;
-	display: flex; 
-	justify-content: center; 
+	display: flex;
+	justify-content: center;
 }
 
 #hospitals div {
@@ -34,21 +34,32 @@
 .bookmark-but {
 	display: block;
 	padding: 5px 10px;
-	margin-top: 5px;
-	background-color: #2f3f58;
+	margin-top: 5px; background-color : #2f3f58;
 	color: white;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	width: fit-content;
+	background-color: #2f3f58;
 }
 
-.bookmark-but:hover {
+.bookmark-but:hover,
+#paging-buts>button:hover {
 	background-color: #444;
 }
 
 #paging {
-	display:flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#paging-buts>button {
+	padding: 7px 15px;
+	font-size: 15px; 
+	background-color: #2f3f58; 
+	color: white;
+	border: none; 
+	border-radius: 5px;
+	cursor: pointer;
 }
