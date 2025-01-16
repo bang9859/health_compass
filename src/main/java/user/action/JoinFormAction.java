@@ -20,13 +20,15 @@ public class JoinFormAction implements Action{
 		String gender = request.getParameter("gender");
 		String tel = request.getParameter("tel");
 		
-		UserRequestDto userDto = new UserRequestDto(username, password, email, name, birth, gender, tel);
 		UserDao userDao = UserDao.getInstance();
 		
 		if(userDao.findUserByUsername(username) == null) {
-			System.out.println("중복되는 이름이 없습니다");
+			UserRequestDto userDto = new UserRequestDto(username, password, email, name, birth, gender, tel);
+			userDao.createUser(userDto);
+			System.out.println("회원가입이 완료되었습니다.");
 		} else {
-			System.out.println("이름이 중복됩니다");
+			response.sendRedirect("/index.jsp");
+			System.out.println("아이디가 중복됩니다.");
 		}
 	}
 }
