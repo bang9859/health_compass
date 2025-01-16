@@ -1,18 +1,61 @@
 @charset "UTF-8";
 
-* {
-	
-}
-
 form {
-	width: 150px;
+	margin: auto;
+	padding: 10px;
+	width: 400px;
+	border: solid 2px black;
 }
 
 input {
-	width: 150px;
+	width: 400px;
+	height: 40px;
+	margin-bottom: 15px;
+	padding: 10px;
 	box-sizing: border-box;
+}
+
+.gender {
+	width: 50px;
+}
+
+#submit {
+	margin-bottom: 0;	
 }
 
 #select-gender {
 	display: flex;
+}
+
+.form_radio_btn {
+	width: 50%;
+	height: 45px;
+	border: 1px solid #EAE7E7;
+	border-radius: 10px;
+}
+
+.form_radio_btn input[type=radio] {
+	display: none;
+}
+
+.form_radio_btn label {
+	display: block;
+	border-radius: 10px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 45px;
+}
+
+.form_radio_btn input[type=radio]:checked+label {
+	background: #184DA0;
+	color: #fff;
+}
+
+.form_radio_btn label:hover {
+	color: #666;
+}
+
+.form_radio_btn input[type=radio]+label {
+	background: #F9FAFC;
+	color: #666;
 }
