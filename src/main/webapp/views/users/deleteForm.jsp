@@ -11,7 +11,8 @@
 	<div id="content-box">
 		<c:import url="/nav" />
 		<section id="main">
-			<form id="form-delete" method="POST" action="/users/delete">
+			<form id="form-delete" method="POST" action="/service/users">
+				<input type="hidden" name="command" value="delete">
 				<input id="username" name="username" type="text" disabled>
 				<input id="password" name="password" type="password">
 				<input type="submit">

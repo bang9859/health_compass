@@ -8,6 +8,15 @@
 	<display-name>Archetype Created Web Application</display-name>
 
 	<servlet>
+		<servlet-name>ServiceServlet</servlet-name>
+		<servlet-class>controller.ServiceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServiceServlet</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
 		<servlet-name>header</servlet-name>
 		<jsp-file>/views/module/header.jsp</jsp-file>
 	</servlet>
