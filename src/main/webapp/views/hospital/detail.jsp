@@ -275,14 +275,15 @@
 						<h3 class="symptom-title">치주질환</h3>
 						<ul class="symptom-list">
 							<li>잇몸과 치아를 지지하는 치조골에 염증이 생기는 질환으로, 풍치라고도 불립니다</li>
-							<li>조기에 치료를 받지 않으면 잇몸에서 피가 나거나 붓거나 곪는 증상, 치아가 시리고 흔들리는 증상이 나타납니다.</li>
+							<li>조기에 치료를 받지 않으면 잇몸에서 피가 나거나 붓거나 곪는 증상, 치아가 시리고 흔들리는 증상이
+								나타납니다.</li>
 							<li>치은염과 치주염으로 나뉘며, 치은염이 악화되어 치조골에까지 염증이 확산되면 치주염이 됩니다</li>
 							<li>잇몸이 붓고 붉어지며, 칫솔질 시 피가 나거나, 입 냄새가 나거나, 치아가 흔들리는 등의 증상이
 								나타납니다</li>
 						</ul>
 						<h3 class="symptom-title">치은염</h3>
 						<ul class="symptom-list">
-							<li>잇몸에만 염증이 생긴 질환입니다 </li>
+							<li>잇몸에만 염증이 생긴 질환입니다</li>
 							<li>잇몸이 붓고 붉어지며, 칫솔질 시 피가 나는 등의 증상이 나타납니다</li>
 						</ul>
 						<h3 class="symptom-title">치과 질환의 증상</h3>
@@ -299,7 +300,8 @@
 					</div>
 				</div>
 			</div>
-			<button id="search-button">뒤로가기</button>
+			<a href="/main"><button type="button" id="search-button">
+					뒤로가기</button></a>
 		</section>
 	</div>
 </body>

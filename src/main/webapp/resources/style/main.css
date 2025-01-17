@@ -51,14 +51,11 @@ h2 {
 }
 
 .more-link {
-	display: block;
-	margin-top: 10px;
-	color: blue;
-	text-decoration: underline;
-	cursor: pointer;
+	color: white;
+	text-decoration: none;
 }
 
-#search-button {
+.search-button {
 	display: block;
 	margin: 20px auto;
 	padding: 10px 20px;
@@ -70,7 +67,7 @@ h2 {
 	width: fit-content;
 }
 
-#search-button:hover {
+.search-button:hover {
 	background-color: #444;
 }
 
