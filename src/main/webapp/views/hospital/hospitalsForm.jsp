@@ -21,35 +21,35 @@
 			<div class="hospitals-container">
 				<div id="map"></div>
 				<div id="hospitals">
-					<div>
+					<div class="hospital">
 						<p>병원이름 :</p>
 						<p>주소 :</p>
 						<p>전화번호 :</p>
 						<p>진료시간 :</p>
 						<button class="bookmark-but">북마크 추가하기</button>
 					</div>
-					<div>
+					<div class="hospital">
 						<p>병원이름 :</p>
 						<p>주소 :</p>
 						<p>전화번호 :</p>
 						<p>진료시간 :</p>
 						<button class="bookmark-but">북마크 추가하기</button>
 					</div>
-					<div>
+					<div class="hospital">
 						<p>병원이름 :</p>
 						<p>주소 :</p>
 						<p>전화번호 :</p>
 						<p>진료시간 :</p>
 						<button class="bookmark-but">북마크 추가하기</button>
 					</div>
-					<div>
+					<div class="hospital">
 						<p>병원이름 :</p>
 						<p>주소 :</p>
 						<p>전화번호 :</p>
 						<p>진료시간 :</p>
 						<button class="bookmark-but">북마크 추가하기</button>
 					</div>
-					<div>
+					<div class="hospital">
 						<p>병원이름 :</p>
 						<p>주소 :</p>
 						<p>전화번호 :</p>
