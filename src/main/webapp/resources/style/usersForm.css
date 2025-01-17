@@ -1,17 +1,16 @@
 @charset "UTF-8";
 
 form {
-	margin: auto;
-	margin-top: 5px;
+	margin: 10px auto;
 	padding: 10px;
 	width: 400px;
 	border: solid 2px black;
 }
 
 input {
+	margin-bottom: 15px;
 	width: 400px;
 	height: 40px;
-	margin-bottom: 15px;
 	padding: 10px;
 	box-sizing: border-box;
 }
@@ -22,12 +21,38 @@ span {
 	font-size: 14px;	
 }
 
+.error-msg {
+	display: none;
+	color: red;
+	font-size: 11px;
+}
+
+#id-msg {
+	margin-bottom: 0;
+}
+
+#birth {
+	margin-bottom: 15px;	
+}
+
 .gender {
 	width: 50px;
 }
 
 #submit {
 	margin-bottom: 0;	
+}
+
+#username-box {
+	display: flex;
+}
+
+#username {
+	width: 320px;
+}
+
+#checkdupl {
+	width: 80px;
 }
 
 #select-gender {
