@@ -44,23 +44,35 @@
 			<div class="schedule-list-container">
 			<h1>일정 목록</h1>
 			</div>
-			<div class="schedule-add-container">
+			<form class="schedule-add-container">
 				<h1>일정 등록</h1>
 				<div class = "medicine-search-group">
 				<span>약명 :</span>
 				<input type="text" id="medicine-name" name="medicine-name">
-				</div> 
-				<div class = "date-group">
-				<input type="date" id="start-date" name="start-date">
-				<p>~</p>
-				<input type="date" id="end-date" name="end-date"> 
 				</div>
-				<div class = daily-frequency-group>
+					<ul class="error-msg-group">
+						<li id="error-msg-name-empty">약명 : 필수정보입니다.</li>
+					</ul>
+				<div class = "date-group">
+					<input type="date" id="start-date" name="start-date">
+					<p>~</p>
+					<input type="date" id="end-date" name="end-date"> 
+				</div>
+					<ul class="error-msg-group">
+						<li id="error-msg-start-date-empty">시작일 : 필수정보입니다.</li>
+						<li id="error-msg-start-date-pattern">시작일 : 시작일이 종료일보다 늦습니다.</li>
+						<li id="error-msg-end-date-empty">종료일 : 필수정보입니다.</li>
+					</ul>
+ 				<div class="daily-frequency-group">
 				<span>1일 복용 횟수 :</span>
 				<input type="number" id=daily-frequency name="daily-frequency"> 
 				</div>
+				<ul class="error-msg-group">
+						<li id="error-msg-number-empty">1일 복용 횟수 : 필수정보입니다.</li>
+						<li id="error-msg-number-pattern">1일 복용 횟수 : 1~5까지만 입력 가능합니다.</li>
+				</ul>
 				<input type=submit value="등록">
-			</div>
+			</form>
 			</div>
 		</section>
 	</div>
