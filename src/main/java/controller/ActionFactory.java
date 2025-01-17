@@ -38,6 +38,10 @@ public class ActionFactory {
 		
 		else if(command.equals("search-username") && method == HttpMethod.POST)
 			return new SearchUsernameAction();
+		else if(command.equals("search-email") && method == HttpMethod.POST)
+			return new SearchEmailAction();
+		else if(command.equals("search-tel") && method == HttpMethod.POST)
+			return new SearchTelAction();
 		
 		return action;
 	}
