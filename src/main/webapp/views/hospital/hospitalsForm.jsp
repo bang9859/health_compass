@@ -19,7 +19,13 @@
 		<c:import url="/nav" />
 		<section id="main">
 			<div class="hospitals-container">
-				<div id="map"></div>
+				<div class="map_wrap">
+					<div id="map"></div>
+					<div class="hAddr">
+						<span class="title">지도중심기준 행정동 주소정보</span> 
+						<span id="centerAddr"></span>
+					</div>
+				</div>
 				<div id="hospitals">
 					<div class="hospital">
 						<p>병원이름 :</p>
