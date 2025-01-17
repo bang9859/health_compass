@@ -2,6 +2,7 @@
 
 form {
 	margin: auto;
+	margin-top: 5px;
 	padding: 10px;
 	width: 400px;
 	border: solid 2px black;
@@ -15,6 +16,12 @@ input {
 	box-sizing: border-box;
 }
 
+span {
+	margin-left: 5px;
+	color: rgb(118, 118, 118);
+	font-size: 14px;	
+}
+
 .gender {
 	width: 50px;
 }
@@ -25,6 +32,7 @@ input {
 
 #select-gender {
 	display: flex;
+	margin: 5px auto 15px auto;
 }
 
 .form_radio_btn {
