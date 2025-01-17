@@ -15,7 +15,7 @@
 		<servlet-name>ServiceServlet</servlet-name>
 		<url-pattern>/service/*</url-pattern>
 	</servlet-mapping>
-  
+
 	<servlet>
 		<servlet-name>header</servlet-name>
 		<jsp-file>/views/module/header.jsp</jsp-file>
@@ -33,7 +33,7 @@
 		<servlet-name>footer</servlet-name>
 		<url-pattern>/footer</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>error</servlet-name>
 		<jsp-file>/views/module/error.jsp</jsp-file>
@@ -42,7 +42,7 @@
 		<servlet-name>error</servlet-name>
 		<url-pattern>/error</url-pattern>
 	</servlet-mapping>
-		
+
 	<servlet>
 		<servlet-name>nav</servlet-name>
 		<jsp-file>/views/module/nav.jsp</jsp-file>
@@ -51,8 +51,33 @@
 		<servlet-name>nav</servlet-name>
 		<url-pattern>/nav</url-pattern>
 	</servlet-mapping>
-	
 
+	<servlet>
+		<servlet-name>hospitalsForm</servlet-name>
+		<jsp-file>/views/hospital/hospitalsForm.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>hospitalsForm</servlet-name>
+		<url-pattern>/hospitals</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>detail</servlet-name>
+		<jsp-file>/views/hospital/detail.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>detail</servlet-name>
+		<url-pattern>/detail</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>main</servlet-name>
+		<jsp-file>/views/hospital/main.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
 
 	<error-page>
 		<error-code>404</error-code>
