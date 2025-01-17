@@ -13,10 +13,13 @@
 <body>
 	<div id="content-box">
 		<c:import url="/nav" />
-		<section id="main">
+		<form id="main" action="/service/hospital" method="POST">
+			<input type="hidden" name="command" value="symptom">
 			<div class="departments-container">
 				<div class="department">
-					<div class="department-title"><h2>내과</h2></div>
+					<div class="department-title">
+						<h2>내과</h2>
+					</div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="internal-medicine-symptom1"> <label
@@ -55,11 +58,14 @@
 								for="internal-medicine-symptom9">고혈압</label>
 						</div>
 					</div>
-					<a href="" class="more-link">더보기</a>
+					<a href="/detail" class="more-link"><button type="button"
+							class="search-button">더보기</button></a>
 				</div>
 
 				<div class="department">
-					<div class="department-title"><h2>피부과</h2></div>
+					<div class="department-title">
+						<h2>피부과</h2>
+					</div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="dermatology-symptom1"> <label
@@ -102,11 +108,14 @@
 								for="dermatology-symptom10">백반증</label>
 						</div>
 					</div>
-					<a href="" class="more-link">더보기</a>
+					<a href="/detail" class="more-link"><button type="button"
+							class="search-button">더보기</button></a>
 				</div>
 
 				<div class="department">
-					<div class="department-title"><h2>정형외과</h2></div>
+					<div class="department-title">
+						<h2>정형외과</h2>
+					</div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="orthopedics-symptom1"> <label
@@ -125,11 +134,14 @@
 								for="orthopedics-symptom4">부딪힘</label>
 						</div>
 					</div>
-					<a href="" class="more-link">더보기</a>
+					<a href="/detail" class="more-link"><button type="button"
+							class="search-button">더보기</button></a>
 				</div>
 
 				<div class="department">
-					<div class="department-title"><h2>신경외과</h2></div>
+					<div class="department-title">
+						<h2>신경외과</h2>
+					</div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="neurosurgery-symptom1"> <label
@@ -156,13 +168,16 @@
 								for="neurosurgery-symptom6">만성통증</label>
 						</div>
 					</div>
-					<a href="" class="more-link">더보기</a>
+					<a href="/detail" class="more-link"><button type="button"
+							class="search-button">더보기</button></a>
 				</div>
 			</div>
 
 			<div class="departments-container">
 				<div class="department">
-					<div class="department-title"><h2>산부인과</h2></div>
+					<div class="department-title">
+						<h2>산부인과</h2>
+					</div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="gynecology-symptom1"> <label
@@ -193,11 +208,14 @@
 								for="gynecology-symptom7">월결 과다</label>
 						</div>
 					</div>
-					<a href="" class="more-link">더보기</a>
+					<a href="/detail" class="more-link"><button type="button"
+							class="search-button">더보기</button></a>
 				</div>
 
 				<div class="department">
-					<div class="department-title"><h2>안과</h2></div>
+					<div class="department-title">
+						<h2>안과</h2>
+					</div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="ophthalmology-symptom1"> <label
@@ -220,11 +238,14 @@
 								for="ophthalmology-symptom5">눈물고임</label>
 						</div>
 					</div>
-					<a href="" class="more-link">더보기</a>
+					<a href="/detail" class="more-link"><button type="button"
+							class="search-button">더보기</button></a>
 				</div>
 
 				<div class="department">
-					<div class="department-title"><h2>이비인후과</h2></div>
+					<div class="department-title">
+						<h2>이비인후과</h2>
+					</div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="otolaryngology-symptom1"> <label
@@ -259,11 +280,14 @@
 								for="otolaryngology-symptom8">어지러움</label>
 						</div>
 					</div>
-					<a href="" class="more-link">더보기</a>
+					<a href="/detail" class="more-link"><button type="button"
+							class="search-button">더보기</button></a>
 				</div>
 
 				<div class="department">
-					<div class="department-title"><h2>치과</h2></div>
+					<div class="department-title">
+						<h2>치과</h2>
+					</div>
 					<div class="symptoms">
 						<div class="symptom">
 							<input type="checkbox" id="dentistry-symptom1"> <label
@@ -286,12 +310,12 @@
 								for="dentistry-symptom5">치근낭</label>
 						</div>
 					</div>
-					<a href="" class="more-link">더보기</a>
+					<a href="/detail" class="more-link"><button type="button"
+							class="search-button">더보기</button></a>
 				</div>
 			</div>
-
-			<button id="search-button">근처병원 검색</button>
-		</section>
+			<button type="submit" class="search-button">근처병원 검색</button>
+		</form>
 	</div>
 </body>
 <c:import url="/footer" />
