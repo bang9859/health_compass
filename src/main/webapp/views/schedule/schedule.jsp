@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/schedule.css">
 <script src = "/resources/script/schedule.js"></script>
+<script src = "/resources/script/medicineAPI.js"></script>
+<script type="text/javascript"
+	src="http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=oruvbo%2BL%2B8mY49TbDDPKgBJmt8%2BaC4EPCinp%2FKfYxFIgRIp7iRMVQoqyWxZle%2FBv%2B22H%2BLJTKBTKU02ylL3ZJg%3D%3D"></script>
 <title>일정</title>
 </head>
 <c:import url="/header" />
