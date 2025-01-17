@@ -16,9 +16,9 @@
 		<section id="main">
 			<form id="form-login" method="POST" action="/service/users">
 				<input type="hidden" name="command" value="login">
-				<input id="username" name="username" type="text">
-				<input id="password" name="password" type="password">
-				<input type="submit">
+				<input id="username" name="username" type="text" placeholder="아이디 입력">
+				<input id="password" name="password" type="password" placeholder="비밀번호 입력">
+				<input id="submit" type="submit">
 			</form>
 		</section>
 	</div>

@@ -37,9 +37,11 @@ public class UserDao {
 			pstmt.setString(2, hashedPassword);
 			pstmt.setString(3, userDto.getEmail());
 			pstmt.setString(4, userDto.getName());
-			pstmt.setDate(5, (Date) userDto.getBirth());
+			java.util.Date utilBirth = userDto.getBirth();
+			Date birth = new Date(utilBirth.getTime());
+			pstmt.setDate(5, birth);
 			pstmt.setString(6, userDto.getGender());
-			pstmt.setString(6, userDto.getTel());
+			pstmt.setString(7, userDto.getTel());
 			
 			pstmt.execute();
 			
@@ -75,6 +77,78 @@ public class UserDao {
 				Date birth = rs.getDate(6);
 				String gender = rs.getString(7);
 				String tel = rs.getString(8);
+
+				user = new User(username, password, email, name, birth, gender, tel);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				pstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
+	}
+	
+	public User findUserByEmail(String email) {
+		User user = null;
+
+		conn = DBManager.getConnection();
+
+		String sql = "SELECT * FROM users WHERE email=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String username = rs.getString(2);
+				String password = rs.getString(3);
+				String name = rs.getString(5);
+				Date birth = rs.getDate(6);
+				String gender = rs.getString(7);
+				String tel = rs.getString(8);
+
+				user = new User(username, password, email, name, birth, gender, tel);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				pstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
+	}
+	
+	public User findUserByTel(String tel) {
+		User user = null;
+
+		conn = DBManager.getConnection();
+
+		String sql = "SELECT * FROM users WHERE tel=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, tel);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String username = rs.getString(2);
+				String password = rs.getString(3);
+				String email = rs.getString(4);
+				String name = rs.getString(5);
+				Date birth = rs.getDate(6);
+				String gender = rs.getString(7);
 
 				user = new User(username, password, email, name, birth, gender, tel);
 			}
