@@ -300,9 +300,8 @@
 					</div>
 				</div>
 			</div>
-			<button type="button" id="search-button">
-				<a href="/main">뒤로가기</a>
-			</button>
+			<a href="/main"><button type="button" id="search-button">
+					뒤로가기</button></a>
 		</section>
 	</div>
 </body>
