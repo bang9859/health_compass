@@ -37,9 +37,11 @@ public class UserDao {
 			pstmt.setString(2, hashedPassword);
 			pstmt.setString(3, userDto.getEmail());
 			pstmt.setString(4, userDto.getName());
-			pstmt.setDate(5, (Date) userDto.getBirth());
+			java.util.Date utilBirth = userDto.getBirth();
+			Date birth = new Date(utilBirth.getTime());
+			pstmt.setDate(5, birth);
 			pstmt.setString(6, userDto.getGender());
-			pstmt.setString(6, userDto.getTel());
+			pstmt.setString(7, userDto.getTel());
 			
 			pstmt.execute();
 			
