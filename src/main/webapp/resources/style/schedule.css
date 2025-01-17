@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#content-box {
+	display: flex;
+	border-top: solid 2px rgb(51, 51, 51);
+}
+
+#main {
+	width: 100vw;
+}
+
+#calendar-header {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+#calendar-date td {
+	text-align: center;
+	padding: 10px;
+	border: 1px solid #ccc;
+	width: 40px;
+	height: 40px;
+	font-size: 15px;
+}
+
+#calendar-date td:hover {
+	background-color: #f0f0f0;
+	cursor: pointer;
+}
+
+#month {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+#calendar {
+	justify-content: center;
+	margin: auto;
+}
+
+#btnPrev, #btnNext {
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+/* 캘린더 하단 영역 스타일 */
+.calander-foot {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+/* 목록 섹션 스타일 */
+.schedule-list-container {
+	width: 48.5%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	background-color: #f9f9f9;
+	height: 240px;
+}
+
+.schedule-list-container h1, .schedule-add-container h1 {
+	margin-bottom: 15px;
+	font-size: 1.2em;
+	color: #333;
+	text-align: center;
+}
+
+/* 일정 등록 폼 스타일 */
+.schedule-add-container {
+	width: 48.5%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	background-color: #f9f9f9;
+	height: 240px;
+}
+
+.medicine-search-group, .date-group, .daily-frequency-group {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.medicine-search-group span, .daily-frequency-group span {
+	margin-right: 10px;
+	font-size: 1em;
+	color: #555;
+}
+
+.schedule-add-container input[type="text"], .schedule-add-container input[type="date"],
+	.schedule-add-container input[type="number"] {
+	flex: 1;
+	padding: 5px;
+	font-size: 1em;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.schedule-add-container input[type="submit"] {
+	width: 100%;
+	padding: 10px;
+	font-size: 1em;
+	color: #fff;
+	background-color: #4A628A;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.schedule-add-container input[type="submit"]:hover {
+	background-color: #004080;
+}
