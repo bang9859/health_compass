@@ -1,3 +1,4 @@
+
 import { validateUsername, validatePassword, validateEmail, validateName, validateTel, formatPhoneString } from "./validation.js";
 
 window.onload = () => {
