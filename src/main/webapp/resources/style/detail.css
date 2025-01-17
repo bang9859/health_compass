@@ -27,7 +27,7 @@
 }
 
 .symptom-list li {
-	color:black;
+	color: black;
 }
 
 .department {
@@ -78,6 +78,11 @@
 	border-radius: 5px;
 	cursor: pointer;
 	width: fit-content;
+}
+
+a {
+	color: white;
+	text-decoration: none;
 }
 
 #search-button:hover {
