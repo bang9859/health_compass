@@ -39,16 +39,8 @@ span {
 	width: 50px;
 }
 
-#submit {
+#join-submit {
 	margin-bottom: 0;	
-}
-
-#username-box {
-	display: flex;
-}
-
-#username {
-	width: 320px;
 }
 
 #checkdupl {

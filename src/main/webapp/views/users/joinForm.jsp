@@ -17,20 +17,18 @@
 		<section id="main">
 			<form id="form-join" method="POST" action="/service/users">
 				<input type="hidden" name="command" value="join">
-				<div id="username-box">
-					<input id="username" name="username" type="text" placeholder="아이디 입력">
-					<input id="checkdupl" type="button" value="중복 확인">
-				</div>
+				<input id="username" name="username" type="text" placeholder="아이디 입력">
 				<p class="error-msg" id="err-msg-id">사용할 수 없는 아이디입니다.</p>
 				<p class="error-msg" id="err-msg-duplId">아이디가 중복됩니다.</p>
 				<input id="password" name="password" type="password" placeholder="비밀번호 입력">
 				<p class="error-msg" id="err-msg-pw">사용할 수 없는 비밀번호입니다.</p>
 				<input id="email" name="email" type="email" placeholder="이메일 입력">
 				<p class="error-msg" id="err-msg-email">이메일 형식이 올바르지 않습니다.</p>
-				<p class="error-msg" id="err-msg-duplEmail">이메일 형식이 올바르지 않습니다.</p>
+				<p class="error-msg" id="err-msg-duplEmail">이메일이 중복됩니다.</p>
 				<input id="name" name="name" type="text" placeholder="이름 입력">
 				<p class="error-msg" id="err-msg-name">사용할 수 없는 이름입니다.</p>
 				<input id="birth" name="birth" type="date">
+				<p class="error-msg" id="err-msg-birth">생년월일을 입력해주세요.</p>
 				<div id="select-box">
 					<span>성별</span>
 					<div id="select-gender">
@@ -46,8 +44,8 @@
 				</div>
 				<input id="tel" name="tel" type="text" placeholder="전화번호 입력">
 				<p class="error-msg" id="err-msg-tel">잘못된 입력입니다.</p>
-				<p class="error-msg" id="err-msg-duplTel">이메일 형식이 올바르지 않습니다.</p>
-				<input id="submit" type="submit">
+				<p class="error-msg" id="err-msg-duplTel">전화번호가 중복됩니다.</p>
+				<input id="join-submit" type="submit">
 			</form>
 		</section>
 	</div>
