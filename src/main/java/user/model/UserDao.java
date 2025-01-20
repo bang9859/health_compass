@@ -14,26 +14,29 @@ public class UserDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
-	private UserDao() {}
+
+	private UserDao() {
+	}
+
 	private static UserDao instance = new UserDao();
+
 	public static UserDao getInstance() {
 		return instance;
 	}
-	
-	//Create
+
+	// Create
 	public void createUser(UserRequestDto userDto) {
 		conn = DBManager.getConnection();
-		
+
 		String sql = "INSERT INTO users(username, password, email, name, birth, gender, tel) VALUES(?,?,?,?,?,?,?)";
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userDto.getUsername());
-			
+
 			String rawPassword = userDto.getPassword();
 			String hashedPassword = BCrypt.hashpw(rawPassword, BCrypt.gensalt());
-			
+
 			pstmt.setString(2, hashedPassword);
 			pstmt.setString(3, userDto.getEmail());
 			pstmt.setString(4, userDto.getName());
@@ -42,9 +45,9 @@ public class UserDao {
 			pstmt.setDate(5, birth);
 			pstmt.setString(6, userDto.getGender());
 			pstmt.setString(7, userDto.getTel());
-			
+
 			pstmt.execute();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -56,8 +59,8 @@ public class UserDao {
 			}
 		}
 	}
-	
-	//Read
+
+	// Read
 	public User findUserByUsername(String username) {
 		User user = null;
 
@@ -93,7 +96,7 @@ public class UserDao {
 		}
 		return user;
 	}
-	
+
 	public User findUserByEmail(String email) {
 		User user = null;
 
@@ -129,7 +132,7 @@ public class UserDao {
 		}
 		return user;
 	}
-	
+
 	public User findUserByTel(String tel) {
 		User user = null;
 
@@ -165,9 +168,36 @@ public class UserDao {
 		}
 		return user;
 	}
-	
-	//Update
-	
-	
-	//Delete
+
+	// Update
+	public void updateUser(UserRequestDto userDto) {
+		conn = DBManager.getConnection();
+
+		String sql = "UPDATE users SET password=?, email=?, tel=? WHERE username=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			String hashedPassword = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt());
+
+			pstmt.setString(1, hashedPassword);
+			pstmt.setString(2, userDto.getEmail());
+			pstmt.setString(3, userDto.getTel());
+			pstmt.setString(4, userDto.getUsername());
+
+			pstmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// Delete
 }
