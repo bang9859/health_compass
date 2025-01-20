@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>    
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +45,7 @@
 				<input id="tel" name="tel" type="text" placeholder="전화번호 입력">
 				<p class="error-msg" id="err-msg-tel">잘못된 입력입니다.</p>
 				<p class="error-msg" id="err-msg-duplTel">전화번호가 중복됩니다.</p>
-				<input id="join-submit" type="submit">
+				<input id="form-submit" type="submit">
 			</form>
 		</section>
 	</div>
