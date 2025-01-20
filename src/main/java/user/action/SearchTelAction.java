@@ -34,12 +34,17 @@ public class SearchTelAction implements Action {
 			resData.put("message", "잘못된 요청입니다. 필수 키 값이 누락되었습니다.");
 			resData.put("timestamp", new Timestamp(System.currentTimeMillis()));
 		} else {
+			String username = reqData.has("username") ? reqData.getString("username") : null;
 			String tel = reqData.getString("tel");
 
 			UserDao userDao = UserDao.getInstance();
 			User user = userDao.findUserByTel(tel);
-
+			
 			boolean isValid = user != null;
+			
+			if(user != null && user.getUsername().equals(username)) {
+				isValid = !isValid;
+			}
 
 			resData.put("isValid", isValid);
 		}
