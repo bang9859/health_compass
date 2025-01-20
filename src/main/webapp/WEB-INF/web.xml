@@ -34,6 +34,24 @@
 		<servlet-name>login</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>mypage</servlet-name>
+		<jsp-file>/views/users/mypage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mypage</servlet-name>
+		<url-pattern>/mypage</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>delete</servlet-name>
+		<jsp-file>/views/users/deleteForm.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delete</servlet-name>
+		<url-pattern>/delete</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>header</servlet-name>
