@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/main.css">
+<script type="text/javascript" src="/resources/script/myAddress.js"></script>
 <title>메인 페이지(증상선택)</title>
 </head>
 <c:import url="/header" />
@@ -15,6 +16,7 @@
 		<c:import url="/nav" />
 		<form id="main" action="/service/hospital" method="POST">
 			<input type="hidden" name="command" value="search">
+			<h3 id="address">현재 위치 :</h3>
 			<div class="departments-container">
 				<div class="department">
 					<div class="department-title">
