@@ -36,11 +36,11 @@ public class ActionFactory {
 		else if(command.equals("login") && method == HttpMethod.POST)
 			return new LoginFormAction();
 		else if(command.equals("update") && method == HttpMethod.POST)
-			return new JoinFormAction();
+			return new UpdateFormAction();
 		else if(command.equals("delete") && method == HttpMethod.POST)
-			return new JoinFormAction();
+			return new DeleteFormAction();
 		else if(command.equals("logout") && method == HttpMethod.GET)
-			return new JoinFormAction();
+			return new LogoutAction();
 		else if(command.equals("search-username") && method == HttpMethod.POST)
 			return new SearchUsernameAction();
 		else if(command.equals("search-email") && method == HttpMethod.POST)

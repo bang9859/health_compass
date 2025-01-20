@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>    
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,6 @@
 				<p class="error-msg" id="err-msg-email">이메일 형식이 올바르지 않습니다.</p>
 				<p class="error-msg" id="err-msg-duplEmail">이메일이 중복됩니다.</p>
 				<input id="name" name="name" type="text" placeholder="이름 입력">
-				<p class="error-msg" id="err-msg-name">사용할 수 없는 이름입니다.</p>
 				<input id="birth" name="birth" type="date">
 				<p class="error-msg" id="err-msg-birth">생년월일을 입력해주세요.</p>
 				<div id="select-box">
@@ -45,7 +44,7 @@
 				<input id="tel" name="tel" type="text" placeholder="전화번호 입력">
 				<p class="error-msg" id="err-msg-tel">잘못된 입력입니다.</p>
 				<p class="error-msg" id="err-msg-duplTel">전화번호가 중복됩니다.</p>
-				<input id="join-submit" type="submit">
+				<input id="form-submit" type="submit">
 			</form>
 		</section>
 	</div>

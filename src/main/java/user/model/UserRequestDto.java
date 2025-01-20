@@ -41,6 +41,13 @@ public class UserRequestDto {
 		this.tel = tel;
 	}
 
+	public UserRequestDto(String username, String password, String email, String tel) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.tel = tel;
+	}
+
 	public String getUsername() {
 		return username;
 	}

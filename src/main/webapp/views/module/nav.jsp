@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/style/nav.css">
+<script src="/resources/script/nav.js"></script>
 </head>
 <body>
 	<nav>

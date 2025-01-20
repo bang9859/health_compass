@@ -1,4 +1,3 @@
-
 export function validateUsername(username) {
 	const regex = /^[가-힣\w\_]{5,}$/;
 	return regex.test(username);
@@ -41,4 +40,76 @@ export function formatPhoneString(str) {
 		return str;
 	}
 	return result;
+}
+
+export async function checkDuplUsername(username) {
+	const response = await fetch("/service/users?command=search-username", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			"username": username
+		})
+	});
+	const json = await response.json();
+	return json.isValid;
+}
+
+export async function checkDuplEmail(email) {
+	const response = await fetch("/service/users?command=search-email", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			"email": email
+		})
+	});
+	const json = await response.json();
+	return json.isValid;
+}
+
+export async function checkDuplTel(tel) {
+	const response = await fetch("/service/users?command=search-tel", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			"tel": tel
+		})
+	});
+	const json = await response.json();
+	return json.isValid;
+}
+
+export async function checkDuplEmail2(username, email) {
+	const response = await fetch("/service/users?command=search-email", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			"username": username,
+			"email": email
+		})
+	});
+	const json = await response.json();
+	return json.isValid;
+}
+
+export async function checkDuplTel2(username, tel) {
+	const response = await fetch("/service/users?command=search-tel", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			"username": username,
+			"tel": tel
+		})
+	});
+	const json = await response.json();
+	return json.isValid;
 }
