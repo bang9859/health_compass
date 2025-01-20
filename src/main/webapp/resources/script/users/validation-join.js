@@ -1,4 +1,4 @@
-import { validateUsername, validatePassword, validateEmail, validateName, validateTel, formatPhoneString } from "./validation.js";
+import { checkDuplUsername, checkDuplEmail, checkDuplTel, validateUsername, validatePassword, validateEmail, validateName, validateTel, formatPhoneString } from "./validation.js";
 
 window.onload = () => {
 	const form = document.getElementById("form-join");
@@ -201,46 +201,4 @@ window.onload = () => {
 			form.submit();
 		}
 	});
-}
-
-async function checkDuplUsername(username) {
-	const response = await fetch("/service/users?command=search-username", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify({
-			"username": username
-		})
-	});
-	const json = await response.json();
-	return json.isValid;
-}
-
-async function checkDuplEmail(email) {
-	const response = await fetch("/service/users?command=search-email", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify({
-			"email": email
-		})
-	});
-	const json = await response.json();
-	return json.isValid;
-}
-
-async function checkDuplTel(tel) {
-	const response = await fetch("/service/users?command=search-tel", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify({
-			"tel": tel
-		})
-	});
-	const json = await response.json();
-	return json.isValid;
 }

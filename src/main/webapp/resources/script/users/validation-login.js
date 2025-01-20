@@ -13,6 +13,8 @@ window.onload = () => {
 		const input = e.target.value;
 		const errId = document.getElementById("err-msg-id");
 
+		isPassUsername = false;
+		
 		if (input === "") {
 			errId.style.display = "block";
 			errId.style.marginBottom = '15px';
@@ -28,6 +30,8 @@ window.onload = () => {
 		const input = e.target.value;
 		const errPw = document.getElementById("err-msg-pw");
 
+		isPassPassword = false;
+		
 		if (input === "") {
 			errPw.style.display = "block";
 			errPw.style.marginBottom = '15px';
