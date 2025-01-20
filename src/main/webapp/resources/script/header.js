@@ -22,36 +22,4 @@ window.onload = () => {
 	} else if (path == "hospitals") {
 		titleElement.textContent = "병원 목록 페이지";
 	}
-
-	const login = document.getElementById("login");
-	const join = document.getElementById("join");
-	const mypage = document.getElementById("mypage");
-	const logout = document.getElementById("logout");
-
-	login.addEventListener("click", e => {
-		window.location.href = "/login";
-	});
-
-	join.addEventListener("click", e => {
-		window.location.href = "/join";
-	});
-
-	mypage.addEventListener("click", e => {
-		window.location.href = "/mypage";
-	});
-
-	logout.addEventListener("click", e => {
-		logoutAction();
-	});
 };
-
-async function logoutAction() {
-	const response = await fetch("/service/users?command=logout", {
-		method: "GET",
-		headers: {
-			"Content-Type": "application/json"
-		}
-	});
-	await response.json();
-	return true;
-}

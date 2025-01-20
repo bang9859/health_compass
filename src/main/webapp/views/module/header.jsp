@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="jakarta.tags.core"%>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,12 +21,12 @@
 		<div class="log">
 			<c:choose>
 				<c:when test="${empty log}">
-					<input type="button" id="login" value="로그인">
-					<input type="button" id="join" value="회원가입">
+					<input type="button" id="login" value="로그인" onclick="location.href='/login'">
+					<input type="button" id="join" value="회원가입" onclick="location.href='/join'">
 				</c:when>
 				<c:otherwise>
-					<input type="button" id="mypage" value="마이페이지">
-					<input type="button" id="logout" value="로그아웃">
+					<input type="button" id="mypage" value="마이페이지" onclick="location.href='/mypage'">
+					<input type="button" id="logout" value="로그아웃" onclick="location.href='/service/users?command=logout'">
 				</c:otherwise>
 			</c:choose>
 		</div>
