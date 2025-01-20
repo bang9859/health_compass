@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
+	console.log("JavaScript 실행됨");
+
+	const hospitalList = window.hospitalList;
+	console.log("Hospital List:", hospitalList);
+	
 	navigator.geolocation.getCurrentPosition(function(position) {
 		const userLat = position.coords.latitude; // 위도
 		const userLon = position.coords.longitude; // 경도
