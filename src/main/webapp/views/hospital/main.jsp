@@ -14,7 +14,7 @@
 	<div id="content-box">
 		<c:import url="/nav" />
 		<form id="main" action="/service/hospital" method="POST">
-			<input type="hidden" name="command" value="symptom">
+			<input type="hidden" name="command" value="search">
 			<div class="departments-container">
 				<div class="department">
 					<div class="department-title">

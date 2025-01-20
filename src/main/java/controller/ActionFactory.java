@@ -48,7 +48,7 @@ public class ActionFactory {
 	private Action getHospitalAction(String command, HttpMethod method) {
 		Action action = null;
 		if (command.equals("symptom") && method == HttpMethod.POST)
-			return new SymptomChcekAction();
+			return new HospitalsSearchAction();
 		else if (command.equals("list") && method == HttpMethod.GET)
 			return new HospitalsListAction();
 		return action;
