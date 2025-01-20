@@ -7,12 +7,12 @@ public class HospitalDto {
     private String type;
     private String emergency;
     private String hpid;
-    private StringBuilder operatingHours;
+    private String operatingHours;
     private double latitude;
     private double longitude;
 
     public HospitalDto(String name, String address, String phone, String type, String emergency, String hpid,
-                       StringBuilder operatingHours, double latitude, double longitude) {
+    		String operatingHours, double latitude, double longitude) {
         this.name = name;
         this.address = address;
         this.phone = phone;
