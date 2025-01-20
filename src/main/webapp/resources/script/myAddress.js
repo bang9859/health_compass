@@ -1,4 +1,4 @@
-async function getAddress() {
+window.onload = () => {
 	try {
 		if (!navigator.geolocation) {
 			console.error('Geolocation is not supported by your browser.');
@@ -30,6 +30,7 @@ async function getAddress() {
 			const addressElement = document.getElementById('address');
 			if (addressElement) {
 				addressElement.textContent = `현재 위치: ${address}`;
+				document.getElementById('address-hidden').value = address;
 			}
 		}, (error) => {
 			console.error('위치를 가져오는 동안 오류가 발생했습니다:', error);
@@ -39,5 +40,3 @@ async function getAddress() {
 		console.error('오류가 발생했습니다:', error);
 	}
 }
-
-window.onload = getAddress();
