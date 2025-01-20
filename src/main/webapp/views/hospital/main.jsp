@@ -16,6 +16,7 @@
 		<c:import url="/nav" />
 		<form id="main" action="/service/hospital" method="POST">
 			<input type="hidden" name="command" value="search">
+			<input type="hidden" id="address-hidden" name="address" value="">
 			<h3 id="address">현재 위치 :</h3>
 			<div class="departments-container">
 				<div class="department">
