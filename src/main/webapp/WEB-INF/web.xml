@@ -79,6 +79,15 @@
 		<url-pattern>/main</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>schedule</servlet-name>
+		<jsp-file>/views/schedule/schedule.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>schedule</servlet-name>
+		<url-pattern>/schedule</url-pattern>
+	</servlet-mapping>
+
 	<error-page>
 		<error-code>404</error-code>
 		<location>/</location>
