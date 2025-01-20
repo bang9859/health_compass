@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/header.css">
-<script type="module" src="/resources/script/header.js"></script>
+<script src="/resources/script/header.js"></script>
 </head>
 <body>
 	<header class="header">
