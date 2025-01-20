@@ -87,68 +87,68 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	});
 	startDate.addEventListener("change", (e) => {
-	    const input = e.target.value;
-	    const errEmpty = document.getElementById("error-msg-start-date-empty");
-	    const endErrEmpty = document.getElementById("error-msg-end-date-empty");
-	    const errPattern = document.getElementById("error-msg-start-date-pattern");
+		const input = e.target.value;
+		const errEmpty = document.getElementById("error-msg-start-date-empty");
+		const endErrEmpty = document.getElementById("error-msg-end-date-empty");
+		const errPattern = document.getElementById("error-msg-start-date-pattern");
 
-	    // 종료 날짜 입력 여부 확인
-	    if (!endDate.value) {
-	        updateErrorElementStyle(endErrEmpty, true);
-	    } else {
-	        updateErrorElementStyle(endErrEmpty, false);
-	    }
+		// 종료 날짜 입력 여부 확인
+		if (!endDate.value) {
+			updateErrorElementStyle(endErrEmpty, true);
+		} else {
+			updateErrorElementStyle(endErrEmpty, false);
+		}
 
-	    // 시작 날짜 입력 여부 확인
-	    if (!input) {
-	        updateErrorElementStyle(errEmpty, true);
-	        updateErrorElementStyle(errPattern, false); // 패턴 오류는 비활성화
-	        return;
-	    } else {
-	        updateErrorElementStyle(errEmpty, false);
-	    }
+		// 시작 날짜 입력 여부 확인
+		if (!input) {
+			updateErrorElementStyle(errEmpty, true);
+			updateErrorElementStyle(errPattern, false); // 패턴 오류는 비활성화
+			return;
+		} else {
+			updateErrorElementStyle(errEmpty, false);
+		}
 
-	    // 종료 날짜와 함께 유효성 검사
-	    if (endDate.value) {
-	        isValidStartDate = validateStartDate(input, endDate.value);
-	        if (!isValidStartDate) {
-	            updateErrorElementStyle(errPattern, true);
-	        } else {
-	            updateErrorElementStyle(errPattern, false);
-	        }
-	    }
+		// 종료 날짜와 함께 유효성 검사
+		if (endDate.value) {
+			isValidStartDate = validateStartDate(input, endDate.value);
+			if (!isValidStartDate) {
+				updateErrorElementStyle(errPattern, true);
+			} else {
+				updateErrorElementStyle(errPattern, false);
+			}
+		}
 	});
 
 	endDate.addEventListener("change", (e) => {
-	    const input = e.target.value;
-	    const errEmpty = document.getElementById("error-msg-end-date-empty");
-	    const startErrEmpty = document.getElementById("error-msg-start-date-empty");
-	    const errPattern = document.getElementById("error-msg-start-date-pattern");
+		const input = e.target.value;
+		const errEmpty = document.getElementById("error-msg-end-date-empty");
+		const startErrEmpty = document.getElementById("error-msg-start-date-empty");
+		const errPattern = document.getElementById("error-msg-start-date-pattern");
 
-	    // 시작 날짜 입력 여부 확인
-	    if (!startDate.value) {
-	        updateErrorElementStyle(startErrEmpty, true);
-	    } else {
-	        updateErrorElementStyle(startErrEmpty, false);
-	    }
+		// 시작 날짜 입력 여부 확인
+		if (!startDate.value) {
+			updateErrorElementStyle(startErrEmpty, true);
+		} else {
+			updateErrorElementStyle(startErrEmpty, false);
+		}
 
-	    // 종료 날짜 입력 여부 확인
-	    if (!input) {
-	        updateErrorElementStyle(errEmpty, true);
-	        return;
-	    } else {
-	        updateErrorElementStyle(errEmpty, false);
-	    }
+		// 종료 날짜 입력 여부 확인
+		if (!input) {
+			updateErrorElementStyle(errEmpty, true);
+			return;
+		} else {
+			updateErrorElementStyle(errEmpty, false);
+		}
 
-	    // 시작 날짜와 함께 유효성 검사
-	    if (startDate.value) {
-	        isValidStartDate = validateStartDate(startDate.value, input);
-	        if (!isValidStartDate) {
-	            updateErrorElementStyle(errPattern, true);
-	        } else {
-	            updateErrorElementStyle(errPattern, false);
-	        }
-	    }
+		// 시작 날짜와 함께 유효성 검사
+		if (startDate.value) {
+			isValidStartDate = validateStartDate(startDate.value, input);
+			if (!isValidStartDate) {
+				updateErrorElementStyle(errPattern, true);
+			} else {
+				updateErrorElementStyle(errPattern, false);
+			}
+		}
 	});
 
 
@@ -219,26 +219,68 @@ document.addEventListener("DOMContentLoaded", function() {
 		return start <= end;
 	}
 
+	document.getElementById("submit-button").addEventListener("click", async () => {
+	        // 1. 입력값 가져오기
+	        const medicineName = document.getElementById("medicine-name")?.value.trim() || "";
+	        const startDate = document.getElementById("start-date")?.value || "";
+	        const endDate = document.getElementById("end-date")?.value || "";
+	        const dailyFrequency = document.getElementById("daily-frequency")?.value || "";
+
+	        if (!medicineName || !startDate || !endDate || !dailyFrequency) {
+	            alert("모든 필드를 올바르게 입력해주세요.");
+	            return;
+	        }
+
+	        try {
+	            // 2. API 호출
+	            const apiUrl = `http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=your-service-key&itemName=${encodeURIComponent(medicineName)}`;
+	            const response = await fetch(apiUrl);
+
+	            if (!response.ok) {
+	                throw new Error("API 호출 실패");
+	            }
+
+	            const data = await response.json();
+	            console.log("Fetched Data:", data);
+
+	            if (!data?.body?.items?.length) {
+	                alert("약 정보를 찾을 수 없습니다.");
+	                return;
+	            }
+
+	            const medicineCode = data.body.items[0].itemSeq;
+
+	            // 3. 서버로 데이터 전송
+	            const saveResponse = await fetch("/AddScheduleAction", {
+	                method: "POST",
+	                headers: {
+	                    "Content-Type": "application/x-www-form-urlencoded"
+	                },
+	                body: new URLSearchParams({
+	                    "medicine-name": medicineName,
+	                    "medicine-code": medicineCode,
+	                    "start-date": startDate,
+	                    "end-date": endDate,
+	                    "daily-frequency": dailyFrequency
+	                })
+	            });
+
+	            if (!saveResponse.ok) {
+	                throw new Error("일정 저장 실패");
+	            }
+
+	            alert("일정이 성공적으로 등록되었습니다!");
+	            window.location.href = "/schedule";
+	        } catch (error) {
+	            console.error(error);
+	            alert("오류가 발생했습니다. 다시 시도해주세요.");
+	        }
+	    });
+	
 });
 
-function updateErrorElementStyle(element, visible) {
-	if (visible) {
-		element.style.display = "block";
-	} else {
-		element.style.display = "none";
-	}
-}
 
-function validateNumber(number) {
-	const regex = /^[1-5]{1}$/;
-	return regex.test(number);
-}
 
-function validateStartDate(startDate, endDate) {
-	if (!startDate || !endDate) return false;
-	const start = new Date(startDate);
-	const end = new Date(endDate);
-	return start <= end;
-}
+
 
 

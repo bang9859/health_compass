@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/schedule.css">
 <script src = "/resources/script/schedule.js"></script>
-<script src = "/resources/script/medicineAPI.js"></script>
 <script type="text/javascript"
 	src="http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=oruvbo%2BL%2B8mY49TbDDPKgBJmt8%2BaC4EPCinp%2FKfYxFIgRIp7iRMVQoqyWxZle%2FBv%2B22H%2BLJTKBTKU02ylL3ZJg%3D%3D"></script>
 <title>일정</title>
@@ -47,7 +46,8 @@
 			<div class="schedule-list-container">
 			<h1>일정 목록</h1>
 			</div>
-			<form class="schedule-add-container">
+			<form id="form-schedule" class="schedule-add-container" method="POST" action = "service/schedule" >
+			<input type="hidden" name="command" value="add">
 				<h1>일정 등록</h1>
 				<div class = "medicine-search-group">
 				<span>약명 :</span>
@@ -74,7 +74,7 @@
 						<li id="error-msg-number-empty">1일 복용 횟수 : 필수정보입니다.</li>
 						<li id="error-msg-number-pattern">1일 복용 횟수 : 1~5까지만 입력 가능합니다.</li>
 				</ul>
-				<input type=submit value="등록">
+				<input id="submit-button" type="submit" value="등록">
 			</form>
 			</div>
 		</section>
