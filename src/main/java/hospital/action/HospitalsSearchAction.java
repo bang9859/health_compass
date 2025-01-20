@@ -25,20 +25,35 @@ public class HospitalsSearchAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		test();
+		String userAddress = request.getParameter("address");
+		System.out.println("사용자 주소: " + userAddress);
 
+		// 병원 들고오기
+		List<HospitalDto> hospitalList = HospitalsSearch(userAddress);
+
+		// 출력
+		System.out.println("병원 목록:");
+		for (int i = 0; i < hospitalList.size(); i++) {
+			System.out.println((i + 1) + " 번");
+			System.out.println(hospitalList.get(i));
+			System.out.println("------------------------");
+		}
+		
+		 request.getSession().setAttribute("hospitalList", hospitalList);
 		response.sendRedirect("/hospitals");
 	}
 
-	public void test() {
+	public List<HospitalDto> HospitalsSearch(String userAddress) {
 		try {
+			String[] address = userAddress.split(" ");
+
 			String serviceKey = "%2BVuLyglK6Y6SHbveZuAdhvqRGwAEh7ozSxVRDMiZZdoIPDLEKkEVf0lYD7egwi%2FIHsaJmiMlIZjCECfdJeSd0w%3D%3D";
 
 			StringBuilder urlBuilder = new StringBuilder(
 					"http://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlMdcncListInfoInqire");
 			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + serviceKey); // Service Key
-			urlBuilder.append("&" + URLEncoder.encode("Q0", "UTF-8") + "=" + URLEncoder.encode("서울특별시", "UTF-8")); // 주소(시도)
-			urlBuilder.append("&" + URLEncoder.encode("Q1", "UTF-8") + "=" + URLEncoder.encode("강남구", "UTF-8")); // 주소(시군구)
+			urlBuilder.append("&" + URLEncoder.encode("Q0", "UTF-8") + "=" + URLEncoder.encode(address[0], "UTF-8")); // 주소(시도)
+			urlBuilder.append("&" + URLEncoder.encode("Q1", "UTF-8") + "=" + URLEncoder.encode(address[1], "UTF-8")); // 주소(시군구)
 			// urlBuilder.append("&" + URLEncoder.encode("QZ", "UTF-8") + "=" +
 			// URLEncoder.encode("B", "UTF-8")); // CODE_MST의
 			// 'H000'
@@ -57,8 +72,7 @@ public class HospitalsSearchAction implements Action {
 			// urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" +
 			// URLEncoder.encode("1", "UTF-8")); // 페이지
 			// 번호
-			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("50", "UTF-8")); // 목록
-																														// 건수
+			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("50", "UTF-8")); // 목록건수
 
 			// URL 설정
 			URL url = new URL(urlBuilder.toString());
@@ -84,18 +98,16 @@ public class HospitalsSearchAction implements Action {
 			rd.close();
 			conn.disconnect();
 
-			// 결과 출력
-			System.out.println(sb.toString());
-
 			// XML 파싱
-			parseXmlResponse(sb.toString());
-
+			List<HospitalDto> hospitalList = parseXmlResponse(sb.toString());
+			return hospitalList;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
-	private void parseXmlResponse(String xml) {
+	private List<HospitalDto> parseXmlResponse(String xml) {
 		try {
 			// XML 파싱
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -125,17 +137,11 @@ public class HospitalsSearchAction implements Action {
 
 				hospitalList.add(hospital);
 			}
-
-			// 출력
-			System.out.println("병원 목록:");
-			for (int i = 0; i < hospitalList.size(); i++) {
-				System.out.println((i + 1) + " 번");
-				System.out.println(hospitalList.get(i));
-				System.out.println("------------------------");
-			}
+			return hospitalList;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	private String getNodeValue(NodeList nodeList, String tagName) {
