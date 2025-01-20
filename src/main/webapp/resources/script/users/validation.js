@@ -1,4 +1,3 @@
-
 export function validateUsername(username) {
 	const regex = /^[가-힣\w\_]{5,}$/;
 	return regex.test(username);

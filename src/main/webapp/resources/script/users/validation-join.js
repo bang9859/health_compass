@@ -1,17 +1,17 @@
-
 import { validateUsername, validatePassword, validateEmail, validateName, validateTel, formatPhoneString } from "./validation.js";
 
 window.onload = () => {
 	const form = document.getElementById("form-join");
 
 	const username = document.getElementById("username");
-	const duplUsername = document.getElementById("checkdupl");
 	const password = document.getElementById("password");
 	const email = document.getElementById("email");
 	const name = document.getElementById("name");
 	const birth = document.getElementById("birth");
 	const tel = document.getElementById("tel");
-	
+
+	const px = "29.46px";
+		
 	let isValidUsername = validateUsername(username.value);
 	let isValidEmail = validateEmail(email.value);
 	let isValidTel = validateTel(tel.value);
@@ -36,7 +36,6 @@ window.onload = () => {
 			errDupl.style.display = "none";
 			errId.style.marginBottom = '15px';
 			username.style.marginBottom = '0';
-			duplUsername.style.marginBottom = '0';
 		} else if (isValidUsername) {
 			errId.style.display = "none";
 			errDupl.style.display = "block";
@@ -46,7 +45,7 @@ window.onload = () => {
 			isPassUsername = true;
 			errDupl.style.display = "none";
 			errId.style.display = "none";
-			username.style.marginBottom = '15px';
+			username.style.marginBottom = px;
 		}
 	});
 
@@ -63,7 +62,7 @@ window.onload = () => {
 		} else {
 			isPassPassword = true;
 			errPw.style.display = "none";
-			password.style.marginBottom = '15px';
+			password.style.marginBottom = px;
 		}
 	});
 
@@ -89,7 +88,7 @@ window.onload = () => {
 			isPassEmail = true;
 			errEmail.style.display = "none";
 			errDupl.style.display = "none";
-			email.style.marginBottom = '15px';
+			email.style.marginBottom = px;
 		}
 	});
 
@@ -106,7 +105,7 @@ window.onload = () => {
 		} else {
 			isPassName = true;
 			errName.style.display = "none";
-			name.style.marginBottom = '15px';
+			name.style.marginBottom = px;
 		}
 	});
 	
@@ -123,7 +122,7 @@ window.onload = () => {
 		} else {
 			isPassBirth = true;
 			errBirth.style.display = "none";
-			birth.style.marginBottom = '15px';
+			birth.style.marginBottom = px;
 		}
 		
 	});
@@ -151,7 +150,7 @@ window.onload = () => {
 			isPassTel = true;
 			errTel.style.display = "none";
 			errDupl.style.display = "none";
-			tel.style.marginBottom = '15px';
+			tel.style.marginBottom = px;
 		}
 	});
 
