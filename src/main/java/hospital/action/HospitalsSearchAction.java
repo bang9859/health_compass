@@ -31,8 +31,17 @@ public class HospitalsSearchAction implements Action {
 		// 병원 들고오기
 		List<HospitalDto> hospitalList = HospitalsSearch(userAddress);
 
-		request.getSession().setAttribute("hospitalList", hospitalList);
-		response.sendRedirect("/service/hospital?command=list");
+		// 출력
+		System.out.println("병원 목록:");
+		for (int i = 0; i < hospitalList.size(); i++) {
+			System.out.println((i + 1) + " 번");
+			System.out.println(hospitalList.get(i));
+			System.out.println("------------------------");
+
+		}
+
+		request.setAttribute("hospitalList", hospitalList);
+	    request.getRequestDispatcher("/hospitalsForm.jsp").forward(request, response);
 	}
 
 	public List<HospitalDto> HospitalsSearch(String userAddress) {
