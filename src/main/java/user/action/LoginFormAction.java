@@ -6,6 +6,7 @@ import controller.Action;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import user.model.User;
 import user.model.UserDao;
 
@@ -20,9 +21,12 @@ public class LoginFormAction implements Action {
 		User user = userDao.findUserByUsername(username);
 		
 		if(user != null && user.checkPassword(password)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("log", user);
+			response.sendRedirect("/index.jsp");
 			System.err.println("로그인 성공");
 		} else {
-			response.sendRedirect("/index.jsp");
+			response.sendRedirect("/login");
 			System.err.println("로그인 실패");
 		}
 	}

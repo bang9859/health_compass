@@ -70,7 +70,6 @@
 	padding: 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	background-color: #f9f9f9;
-	height: 240px;
 }
 
 .schedule-list-container h1, .schedule-add-container h1 {
@@ -88,13 +87,12 @@
 	padding: 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	background-color: #f9f9f9;
-	height: 240px;
 }
 
 .medicine-search-group, .date-group, .daily-frequency-group {
 	display: flex;
 	align-items: center;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 
 .medicine-search-group span, .daily-frequency-group span {
@@ -125,4 +123,12 @@
 
 .schedule-add-container input[type="submit"]:hover {
 	background-color: #004080;
+}
+
+.error-msg-group>li, .error-msg  {
+    list-style: none;
+    margin-top: 10px;
+    color: red;
+    font-size: 13px;
+    display:none;
 }
