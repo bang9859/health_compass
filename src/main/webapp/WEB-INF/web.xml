@@ -107,6 +107,7 @@
 		<url-pattern>/detail</url-pattern>
 	</servlet-mapping>
 
+<!--  
 	<servlet>
 		<servlet-name>main</servlet-name>
 		<jsp-file>/views/hospital/main.jsp</jsp-file>
@@ -115,6 +116,7 @@
 		<servlet-name>main</servlet-name>
 		<url-pattern>/main</url-pattern>
 	</servlet-mapping>
+-->
 
 	<servlet>
 		<servlet-name>schedule</servlet-name>
@@ -125,8 +127,5 @@
 		<url-pattern>/schedule</url-pattern>
 	</servlet-mapping>
 
-	<error-page>
-		<error-code>404</error-code>
-		<location>/</location>
-	</error-page>
+
 </web-app>
