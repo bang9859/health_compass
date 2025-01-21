@@ -52,12 +52,14 @@ window.onload = () => {
 			errEmpty.style.marginBottom = '15px';
 			username.style.marginBottom = "0";
 		}
+		
 		if (password.value === "") {
 			const errEmpty = document.getElementById("err-msg-pw");
 			errEmpty.style.display = "block";
 			errEmpty.style.marginBottom = '15px';
 			password.style.marginBottom = "0";
 		}
+		
 		if (isPassUsername && isPassPassword) {
 			form.submit();
 		}

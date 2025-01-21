@@ -12,10 +12,9 @@ public class LogoutAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
 		session.removeAttribute("log");
 		session.invalidate();
-
-		response.sendRedirect("/index.jsp");
+		response.sendRedirect("/main");
+		System.err.println("로그아웃 성공.");
 	}
 }
