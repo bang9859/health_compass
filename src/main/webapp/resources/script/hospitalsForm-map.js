@@ -90,10 +90,12 @@ document.addEventListener("DOMContentLoaded", function() {
 					const hospitalElement = document.createElement("div");
 					hospitalElement.className = "hospital";
 					hospitalElement.innerHTML = `
-						<p id="hospitalNumber"><strong>${i+1} 번</strong></p>
+						<p id="hospitalNumber"><strong>${i + 1} 번</strong></p>
                         <p><strong>병원이름:</strong> ${hospital.name}</p>
-                        <p><strong>주소:</strong> ${hospital.address}</p>
-                        <p><strong>전화번호:</strong> ${hospital.phone || "정보 없음"}</p>
+						<p><strong>분류:</strong> ${hospital.type || "정보 없음"}</p>
+						<p><strong>응급실 여부:</strong> ${hospital.emergency === "1" ? "운영 중" : "미운영"}</p>
+						<p><strong>주소:</strong> ${hospital.address}</p>
+                        <p><strong>전화번호:</strong> ${hospital.phone || "휴진"}</p>
                         <label for="operatingHours-${i}"><strong>진료시간:</strong></label>
                         <select id="operatingHours-${i}" class="operating-hours">
                             ${hospital.operatingHours
