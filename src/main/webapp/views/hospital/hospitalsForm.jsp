@@ -24,12 +24,11 @@
 </script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa5282a38622982d20efb6e4e5a4b894"></script>
-<script src="/resources/script/hospitalsForm-map.js"></script>
+<script src="/resources/script/hospitalsForm.js"></script>
 <title>병원 목록 페이지</title>
 </head>
 <c:import url="/header" />
 <body>
-
 	<div id="content-box">
 		<c:import url="/nav" />
 		<section id="main">
