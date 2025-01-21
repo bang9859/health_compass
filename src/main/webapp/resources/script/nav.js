@@ -40,3 +40,19 @@ window.addEventListener("load", function() {
     // 5초마다 이미지 변경
     setInterval(changeImage, 5000);
 });
+
+window.onload = () => {
+
+
+	document.getElementById("search-hospital-link").addEventListener("click", function() {
+		window.location.href = "/";
+	});
+	
+	document.getElementById("calender-link").addEventListener("click", function() {
+		window.location.href = "/schedule";
+	});
+	
+	document.getElementById("bookmark-link").addEventListener("click", function() {
+		window.location.href = "/bookmark";
+	});
+}

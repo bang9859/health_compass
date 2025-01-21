@@ -35,6 +35,14 @@ span {
 	margin-top: 130px;	
 }
 
+#form-delete {
+	margin-top: 120px;	
+}
+
+#form-login, #form-delete {
+	height: 180px;
+}
+
 #id-msg {
 	margin-bottom: 0;
 }
@@ -87,4 +95,27 @@ span {
 .form_radio_btn input[type=radio]+label {
 	background: #F9FAFC;
 	color: #666;
+}
+
+#main {
+	display: flex;
+}
+
+#map {
+	width: 750px;
+    height: 750px;
+}
+
+#bookmark-list {
+	width: 150px;
+	height: 500px;
+}
+
+#bookmark-list > h4 {
+	text-align: center;
+}
+
+#list {
+	list-style: none;
+	color: black;
 }

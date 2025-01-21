@@ -1,4 +1,3 @@
-<%@page import="util.DBManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
@@ -7,13 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/schedule.css">
+<script src = "/resources/script/calendar.js"></script>
 <script src = "/resources/script/schedule.js"></script>
-<script type="text/javascript"
-	src="http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=oruvbo%2BL%2B8mY49TbDDPKgBJmt8%2BaC4EPCinp%2FKfYxFIgRIp7iRMVQoqyWxZle%2FBv%2B22H%2BLJTKBTKU02ylL3ZJg%3D%3D"></script>
 <title>일정</title>
 </head>
 <c:import url="/header" />
 <body>
+<!-- 약품 검색 모달 -->
+<!-- 배경 오버레이 -->
+<div id="modal-overlay" onclick="toggleMedicineSearchModal()"></div>
+
+<!-- 약품 검색 모달 -->
+<div id="medicine-search-modal">
+    <!-- 닫기 버튼 -->
+    <button class="close-btn" onclick="toggleMedicineSearchModal()">×</button>
+    <input type="text" id="search-medicine" placeholder="약명 검색">
+    <button onclick="searchMedicine()">검색</button> <!-- 검색 버튼 -->
+    <ul id="medicine-result-list"></ul>
+</div>
+
 
 	<div id="content-box">
 		<c:import url="/nav" />
@@ -45,13 +56,35 @@
 			<div class = "calander-foot">
 			<div class="schedule-list-container">
 			<h1>일정 목록</h1>
+			<table border="1" id="schedule-list">
+        <thead>
+            <tr>
+                <th>약품 코드</th>
+                <th>시작일</th>
+                <th>종료일</th>
+                <th>1일 복용 횟수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="schedule" items="${schedules}">
+                <tr>
+                    <td>${schedule.medicineCode}</td>
+                    <td>${schedule.startDate}</td>
+                    <td>${schedule.endDate}</td>
+                    <td>${schedule.dailyFrequency}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 			</div>
 			<form id="form-schedule" class="schedule-add-container" method="POST" action = "service/schedule" >
 			<input type="hidden" name="command" value="add">
+			<input type="hidden" id="username" name="username" value = "${log.username}">
 				<h1>일정 등록</h1>
 				<div class = "medicine-search-group">
-				<span>약명 :</span>
-				<input type="text" id="medicine-name" name="medicine-name">
+				<p>선택된 약품: <span id="selected-medicine">없음</span></p>
+				<input type="hidden" id="medicine-code" name="medicine-code">
+				<button type="button" onclick="toggleMedicineSearchModal()">검색</button>
 				</div>
 					<ul class="error-msg-group">
 						<li id="error-msg-name-empty">약명 : 필수정보입니다.</li>
@@ -79,6 +112,8 @@
 			</div>
 		</section>
 	</div>
+
+	
 </body>
 <c:import url="/footer" />
 </html>

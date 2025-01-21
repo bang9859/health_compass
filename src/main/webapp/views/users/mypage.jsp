@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>  
 <!DOCTYPE html>
 <html>
@@ -12,6 +11,9 @@
 </head>
 <c:import url="/header" />
 <body>
+<c:if test="${empty log}">
+	<c:redirect url="/login" />
+</c:if>
 	<div id="content-box">
 		<c:import url="/nav" />
 		<section id="main">
@@ -19,7 +21,7 @@
 				<input type="hidden" name="command" value="update">
 				<input type="text" value="${log.username}" disabled>
 				<input id="username" name="username" type="hidden" value="${log.username}">
-				<input id="password" name="password" type="password">
+				<input id="password" name="password" type="password" autocomplete="new-password">
 				<p class="error-msg" id="err-msg-pw">사용할 수 없는 비밀번호입니다.</p>
 				<input id="email" name="email" type="email" value="${log.email}">
 				<p class="error-msg" id="err-msg-email">이메일 형식이 올바르지 않습니다.</p>

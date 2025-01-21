@@ -19,7 +19,7 @@ nav {
 	border-top: solid 2px rgb(51, 51, 51);
 }
 
-li {
+#menu > li {
 	list-style: none;
 	margin: 10px auto;
 	color: white;
@@ -50,4 +50,10 @@ li {
 
 #img3 {
 	display: none;
+}
+
+#search-hospital-link,
+#calender-link,
+#bookmark-link {
+	cursor: pointer;
 }
