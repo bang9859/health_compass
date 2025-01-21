@@ -115,6 +115,7 @@
 		<url-pattern>/detail</url-pattern>
 	</servlet-mapping>
 
+
 	<servlet>
 		<servlet-name>schedule</servlet-name>
 		<jsp-file>/views/schedule/schedule.jsp</jsp-file>
@@ -124,8 +125,5 @@
 		<url-pattern>/schedule</url-pattern>
 	</servlet-mapping>
 
-	<error-page>
-		<error-code>404</error-code>
-		<location>/</location>
-	</error-page>
+
 </web-app>

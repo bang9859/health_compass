@@ -51,3 +51,9 @@ nav {
 #img3 {
 	display: none;
 }
+
+#search-hospital-link,
+#calender-link,
+#bookmark-link {
+	cursor: pointer;
+}

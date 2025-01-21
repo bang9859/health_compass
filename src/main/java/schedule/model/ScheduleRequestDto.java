@@ -8,6 +8,13 @@ public class ScheduleRequestDto {
 	private String endDate;
 	private Integer dailyFrequency;
 	
+	public ScheduleRequestDto(int userCode, int medicineCode, String startDate, String endDate, int dailyFrequency) {
+		this.userCode = userCode;
+		this.medicineCode = medicineCode;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.dailyFrequency = dailyFrequency;
+	}
 	public Integer getUserCode() {
 		return userCode;
 	}

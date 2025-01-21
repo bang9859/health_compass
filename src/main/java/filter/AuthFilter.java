@@ -26,6 +26,7 @@ public class AuthFilter extends HttpFilter implements Filter {
 		String uri = req.getRequestURI();
 		System.out.println("request uri : "+uri);
 
+
 		if(false) {
 			// 처리내용
 			return;
@@ -35,6 +36,7 @@ public class AuthFilter extends HttpFilter implements Filter {
 //			// 처리내용
 //			return;
 //		}
+
 
 		HttpSession session = req.getSession();
 		
