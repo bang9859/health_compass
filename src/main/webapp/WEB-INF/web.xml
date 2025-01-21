@@ -108,15 +108,6 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>main</servlet-name>
-		<jsp-file>/views/hospital/main.jsp</jsp-file>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>main</servlet-name>
-		<url-pattern>/main</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<servlet-name>schedule</servlet-name>
 		<jsp-file>/views/schedule/schedule.jsp</jsp-file>
 	</servlet>
