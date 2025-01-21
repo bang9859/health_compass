@@ -1,63 +1,62 @@
-document.addEventListener("DOMContentLoaded", function() {
-	console.log("JavaScript 실행됨");
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("JavaScript 실행됨");
 
-	const hospitalList = window.hospitalList;
+    if (!hospitalList || hospitalList.length === 0) {
+        console.warn("hospitalList가 비어 있습니다!");
+        return;
+    }
+
 	console.log("Hospital List:", hospitalList);
-	
-	navigator.geolocation.getCurrentPosition(function(position) {
-		const userLat = position.coords.latitude; // 위도
-		const userLon = position.coords.longitude; // 경도
+    // 사용자 위치 가져오기
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            const userLat = position.coords.latitude; // 사용자의 위도
+            const userLon = position.coords.longitude; // 사용자의 경도
 
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			mapOption = {
-				center: new kakao.maps.LatLng(userLat, userLon), // 지도의 중심좌표
-				level: 3 // 지도의 확대 레벨
-			};
+            console.log("User Location:", userLat, userLon);
 
-		// 지도를 생성합니다    
-		var map = new kakao.maps.Map(mapContainer, mapOption);
+            // 지도 초기화
+            const mapContainer = document.getElementById("map");
+            const mapOption = {
+                center: new kakao.maps.LatLng(userLat, userLon), // 사용자의 현재 위치를 지도 중심으로 설정
+                level: 3, // 확대 레벨
+            };
+            const map = new kakao.maps.Map(mapContainer, mapOption);
 
-		// 현재 위치 마커 표시
-		var markerPosition = new kakao.maps.LatLng(userLat, userLon);
+            // 사용자 위치에 마커 추가
+            const userMarker = new kakao.maps.Marker({
+                map,
+                position: new kakao.maps.LatLng(userLat, userLon),
+                title: "현재 위치",
+            });
 
-		var positions = [
-			{
-				title: '현재위치',
-				latlng: new kakao.maps.LatLng(userLat, userLon)
-			},
-			{
-				title: '강남역',
-				latlng: new kakao.maps.LatLng(37.496486063, 127.028361548)
-			},
-			{
-				title: '교대역',
-				latlng: new kakao.maps.LatLng(37.493922974, 127.014393729)
-			}
-		]
+            const userInfowindow = new kakao.maps.InfoWindow({
+                content: `<div style="padding:5px;">현재 위치</div>`,
+            });
+            userInfowindow.open(map, userMarker);
 
-		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+            // 병원 데이터를 기반으로 마커 생성
+            hospitalList.forEach((hospital) => {
+                const markerPosition = new kakao.maps.LatLng(hospital.latitude, hospital.longitude);
+                const marker = new kakao.maps.Marker({
+                    map,
+                    position: markerPosition,
+                    title: hospital.name,
+                });
 
-		for (var i = 0; i < positions.length; i++) {
+                const infowindow = new kakao.maps.InfoWindow({
+                    content: `<div style="padding:5px;">${hospital.name}</div>`,
+                });
 
-			// 마커 이미지의 이미지 크기 입니다
-			var imageSize = new kakao.maps.Size(24, 35);
+                kakao.maps.event.addListener(marker, "click", () => {
+                    infowindow.open(map, marker);
+                });
+            });
 
-			// 마커 이미지를 생성합니다    
-			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-			// 마커를 생성합니다
-			var marker = new kakao.maps.Marker({
-				map: map, // 마커를 표시할 지도
-				position: positions[i].latlng, // 마커를 표시할 위치
-				title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-				image: markerImage // 마커 이미지 
-			});
-
-			// 위치에 말풍선 표시
-			var infowindow = new kakao.maps.InfoWindow({
-				content: '<div style="width:150px;text-align:center;padding:6px 0;">현재 위치</div>'
-			});
-			infowindow.open(map, marker);
-		}
-	});
+            console.log("병원 데이터와 지도 로드 완료!");
+        },
+        function (error) {
+            console.error("사용자 위치를 가져올 수 없습니다:", error);
+        }
+    );
 });
