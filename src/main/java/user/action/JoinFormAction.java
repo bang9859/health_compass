@@ -9,7 +9,7 @@ import user.model.UserRequestDto;
 import java.io.IOException;
 import controller.Action;
 
-public class JoinFormAction implements Action{
+public class JoinFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
@@ -19,13 +19,11 @@ public class JoinFormAction implements Action{
 		String birth = request.getParameter("birth");
 		String gender = request.getParameter("gender");
 		String tel = request.getParameter("tel");
-		
 		UserDao userDao = UserDao.getInstance();
-		
-		if(userDao.findUserByUsername(username) == null) {
+		if (userDao.findUserByUsername(username) == null) {
 			UserRequestDto userDto = new UserRequestDto(username, password, email, name, birth, gender, tel);
 			userDao.createUser(userDto);
-			response.sendRedirect("/index.jsp");
+			response.sendRedirect("/main");
 			System.err.println("회원가입이 완료되었습니다.");
 		} else {
 			response.sendRedirect("/join");

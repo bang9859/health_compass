@@ -17,15 +17,12 @@ public class UpdateFormAction implements Action {
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		String tel = request.getParameter("tel");
-		
 		UserDao userDao = UserDao.getInstance();
-		
 		User user = userDao.findUserByUsername(username);
-		
-		if(user != null) {
+		if (user != null) {
 			UserRequestDto info = new UserRequestDto(username, password, email, tel);
 			userDao.updateUser(info);
-			response.sendRedirect("/index.jsp");
+			response.sendRedirect("/main");
 			System.err.println("수정이 완료되었습니다.");
 		} else {
 			response.sendRedirect("/mypage");
