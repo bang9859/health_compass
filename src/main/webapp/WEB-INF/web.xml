@@ -52,6 +52,15 @@
 		<servlet-name>delete</servlet-name>
 		<url-pattern>/delete</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>bookmark</servlet-name>
+		<jsp-file>/views/users/bookmarkForm.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bookmark</servlet-name>
+		<url-pattern>/bookmark</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>header</servlet-name>
