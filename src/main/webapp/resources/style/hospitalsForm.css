@@ -62,7 +62,8 @@
 	margin-bottom: 10px;
 }
 
-.bookmark-but {
+.bookmark-but,
+.current-location-button {
 	display: block;
 	padding: 5px 10px;
 	margin-top: 5px;
@@ -72,7 +73,11 @@
 	border-radius: 5px;
 	cursor: pointer;
 	width: fit-content;
-	background-color: #2f3f58;
+}
+
+.bookmark-but:hover,
+.current-location-button:hover {
+	background-color: #444;
 }
 
 .page-button {
