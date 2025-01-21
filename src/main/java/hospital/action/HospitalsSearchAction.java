@@ -12,6 +12,7 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.json.JSONArray;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -30,18 +31,29 @@ public class HospitalsSearchAction implements Action {
 
 		// 병원 들고오기
 		List<HospitalDto> hospitalList = HospitalsSearch(userAddress);
-
+		
+		// 병원 리스트가 null이거나 비어 있는지 확인
+		if (hospitalList == null || hospitalList.isEmpty()) {
+			System.out.println("병원 리스트가 비어 있습니다!");
+			request.getRequestDispatcher("/main");
+			return;
+		}
+		
 		// 출력
 		System.out.println("병원 목록:");
 		for (int i = 0; i < hospitalList.size(); i++) {
 			System.out.println((i + 1) + " 번");
 			System.out.println(hospitalList.get(i));
 			System.out.println("------------------------");
-
 		}
+		System.out.println("병원 리스트 크기: " + hospitalList.size());
 
-		request.setAttribute("hospitalList", hospitalList);
-	    request.getRequestDispatcher("/hospitalsForm.jsp").forward(request, response);
+		// json 변환
+		JSONArray hospitalListJson = new JSONArray(hospitalList);
+		 System.out.println("병원 리스트 JSON: " + hospitalListJson);
+		 System.out.println("병원 리스트 JSON: " + hospitalListJson.toString());
+		 request.setAttribute("hospitalListJson", hospitalListJson.toString());
+		 request.getRequestDispatcher("/hospitalsForm").forward(request, response);
 	}
 
 	public List<HospitalDto> HospitalsSearch(String userAddress) {
@@ -73,7 +85,7 @@ public class HospitalsSearchAction implements Action {
 			// urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" +
 			// URLEncoder.encode("1", "UTF-8")); // 페이지
 			// 번호
-			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("50", "UTF-8")); // 목록건수
+			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); // 목록건수
 
 			// URL 설정
 			URL url = new URL(urlBuilder.toString());
