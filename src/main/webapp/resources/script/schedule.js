@@ -1,74 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-	const calendarDate = document.getElementById("calendar-date");
-	const calendarMonth = document.getElementById("calendar-month");
-	const btnPrev = document.getElementById("btnPrev");
-	const btnNext = document.getElementById("btnNext");
 
-	let currentDate = new Date();
-
-	// 달력을 생성하는 함수
-	function renderCalendar(date) {
-		const year = date.getFullYear();
-		const month = date.getMonth(); // 0부터 시작 (0: 1월, 1: 2월, ...)
-		const firstDayOfMonth = new Date(year, month, 1); // 이번 달의 첫 번째 날
-		const lastDayOfMonth = new Date(year, month + 1, 0); // 이번 달의 마지막 날
-
-		// 달 이름 업데이트
-		const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
-		calendarMonth.textContent = monthNames[month];
-
-		// 날짜를 초기화
-		calendarDate.innerHTML = "";
-
-		// 첫째 주를 채우기 위해 빈 칸 추가
-		let startDay = firstDayOfMonth.getDay(); // 0: 일요일, 1: 월요일, ...
-		let row = document.createElement("tr");
-		for (let i = 0; i < startDay; i++) {
-			const cell = document.createElement("td");
-			row.appendChild(cell);
-		}
-
-		// 날짜 채우기
-		for (let day = 1; day <= lastDayOfMonth.getDate(); day++) {
-			const cell = document.createElement("td");
-			cell.textContent = day;
-			row.appendChild(cell);
-
-			// 한 주(7일)가 끝나면 새로운 행 추가
-			if ((startDay + day) % 7 === 0) {
-				calendarDate.appendChild(row);
-				row = document.createElement("tr");
-			}
-		}
-
-		// 마지막 줄을 채우기 위해 빈 칸 추가
-		if (row.children.length > 0) {
-			while (row.children.length < 7) {
-				const cell = document.createElement("td");
-				row.appendChild(cell);
-			}
-			calendarDate.appendChild(row);
-		}
-	}
-
-	// 이전 달 버튼 클릭 이벤트
-	btnPrev.addEventListener("click", function() {
-		currentDate.setMonth(currentDate.getMonth() - 1);
-		renderCalendar(currentDate);
-	});
-
-	// 다음 달 버튼 클릭 이벤트
-	btnNext.addEventListener("click", function() {
-		currentDate.setMonth(currentDate.getMonth() + 1);
-		renderCalendar(currentDate);
-	});
-
-	// 초기 달력 렌더링
-	renderCalendar(currentDate);
-
-	// 기존 window.onload 코드를 여기에 작성
 	const addForm = document.querySelector(".schedule-add-container");
-	const name = document.getElementById("medicine-name");
+	const code = document.getElementById("medicine-code");
 	const startDate = document.getElementById("start-date");
 	const endDate = document.getElementById("end-date");
 	const number = document.getElementById("daily-frequency");
@@ -76,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	let isValidNumber = validateNumber(number.value);
 	let isValidStartDate = validateStartDate(startDate.value, endDate.value);
 
-	name.addEventListener("change", (e) => {
+	code.addEventListener("change", (e) => {
 		const input = e.target.value;
 		const errEmpty = document.getElementById("error-msg-name-empty");
 		if (input === "") {
@@ -176,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	addForm.addEventListener("submit", (e) => {
 		e.preventDefault();
 
-		if (name.value === "") {
+		if (code.value === "") {
 			const error = document.getElementById("error-msg-name-empty");
 			updateErrorElementStyle(error, true);
 		}
@@ -200,87 +133,107 @@ document.addEventListener("DOMContentLoaded", function() {
 			addForm.submit();
 		}
 	});
-	function updateErrorElementStyle(element, visible) {
-		if (visible) {
-			element.style.display = "block";
-		} else {
-			element.style.display = "none";
-		}
-	}
 
-	function validateNumber(number) {
-		const regex = /^[1-5]{1}$/;
-		return regex.test(number);
-	}
-
-	function validateStartDate(startDate, endDate) {
-		const start = new Date(startDate);
-		const end = new Date(endDate);
-		return start <= end;
-	}
-
-	document.getElementById("submit-button").addEventListener("click", async () => {
-	        // 1. 입력값 가져오기
-	        const medicineName = document.getElementById("medicine-name")?.value.trim() || "";
-	        const startDate = document.getElementById("start-date")?.value || "";
-	        const endDate = document.getElementById("end-date")?.value || "";
-	        const dailyFrequency = document.getElementById("daily-frequency")?.value || "";
-
-	        if (!medicineName || !startDate || !endDate || !dailyFrequency) {
-	            alert("모든 필드를 올바르게 입력해주세요.");
-	            return;
-	        }
-
-	        try {
-	            // 2. API 호출
-	            const apiUrl = `http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=your-service-key&itemName=${encodeURIComponent(medicineName)}`;
-	            const response = await fetch(apiUrl);
-
-	            if (!response.ok) {
-	                throw new Error("API 호출 실패");
-	            }
-
-	            const data = await response.json();
-	            console.log("Fetched Data:", data);
-
-	            if (!data?.body?.items?.length) {
-	                alert("약 정보를 찾을 수 없습니다.");
-	                return;
-	            }
-
-	            const medicineCode = data.body.items[0].itemSeq;
-
-	            // 3. 서버로 데이터 전송
-	            const saveResponse = await fetch("/AddScheduleAction", {
-	                method: "POST",
-	                headers: {
-	                    "Content-Type": "application/x-www-form-urlencoded"
-	                },
-	                body: new URLSearchParams({
-	                    "medicine-name": medicineName,
-	                    "medicine-code": medicineCode,
-	                    "start-date": startDate,
-	                    "end-date": endDate,
-	                    "daily-frequency": dailyFrequency
-	                })
-	            });
-
-	            if (!saveResponse.ok) {
-	                throw new Error("일정 저장 실패");
-	            }
-
-	            alert("일정이 성공적으로 등록되었습니다!");
-	            window.location.href = "/schedule";
-	        } catch (error) {
-	            console.error(error);
-	            alert("오류가 발생했습니다. 다시 시도해주세요.");
-	        }
-	    });
-	
 });
+function updateErrorElementStyle(element, visible) {
+	if (visible) {
+		element.style.display = "block";
+	} else {
+		element.style.display = "none";
+	}
+}
+
+function validateNumber(number) {
+	const regex = /^[1-5]{1}$/;
+	return regex.test(number);
+}
+
+function validateStartDate(startDate, endDate) {
+	const start = new Date(startDate);
+	const end = new Date(endDate);
+	return start <= end;
+}
+// 모달 열기 및 닫기
+function toggleMedicineSearchModal() {
+	const modal = document.getElementById('medicine-search-modal');
+	if (modal.style.display === 'none' || modal.style.display === '') {
+		modal.style.display = 'block';
+	} else {
+		modal.style.display = 'none';
+	}
+}
+
+// 약품 검색 기능 (버튼 클릭 시 호출)
 
 
+function displayMedicineResults(data) {
+	const resultList = document.getElementById('medicine-result-list');
+	resultList.innerHTML = '';  // 기존 검색 결과를 지우기
+
+	if (data && data.body && data.body.items) {
+		const items = data.body.items;
+		items.forEach(item => {
+			const li = document.createElement('li');
+			li.textContent = item.itemName;  // 약품명 표시
+			li.onclick = () => selectMedicine(item);  // 약품 선택 시 처리
+			resultList.appendChild(li);
+		});
+	} else {
+		resultList.innerHTML = '검색된 결과가 없습니다.';
+	}
+}
+
+function searchMedicine() {
+	const searchInput = document.getElementById('search-medicine');
+	const drugName = searchInput.value;
+	const serviceKey = 'oruvbo%2BL%2B8mY49TbDDPKgBJmt8%2BaC4EPCinp%2FKfYxFIgRIp7iRMVQoqyWxZle%2FBv%2B22H%2BLJTKBTKU02ylL3ZJg%3D%3D';
+
+	const url = `http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=${serviceKey}&itemName=${encodeURIComponent(drugName)}`;
+
+	fetch(url)
+		.then(response => response.text())  // 응답을 텍스트로 받기 (XML 형식일 경우)
+		.then(xmlText => {
+			// XML 파싱하기
+			const parser = new DOMParser();
+			const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+			// XML에서 필요한 데이터 추출 (예시: <itemName> 태그)
+			const items = xmlDoc.getElementsByTagName("item");
+
+			const resultList = document.getElementById('medicine-result-list');
+			resultList.innerHTML = '';  // 기존 검색 결과를 지우기
+
+			if (items.length > 0) {
+				for (let i = 0; i < items.length; i++) {
+					const itemName = items[i].getElementsByTagName("itemName")[0].textContent;
+					const itemCode = items[i].getElementsByTagName("itemSeq")[0].textContent;
+
+					const li = document.createElement('li');
+					li.textContent = itemName;
+					li.onclick = () => selectMedicine(itemCode, itemName);  // 선택 시 처리
+					console.log("itemCode = " + itemCode, itemName);
+					resultList.appendChild(li);
+				}
+			} else {
+				resultList.innerHTML = '검색된 결과가 없습니다.';
+			}
+		})
+		.catch(error => {
+			console.error('Error fetching medicine data:', error);
+			alert('약 정보를 가져오는 데 실패했습니다. 다시 시도해주세요.');
+		});
+}
 
 
+function toggleMedicineSearchModal() {
+	const modal = document.getElementById('medicine-search-modal');
+	modal.style.display = modal.style.display === 'block' ? 'none' : 'block';  // 모달 열기/닫기
+}
 
-
+function selectMedicine(itemCode, itemName) {
+	// 약품 이름과 번호를 UI에 반영
+	document.getElementById('selected-medicine').textContent = itemName;
+	document.getElementById('medicine-code').value = itemCode; // 숨겨진 필드에 코드 저장
+	console.log("선택된 약품 번호:", itemCode); // 디버깅 로그 추가
+	toggleMedicineSearchModal(); // 모달 닫기
+}
