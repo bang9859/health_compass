@@ -16,7 +16,6 @@
 		<url-pattern>/service/*</url-pattern>
 	</servlet-mapping>
   
-  
   	<servlet>
 		<servlet-name>join</servlet-name>
 		<jsp-file>/views/users/joinForm.jsp</jsp-file>
