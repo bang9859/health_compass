@@ -95,7 +95,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>hospitalsForm</servlet-name>
-		<url-pattern>/hospitals</url-pattern>
+		<url-pattern>/hospitalsForm</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
