@@ -12,10 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const pagingContainer = document.getElementById("paging");
     const mapContainer = document.getElementById("map");
 
+    let userLat, userLon; // 사용자 위치 저장 변수
+
     navigator.geolocation.getCurrentPosition(
         function (position) {
-            const userLat = position.coords.latitude;
-            const userLon = position.coords.longitude;
+            userLat = position.coords.latitude;
+            userLon = position.coords.longitude;
 
             const mapOption = {
                 center: new kakao.maps.LatLng(userLat, userLon),
@@ -83,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     const hospitalElement = document.createElement("div");
                     hospitalElement.className = "hospital";
                     hospitalElement.innerHTML = `
-						<p id="hospitalNumber"><strong>${i+1} 번</strong>
                         <p><strong>병원이름:</strong> ${hospital.name}</p>
                         <p><strong>주소:</strong> ${hospital.address}</p>
                         <p><strong>전화번호:</strong> ${hospital.phone || "정보 없음"}</p>
@@ -133,6 +134,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     pageButton.addEventListener("click", () => renderHospitals(i));
                     pagingContainer.appendChild(pageButton);
                 }
+
+                // 현재 위치로 이동 버튼 추가
+                const goToCurrentLocationButton = document.createElement("button");
+                goToCurrentLocationButton.textContent = "현재 위치로 이동";
+                goToCurrentLocationButton.className = "current-location-button";
+                goToCurrentLocationButton.addEventListener("click", () => {
+                    map.panTo(new kakao.maps.LatLng(userLat, userLon));
+                });
+                pagingContainer.appendChild(goToCurrentLocationButton);
             };
 
             createPagination();
