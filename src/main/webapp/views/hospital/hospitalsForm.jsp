@@ -29,61 +29,16 @@
 </head>
 <c:import url="/header" />
 <body>
+
 	<div id="content-box">
 		<c:import url="/nav" />
 		<section id="main">
 			<div class="hospitals-container">
 				<div class="map_wrap">
 					<div id="map"></div>
-					<div class="hAddr">
-						<span id="centerAddr"></span> <span class="title">지도중심기준
-							행정동 주소정보</span> <span id="centerAddr"></span>
-					</div>
 				</div>
-				<div id="hospitals">
-					<div class="hospital">
-						<p>병원이름 :</p>
-						<p>주소 :</p>
-						<p>전화번호 :</p>
-						<p>진료시간 :</p>
-						<button class="bookmark-but">북마크 추가하기</button>
-					</div>
-					<div class="hospital">
-						<p>병원이름 :</p>
-						<p>주소 :</p>
-						<p>전화번호 :</p>
-						<p>진료시간 :</p>
-						<button class="bookmark-but">북마크 추가하기</button>
-					</div>
-					<div class="hospital">
-						<p>병원이름 :</p>
-						<p>주소 :</p>
-						<p>전화번호 :</p>
-						<p>진료시간 :</p>
-						<button class="bookmark-but">북마크 추가하기</button>
-					</div>
-					<div class="hospital">
-						<p>병원이름 :</p>
-						<p>주소 :</p>
-						<p>전화번호 :</p>
-						<p>진료시간 :</p>
-						<button class="bookmark-but">북마크 추가하기</button>
-					</div>
-					<div class="hospital">
-						<p>병원이름 :</p>
-						<p>주소 :</p>
-						<p>전화번호 :</p>
-						<p>진료시간 :</p>
-						<button class="bookmark-but">북마크 추가하기</button>
-					</div>
-					<div id="paging">
-						<p>1페이지</p>
-						<div id="paging-buts">
-							<button>◀</button>
-							<button>▶</button>
-						</div>
-					</div>
-				</div>
+				<div id="hospitals" class="scrollable"></div>
+				<div id="paging"></div>
 			</div>
 		</section>
 	</div>
