@@ -20,7 +20,7 @@ public class LoginFormAction implements Action {
 		if (user != null && (user.checkPassword(password) || user.checkCryptPassword(password))) {
 			HttpSession session = request.getSession();
 			session.setAttribute("log", user);
-			response.sendRedirect("/main");
+			response.sendRedirect("/");
 			System.err.println("로그인 성공");
 		} else {
 			ResponseAlert.alert(response, "아이디 혹은 비밀번호가 일치하지 않습니다.");

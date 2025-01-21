@@ -23,7 +23,7 @@ public class JoinFormAction implements Action {
 		if (userDao.findUserByUsername(username) == null) {
 			UserRequestDto userDto = new UserRequestDto(username, password, email, name, birth, gender, tel);
 			userDao.createUser(userDto);
-			response.sendRedirect("/main");
+			response.sendRedirect("/");
 			System.err.println("회원가입이 완료되었습니다.");
 		} else {
 			response.sendRedirect("/join");
