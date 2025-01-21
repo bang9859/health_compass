@@ -300,7 +300,7 @@
 					</div>
 				</div>
 			</div>
-			<a href="/main"><button type="button" id="search-button">
+			<a href="/"><button type="button" id="search-button">
 					뒤로가기</button></a>
 		</section>
 	</div>

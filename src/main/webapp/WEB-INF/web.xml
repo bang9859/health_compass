@@ -16,7 +16,6 @@
 		<url-pattern>/service/*</url-pattern>
 	</servlet-mapping>
   
-  
   	<servlet>
 		<servlet-name>join</servlet-name>
 		<jsp-file>/views/users/joinForm.jsp</jsp-file>
@@ -104,7 +103,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>hospitalsForm</servlet-name>
-		<url-pattern>/hospitals</url-pattern>
+		<url-pattern>/hospitalsForm</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -114,15 +113,6 @@
 	<servlet-mapping>
 		<servlet-name>detail</servlet-name>
 		<url-pattern>/detail</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>main</servlet-name>
-		<jsp-file>/views/hospital/main.jsp</jsp-file>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>main</servlet-name>
-		<url-pattern>/main</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

@@ -7,37 +7,11 @@
 
 .map_wrap {
 	position: relative;
-
-	height: 350px;
 }
 
 .title {
 	font-weight: bold;
 	display: block;
-}
-
-.hAddr {
-	position: absolute;
-	left: 10px;
-	top: 10px;
-	border-radius: 2px;
-	background: #fff;
-	background: rgba(255, 255, 255, 0.8);
-	z-index: 1;
-	padding: 5px;
-}
-
-#centerAddr {
-	display: block;
-	margin-top: 2px;
-	font-weight: normal;
-}
-
-.bAddr {
-	padding: 5px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
 }
 
 #content-box {
@@ -52,8 +26,8 @@
 }
 
 #map {
-	width: 60vw;
-	height: 90vh;
+	width: 50vw;
+	height: 70vh;
 }
 
 .hospitals-container {
@@ -63,24 +37,32 @@
 }
 
 #hospitals {
-	padding: 15px 15px 0 15px;
-	background-color: #f9f9f9;
-	width: 15vw;
-	border-radius: 5px;
+	max-height: 70vh;
+	overflow-y: auto;
+	padding: 10px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hospital {
-	padding: 10px;
-	border: 1px solid #e0e0e0;
-	border-radius: 5px;
+	border-bottom: 1px solid #eee;
+	padding: 10px 0;
 	background-color: #f9f9f9;
+}
+
+.operating-hours {
+    margin-top: 5px;
+    width: 100%;
+    padding: 5px;
 }
 
 #hospitals div {
 	margin-bottom: 10px;
 }
 
-.bookmark-but {
+.bookmark-but,
+.current-location-button {
 	display: block;
 	padding: 5px 10px;
 	margin-top: 5px;
@@ -90,26 +72,35 @@
 	border-radius: 5px;
 	cursor: pointer;
 	width: fit-content;
-	background-color: #2f3f58;
 }
 
-.bookmark-but:hover, #paging-buts>button:hover {
+.bookmark-but:hover,
+.current-location-button:hover {
 	background-color: #444;
 }
 
-#paging {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 20px
+.page-button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
-#paging-buts>button {
-	padding: 7px 15px;
-	font-size: 15px;
-	background-color: #2f3f58;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
+.page-button:hover {
+    background-color: #eee;
+}
+
+.page-button.active {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.scrollable {
+    max-height: 500px; 
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #f9f9f9;
+    box-sizing: border-box;
 }

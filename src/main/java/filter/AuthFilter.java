@@ -25,10 +25,17 @@ public class AuthFilter extends HttpFilter implements Filter {
 		
 		String uri = req.getRequestURI();
 		System.out.println("request uri : "+uri);
+
 		if(false) {
 			// 처리내용
 			return;
 		}
+
+//		if(uri.equals("/")|| uri.equals("/")) {
+//			// 처리내용
+//			return;
+//		}
+
 		HttpSession session = req.getSession();
 		
 		// 인증이 필요없는 것들은 제외
