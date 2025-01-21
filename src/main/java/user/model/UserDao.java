@@ -168,7 +168,37 @@ public class UserDao {
 		}
 		return user;
 	}
+	
+	public int findUserCodeByUsername(String username) {
+		int code = 0;
+		
+		conn = DBManager.getConnection();
 
+		String sql = "SELECT user_code FROM users WHERE username=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				code = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				pstmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return code;
+	}
+	
 	// Update
 	public void updateUser(UserRequestDto userDto) {
 		conn = DBManager.getConnection();
@@ -200,4 +230,26 @@ public class UserDao {
 	}
 
 	// Delete
+	public void deleteUserByUsername(String username) {
+		conn = DBManager.getConnection();
+
+		String sql = "DELETE FROM users WHERE username=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+
+			pstmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
