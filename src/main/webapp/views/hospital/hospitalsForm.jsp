@@ -8,9 +8,6 @@
 <%
     // JSON 데이터 가져오기
     String hospitalListJson = (String) request.getAttribute("hospitalListJson");
-    if (hospitalListJson == null) {
-        hospitalListJson = "[]"; // 데이터가 없을 경우 빈 배열로 설정
-    }
 %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +17,7 @@
 <script>
     // 서버에서 전달된 JSON 데이터를 JavaScript로 변환
     const hospitalList = JSON.parse('<%= hospitalListJson.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n") %>');
-    console.log("Hospital List in JSP:", hospitalList);
+    console.log("병원 리스트:", hospitalList);
 </script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa5282a38622982d20efb6e4e5a4b894"></script>
