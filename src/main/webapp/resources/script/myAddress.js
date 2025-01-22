@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
-
+		console.log(`위도: ${latitude}, 경도: ${longitude}`);
+		
         const kakaoApiKey = 'de8a6d507a41e9775f196fc213f6e602';
         const apiUrl = `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${longitude}&y=${latitude}`;
 
@@ -25,7 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = await response.json();
 
-        const address = data.documents[0]?.address?.address_name || 'No address found';
+        const address = data.documents[0].address.address_name;
+		console.log(`주소: ${address}`);
+		console.log(data);
+		
         const addressElement = document.getElementById('address');
         if (addressElement) {
             addressElement.textContent = `현재 위치: ${address}`;

@@ -121,10 +121,6 @@ document.addEventListener("DOMContentLoaded", function() {
 					};
 
 					hospitalElement.onmouseout = () => {
-						infowindow.close();
-					};
-
-					hospitalElement.onclick = () => {
 						map.panTo(markerPosition);
 					};
 				}
