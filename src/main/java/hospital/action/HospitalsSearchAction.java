@@ -31,14 +31,14 @@ public class HospitalsSearchAction implements Action {
 
 		// 병원 들고오기
 		List<HospitalDto> hospitalList = HospitalsSearch(userAddress);
-		
+
 		// 병원 리스트가 null이거나 비어 있는지 확인
 		if (hospitalList == null || hospitalList.isEmpty()) {
 			System.out.println("병원 리스트가 비어 있습니다!");
 			request.getRequestDispatcher("/main");
 			return;
 		}
-		
+
 		// 출력
 		System.out.println("병원 목록:");
 		for (int i = 0; i < hospitalList.size(); i++) {
@@ -50,10 +50,8 @@ public class HospitalsSearchAction implements Action {
 
 		// json 변환
 		JSONArray hospitalListJson = new JSONArray(hospitalList);
-		 System.out.println("병원 리스트 JSON: " + hospitalListJson);
-		 System.out.println("병원 리스트 JSON: " + hospitalListJson.toString());
-		 request.setAttribute("hospitalListJson", hospitalListJson.toString());
-		 request.getRequestDispatcher("/hospitalsForm").forward(request, response);
+		request.setAttribute("hospitalListJson", hospitalListJson.toString());
+		request.getRequestDispatcher("/hospitalsForm").forward(request, response);
 	}
 
 	public List<HospitalDto> HospitalsSearch(String userAddress) {
@@ -64,7 +62,7 @@ public class HospitalsSearchAction implements Action {
 
 			StringBuilder urlBuilder = new StringBuilder(
 					"http://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlMdcncListInfoInqire");
-			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + serviceKey); // Service Key
+			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + serviceKey);
 			urlBuilder.append("&" + URLEncoder.encode("Q0", "UTF-8") + "=" + URLEncoder.encode(address[0], "UTF-8")); // 주소(시도)
 			urlBuilder.append("&" + URLEncoder.encode("Q1", "UTF-8") + "=" + URLEncoder.encode(address[1], "UTF-8")); // 주소(시군구)
 			// urlBuilder.append("&" + URLEncoder.encode("QZ", "UTF-8") + "=" +
