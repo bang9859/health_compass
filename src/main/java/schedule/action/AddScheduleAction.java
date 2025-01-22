@@ -10,11 +10,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import schedule.model.ApiManager;
 import schedule.model.ScheduleDao;
 import schedule.model.ScheduleRequestDto;
+import user.model.UserDao;
 
 public class AddScheduleAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int userCode = 1003;
+		String username =request.getParameter("username");
+		UserDao userDao = UserDao.getInstance();
+	    int userCode = userDao.findUserCodeByUsername(username);
 		int medicineCode = Integer.parseInt(request.getParameter("medicine-code"));
 		System.out.println("받은 약품 번호: " + medicineCode);
 		String startDate = request.getParameter("start-date");

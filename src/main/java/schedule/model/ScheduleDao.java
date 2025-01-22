@@ -56,39 +56,40 @@ public class ScheduleDao {
 		}
 	}
 
-//	// 일정 조회 메서드
-//	public List<Schedule> findSchedulesByUserCode(String username) {
-//	    List<Schedule> schedules = new ArrayList<>();
-//	    conn = DBManager.getConnection();
-//
-//	    String sql = "SELECT * FROM schedule WHERE userCode=?";
-//	    int userCode = findUserCodeByUsername(username);
-//
-//	    try {
-//	        pstmt = conn.prepareStatement(sql);
-//	        pstmt.setInt(1, userCode); // 수정: userCode는 int 타입
-//	        rs = pstmt.executeQuery();
-//
-//	        while (rs.next()) {
-//	            int medicineCode = rs.getInt("medicineCode");
-//	            String startDate = rs.getString("startDate");
-//	            String endDate = rs.getString("endDate");
-//	            int dailyFrequency = rs.getInt("dailyFrequency");
-//
-//	            Schedule schedule = new Schedule(userCode, medicineCode, startDate, endDate, dailyFrequency);
-//	            schedules.add(schedule);
-//	        }
-//	    } catch (SQLException e) {
-//	        e.printStackTrace();
-//	    } finally {
-//	        try {
-//	            if (rs != null) rs.close();
-//	            if (pstmt != null) pstmt.close();
-//	        } catch (SQLException e) {
-//	            e.printStackTrace();
-//	        }
-//	    }
-//	    return schedules;
-//	}
-//
+	// 일정 조회 메서드
+	public List<Schedule> findSchedulesByUserCode(String username) {
+	    List<Schedule> schedules = new ArrayList<>();
+	    conn = DBManager.getConnection();
+	    
+	    String sql = "SELECT * FROM schedule WHERE userCode=?";
+	    UserDao userDao = UserDao.getInstance();
+	    int userCode = userDao.findUserCodeByUsername(username);
+
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setInt(1, userCode); 
+	        rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            int medicineCode = rs.getInt("medicineCode");
+	            String startDate = rs.getString("startDate");
+	            String endDate = rs.getString("endDate");
+	            int dailyFrequency = rs.getInt("dailyFrequency");
+
+	            Schedule schedule = new Schedule(userCode, medicineCode, startDate, endDate, dailyFrequency);
+	            schedules.add(schedule);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (pstmt != null) pstmt.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return schedules;
+	}
+
 }
