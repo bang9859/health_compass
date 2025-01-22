@@ -15,30 +15,7 @@
 			<h4>Health Compass</h4>
 		</div>
 		<div class="page-name">
-			<h1 id=title>
-				<%
-				String requestURI = request.getRequestURI();
-				String pageTitle = "메인페이지"; // 기본 제목 설정
-				if (requestURI.contains("/login")) {
-					pageTitle = "로그인";
-				} else if (requestURI.contains("/join")) {
-					pageTitle = "회원가입";
-				} else if (requestURI.contains("/mypage")) {
-					pageTitle = "마이페이지";
-				} else if (requestURI.contains("/delete")) {
-					pageTitle = "마이페이지";
-				} else if (requestURI.contains("/detail")) {
-					pageTitle = "진료과 상세 페이지";
-				} else if (requestURI.contains("/schedule")) {
-					pageTitle = "일정";
-				} else if (requestURI.contains("/bookmark")) {
-					pageTitle = "북마크";
-				} else if (requestURI.contains("/service/hospitals")) {
-					pageTitle = "병원 목록 페이지";
-				}
-				out.print(pageTitle);
-				%>
-			</h1>
+			<h1 id=title>메인페이지</h1>
 		</div>
 
 		<div class="log">
