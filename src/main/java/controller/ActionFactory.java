@@ -3,6 +3,7 @@ package controller;
 import hospital.action.*;
 import schedule.action.AddScheduleAction;
 import schedule.action.GetMedicineInfoAction;
+import schedule.action.SearchScheduleAction;
 import user.action.*;
 import util.HttpMethod;
 
@@ -72,6 +73,8 @@ public class ActionFactory {
 			return new AddScheduleAction();
 		}else if(command.equals("search-medicine") && method == HttpMethod.POST) {
 		        return new GetMedicineInfoAction();
+		    } else if (command.equals("get") && method == HttpMethod.GET) { // 추가
+		        return new SearchScheduleAction();
 		    }
 
 		
