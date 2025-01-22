@@ -35,12 +35,12 @@ window.onload = () => {
 			errId.style.display = "block";
 			errDupl.style.display = "none";
 			errId.style.marginBottom = '15px';
-			username.style.marginBottom = '0';
+			username.style.marginBottom = '10.5px';
 		} else if (isValidUsername) {
 			errId.style.display = "none";
 			errDupl.style.display = "block";
 			errDupl.style.marginBottom = '15px';
-			username.style.marginBottom = '0';
+			username.style.marginBottom = '10.5px';
 		} else {
 			isPassUsername = true;
 			errDupl.style.display = "none";
@@ -58,7 +58,7 @@ window.onload = () => {
 		if (input === "" || !validatePassword(input)) {
 			errPw.style.display = "block";
 			errPw.style.marginBottom = '15px';
-			password.style.marginBottom = '0';
+			password.style.marginBottom = '10.5px';
 		} else {
 			isPassPassword = true;
 			errPw.style.display = "none";
@@ -78,12 +78,12 @@ window.onload = () => {
 			errEmail.style.display = "block";
 			errDupl.style.display = "none";
 			errEmail.style.marginBottom = '15px';
-			email.style.marginBottom = '0';
+			email.style.marginBottom = '10.5px';
 		} else if (isValidEmail) {
 			errEmail.style.display = "none";
 			errDupl.style.display = "block";
 			errDupl.style.marginBottom = '15px';
-			email.style.marginBottom = '0';
+			email.style.marginBottom = '10.5px';
 		} else {
 			isPassEmail = true;
 			errEmail.style.display = "none";
@@ -101,7 +101,7 @@ window.onload = () => {
 		if (input === "" || !validateName(input)) {
 			errName.style.display = "block";
 			errName.style.marginBottom = '15px';
-			name.style.marginBottom = '0';
+			name.style.marginBottom = '10.5px';
 		} else {
 			isPassName = true;
 			errName.style.display = "none";
@@ -118,7 +118,7 @@ window.onload = () => {
 		if (input == "") {
 			errBirth.style.display = "block";
 			errBirth.style.marginBottom = '15px';
-			birth.style.marginBottom = '0';
+			birth.style.marginBottom = '10.5px';
 		} else {
 			isPassBirth = true;
 			errBirth.style.display = "none";
@@ -140,12 +140,12 @@ window.onload = () => {
 			errTel.style.display = "block";
 			errDupl.style.display = "none";
 			errTel.style.marginBottom = '15px';
-			tel.style.marginBottom = '0';
+			tel.style.marginBottom = '10.5px';
 		} else if (isValidTel) {
 			errTel.style.display = "none";
 			errDupl.style.display = "block";
 			errDupl.style.marginBottom = '15px';
-			tel.style.marginBottom = '0';
+			tel.style.marginBottom = '10.5px';
 		} else {
 			isPassTel = true;
 			errTel.style.display = "none";
@@ -161,41 +161,41 @@ window.onload = () => {
 			const errEmpty = document.getElementById("err-msg-id");
 			errEmpty.style.display = "block";
 			errEmpty.style.marginBottom = '15px';
-			username.style.marginBottom = "0";
+			username.style.marginBottom = "10.5px";
 		}
 		if (password.value === "") {
 			const errEmpty = document.getElementById("err-msg-pw");
 			errEmpty.style.display = "block";
 			errEmpty.style.marginBottom = '15px';
-			password.style.marginBottom = "0";
+			password.style.marginBottom = "10.5px";
 		}
 
 		if (email.value === "") {
 			const errEmpty = document.getElementById("err-msg-email");
 			errEmpty.style.display = "block";
 			errEmpty.style.marginBottom = '15px';
-			email.style.marginBottom = "0";
+			email.style.marginBottom = "10.5px";
 		}
 
 		if (name.value === "") {
 			const errEmpty = document.getElementById("err-msg-name");
 			errEmpty.style.display = "block";
 			errEmpty.style.marginBottom = '15px';
-			name.style.marginBottom = "0";
+			name.style.marginBottom = "10.5px";
 		}
 
 		if (birth.value === "") {
 			const errEmpty = document.getElementById("err-msg-birth");
 			errEmpty.style.display = "block";
 			errEmpty.style.marginBottom = '15px';
-			birth.style.marginBottom = "0";
+			birth.style.marginBottom = "10.5px";
 		}
 
 		if (tel.value === "") {
 			const errEmpty = document.getElementById("err-msg-tel");
 			errEmpty.style.display = "block";
 			errEmpty.style.marginBottom = '15px';
-			tel.style.marginBottom = "0";
+			tel.style.marginBottom = "10.5px";
 		}
 		if (isPassUsername && isPassPassword && isPassEmail && isPassName && isPassBirth && isPassTel) {
 			form.submit();

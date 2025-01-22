@@ -18,7 +18,7 @@ window.onload = () => {
 		if (input === "") {
 			errId.style.display = "block";
 			errId.style.marginBottom = '15px';
-			username.style.marginBottom = '0';
+			username.style.marginBottom = '10.5px';
 		} else {
 			isPassUsername = true;
 			errId.style.display = "none";
@@ -35,7 +35,7 @@ window.onload = () => {
 		if (input === "") {
 			errPw.style.display = "block";
 			errPw.style.marginBottom = '15px';
-			password.style.marginBottom = '0';
+			password.style.marginBottom = '10.5px';
 		} else {
 			isPassPassword = true;
 			errPw.style.display = "none";
@@ -50,14 +50,14 @@ window.onload = () => {
 			const errEmpty = document.getElementById("err-msg-id");
 			errEmpty.style.display = "block";
 			errEmpty.style.marginBottom = '15px';
-			username.style.marginBottom = "0";
+			username.style.marginBottom = "10.5px";
 		}
 		
 		if (password.value === "") {
 			const errEmpty = document.getElementById("err-msg-pw");
 			errEmpty.style.display = "block";
 			errEmpty.style.marginBottom = '15px';
-			password.style.marginBottom = "0";
+			password.style.marginBottom = "10.5px";
 		}
 		
 		if (isPassUsername && isPassPassword) {
