@@ -22,7 +22,7 @@ public class DeleteFormAction implements Action {
 			userDao.deleteUserByUsername(user.getUsername());
 			session.removeAttribute("log");
 			session.invalidate();
-			response.sendRedirect("/main");
+			response.sendRedirect("/");
 		} else {
 			ResponseAlert.alert(response, "비밀번호가 일치하지 않습니다.");
 		}

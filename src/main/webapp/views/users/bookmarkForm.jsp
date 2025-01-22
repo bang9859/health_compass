@@ -7,7 +7,6 @@
 <title>북마크</title>
 <link rel="stylesheet" href="/resources/style/globals.css">
 <link rel="stylesheet" href="/resources/style/usersForm.css">
-<script src="/resources/script/users/bookmark.js"></script>
 </head>
 <c:import url="/header" />
 <body>
@@ -16,7 +15,7 @@
 		<section id="main">
 			<div id="map"></div>
 			<script type="text/javascript"
-				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9106e9e2b71925e379208a30b9d98ed5" async></script>
+				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9106e9e2b71925e379208a30b9d98ed5"></script>
 			<script>
 				var container = document.getElementById('map');
 				var options = {

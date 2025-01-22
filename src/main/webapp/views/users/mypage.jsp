@@ -44,6 +44,7 @@
 				<input id="tel" name="tel" type="text" value="${log.tel}">
 				<p class="error-msg" id="err-msg-tel">잘못된 입력입니다.</p>
 				<p class="error-msg" id="err-msg-duplTel">전화번호가 중복됩니다.</p>
+				<input type="button" onclick="location.href='/delete'" value="회원탈퇴">
 				<input id="form-submit" type="submit">
 			</form>
 		</section>
