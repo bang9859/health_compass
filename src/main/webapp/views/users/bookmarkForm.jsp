@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>북마크</title>
 <link rel="stylesheet" href="/resources/style/globals.css">
-<link rel="stylesheet" href="/resources/style/usersForm.css">
+<link rel="stylesheet" href="/resources/style/bookmark.css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9106e9e2b71925e379208a30b9d98ed5"></script>
 <script src="/resources/script/users/bookmark.js"></script>
 </head>
@@ -16,7 +16,7 @@
 		<c:import url="/nav" />
 		<section id="main">
 			<div id="map"></div>
-			<div>
+			<div id="map-list">
 				<h4>북마크 목록</h4>
 				<ul id="bookmark-list">
 					<li>1. OO병원</li>
