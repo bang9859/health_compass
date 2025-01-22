@@ -21,6 +21,7 @@ import hospital.model.HospitalDto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import util.XMLParser;
 
 public class HospitalsSearchAction implements Action {
 
@@ -126,7 +127,7 @@ public class HospitalsSearchAction implements Action {
 			Document doc = builder.parse(new java.io.ByteArrayInputStream(xml.getBytes("UTF-8")));
 
 			// 병원 정보 추출
-			NodeList items = doc.getElementsByTagName("item");
+			NodeList items = XMLParser.getNodeListByTagName(doc,"item");
 
 			// 병원 정보를 저장 리스트
 			List<HospitalDto> hospitalList = new ArrayList<>();
