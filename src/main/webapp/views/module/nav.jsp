@@ -13,9 +13,9 @@
 		<div id="menu-list">
 			<h3>메뉴목록</h3>
 			<ul id = "menu">
-				<li id = "search-hospital-link">🏥병원찾기</li>
-				<li id = "calender-link">📅캘린더</li>
-				<li id = "bookmark-link">🔖북마크</li>
+				<li id = "search-hospital-link" onclick="location.href='/'">🏥병원찾기</li>
+				<li id = "calender-link" onclick="location.href='/schedule'">📅캘린더</li>
+				<li id = "bookmark-link" onclick="location.href='/bookmark'">🔖북마크</li>
 			</ul>
 		</div>
 		<div id="img-box">
