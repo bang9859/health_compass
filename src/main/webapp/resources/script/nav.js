@@ -41,18 +41,3 @@ window.addEventListener("load", function() {
     setInterval(changeImage, 5000);
 });
 
-window.onload = () => {
-
-
-	document.getElementById("search-hospital-link").addEventListener("click", function() {
-		window.location.href = "/";
-	});
-	
-	document.getElementById("calender-link").addEventListener("click", function() {
-		window.location.href = "/schedule";
-	});
-	
-	document.getElementById("bookmark-link").addEventListener("click", function() {
-		window.location.href = "/bookmark";
-	});
-}
