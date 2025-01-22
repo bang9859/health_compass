@@ -166,24 +166,23 @@
 
 /* 모달 내 검색창 스타일 */
 #medicine-search-modal input[type="text"] {
-    width: calc(100% - 80px);
+    width: calc(100% - 90px);
     padding: 8px;
     margin-bottom: 10px;
 }
 
 #medicine-search-modal button {
-	font-size: 1em;
 	color: #fff;
 	background-color: #4A628A;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	padding:8px;
 }
 
-.modal-btn {
+#modal-btn {
 	width: 100%;
 	padding: 10px;
-	font-size: 1em;
 	color: #fff;
 	background-color: #4A628A;
 	border: none;
@@ -210,7 +209,7 @@
 /* 닫기 버튼 스타일 */
 #medicine-search-modal .close-btn {
     position: absolute;
-    top: 10px;
+    top: 2px;
     right: 10px;
    color: #4A628A;
    background-color:#fff;
