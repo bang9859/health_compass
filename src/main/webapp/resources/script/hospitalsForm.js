@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
 	console.log("JavaScript 실행됨");
 
+	// HTML에서 병원 데이터를 가져오기
+	const hospitalDataElement = document.getElementById("hospitalData");
+	const hospitalList = JSON.parse(hospitalDataElement.getAttribute("data-hospitals"));
+
 	if (typeof hospitalList === "undefined" || hospitalList.length === 0) {
 		console.error("hospitalList가 정의되지 않았거나 비어 있습니다!");
 		return;
@@ -91,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					hospitalElement.className = "hospital";
 					hospitalElement.innerHTML = `
 						<p id="hospitalNumber"><strong>${i + 1} 번</strong></p>
+						<p><strong>진료과:</strong> ${hospital.title}</p>
                         <p><strong>병원이름:</strong> ${hospital.name}</p>
 						<p><strong>분류:</strong> ${hospital.type || "정보 없음"}</p>
 						<p><strong>응급실 여부:</strong> ${hospital.emergency === "1" ? "운영 중" : "미운영"}</p>
