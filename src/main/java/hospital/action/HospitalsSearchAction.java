@@ -189,7 +189,7 @@ public class HospitalsSearchAction implements Action {
 			// urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" +
 			// URLEncoder.encode("1", "UTF-8")); // 페이지
 			// 번호
-			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("20", "UTF-8")); // 목록건수
+			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); // 목록건수
 
 			// URL 설정
 			URL url = new URL(urlBuilder.toString());
@@ -214,7 +214,7 @@ public class HospitalsSearchAction implements Action {
 			}
 			rd.close();
 			conn.disconnect();
-			System.out.println(sb);
+			
 			// XML 파싱
 			List<HospitalDto> hospitalList = parseXmlResponse(sb.toString(), title);
 			return hospitalList;
