@@ -181,10 +181,7 @@
 }
 
 #modal-btn {
-	width: 100%;
-	padding: 10px;
-	color: #fff;
-	background-color: #4A628A;
+	background-color: #f9f9f9;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
