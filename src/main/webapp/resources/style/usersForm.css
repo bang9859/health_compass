@@ -1,121 +1,143 @@
-@charset "UTF-8";
-
-form {
-	margin: 10px auto;
-	padding: 10px;
-	width: 400px;
-	border: solid 2px black;
+/* 전체 폼 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-input {
-	margin-bottom: 29.46px;
-	width: 400px;
-	height: 40px;
-	padding: 10px;
-	box-sizing: border-box;
+#join-form {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
-span {
-	margin-left: 5px;
-	color: rgb(118, 118, 118);
-	font-size: 14px;	
+#main {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center;    /* 세로 중앙 정렬 */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.error-msg {
-	display: none;
-	color: red;
-	font-size: 11px;
+#form-join, #form-login, #form-update, #form-delete {
+    display: flex;
+    flex-direction: column;
+    width: 100%;          /* 기본적으로 부모 요소에 맞춤 */
+    max-width: 500px;     /* 최대 너비 제한 */
+    padding: 20px;        /* 내부 여백 추가 */
+    margin: 0;            /* 여백 제거 */
+    border: 1px solid #ccc; /* 테두리 추가로 시각적 구분 */
+    border-radius: 8px;   /* 부드러운 모서리 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 박스 그림자 */
+    background-color: #fff; /* 배경색 */
 }
 
-#form-join {
-	height: 550px;	
-}
 
-#form-login {
-	margin-top: 130px;	
-}
-
-#form-delete {
-	margin-top: 120px;	
-}
-
-#form-login, #form-delete {
-	height: 180px;
-}
-
-#id-msg {
-	margin-bottom: 0;
-}
-
-.gender {
-	width: 50px;
-}
 
 #form-submit {
 	margin-bottom: 0;	
 }
 
-#checkdupl {
-	width: 80px;
+/* 입력 필드 스타일 */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #999;
+}
+
+input:focus {
+    outline: none;
+    border-color: #004080; /* 어두운 파란색 테두리 */
+    box-shadow: 0 0 5px rgba(0, 64, 128, 0.5); /* 어두운 파란색 그림자 */
+}
+
+/* 제출 버튼 스타일 */
+input[type="submit"] {
+    background-color: #004080; /* 어두운 파란색 배경 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #003366; /* 더 어두운 파란색 배경 */
+}
+
+/* 에러 메시지 스타일 */
+.error-msg {
+    color: red;
+    font-size: 11px;
+    display: none;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* 성별 선택 박스 스타일 */
+#select-box {
+    margin-bottom: 30px;
 }
 
 #select-gender {
-	display: flex;
-	margin: 5px auto 15px auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
 }
 
 .form_radio_btn {
-	width: 50%;
-	height: 45px;
-	border: 1px solid #EAE7E7;
-	border-radius: 10px;
+    display: inline-block;
 }
 
-.form_radio_btn input[type=radio] {
-	display: none;
+.form_radio_btn input {
+    display: none;
 }
 
 .form_radio_btn label {
-	display: block;
-	border-radius: 10px;
-	margin: 0 auto;
-	text-align: center;
-	line-height: 45px;
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    transition: background-color 0.3s;
 }
 
-.form_radio_btn input[type=radio]:checked+label {
-	background: #184DA0;
-	color: #fff;
+.form_radio_btn input:checked + label {
+    background-color: #004080; /* 어두운 파란색 배경 */
+    color: white;
 }
 
-.form_radio_btn label:hover {
-	color: #666;
+/* 전화번호 입력 필드 스타일 */
+#tel {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-.form_radio_btn input[type=radio]+label {
-	background: #F9FAFC;
-	color: #666;
-}
-
-#main {
-	display: flex;
-}
-
-#map {
-	width: 750px;
-    height: 750px;
-}
-
-#bookmark-list {
-	width: 150px;
-	height: 500px;
-}
-
-#bookmark-list > h4 {
-	text-align: center;
-}
-
-#list {
-	list-style: none;
-	color: black;
+#tel:focus {
+    outline: none;
+    border-color: #004080; /* 어두운 파란색 테두리 */
+    box-shadow: 0 0 5px rgba(0, 64, 128, 0.5); /* 어두운 파란색 그림자 */
 }

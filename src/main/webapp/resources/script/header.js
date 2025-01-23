@@ -1,9 +1,9 @@
-window.onload = () => {
+window.addEventListener('load', function() {
 	const path = location.pathname.substring(1); // 현재 경로에서 '/' 제거
 	console.log("path : " + path);
 
 	const titleElement = document.getElementById("title");
-	if (path == "index.jsp") {
+	if (path == "/") {
 		titleElement.textContent = "메인 페이지";
 	} else if (path == "detail") {
 		titleElement.textContent = "진료과 상세 페이지";
@@ -22,4 +22,4 @@ window.onload = () => {
 	} else if (path == "hospitals") {
 		titleElement.textContent = "병원 목록 페이지";
 	}
-};
+}); 

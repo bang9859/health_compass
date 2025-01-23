@@ -14,7 +14,7 @@ public class LogoutAction implements Action {
 		HttpSession session = request.getSession();
 		session.removeAttribute("log");
 		session.invalidate();
-		response.sendRedirect("/main");
+		response.sendRedirect("/");
 		System.err.println("로그아웃 성공.");
 	}
 }

@@ -84,7 +84,7 @@
 				<div class = "medicine-search-group">
 				<p>선택된 약품: <span id="selected-medicine">없음</span></p>
 				<input type="hidden" id="medicine-code" name="medicine-code">
-				<button type="button" onclick="toggleMedicineSearchModal()">검색</button>
+				<button type="button" id= "modal-btn" onclick="toggleMedicineSearchModal()">🔍</button>
 				</div>
 					<ul class="error-msg-group">
 						<li id="error-msg-name-empty">약명 : 필수정보입니다.</li>

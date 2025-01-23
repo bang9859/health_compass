@@ -191,7 +191,7 @@ function searchMedicine() {
 	const url = `http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=${serviceKey}&itemName=${encodeURIComponent(drugName)}`;
 
 	fetch(url)
-		.then(response => response.text())  // 응답을 텍스트로 받기 (XML 형식일 경우)
+		.then(response => response.text())  // 응답을 텍스트로 받기 
 		.then(xmlText => {
 			// XML 파싱하기
 			const parser = new DOMParser();

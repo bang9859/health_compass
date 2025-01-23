@@ -22,7 +22,7 @@ public class UpdateFormAction implements Action {
 		if (user != null) {
 			UserRequestDto info = new UserRequestDto(username, password, email, tel);
 			userDao.updateUser(info);
-			response.sendRedirect("/main");
+			response.sendRedirect("/");
 			System.err.println("수정이 완료되었습니다.");
 		} else {
 			response.sendRedirect("/mypage");
