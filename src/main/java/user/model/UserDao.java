@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -74,6 +76,7 @@ public class UserDao {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
+				int userCode = rs.getInt(1);
 				String password = rs.getString(3);
 				String email = rs.getString(4);
 				String name = rs.getString(5);
@@ -81,7 +84,7 @@ public class UserDao {
 				String gender = rs.getString(7);
 				String tel = rs.getString(8);
 
-				user = new User(username, password, email, name, birth, gender, tel);
+				user = new User(userCode, username, password, email, name, birth, gender, tel);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -197,6 +200,35 @@ public class UserDao {
 			}
 		}
 		return code;
+	}
+	
+	public List<String> allSearchBookmark(int userCode) {
+		List<String> list = new ArrayList<String>();
+		conn = DBManager.getConnection();
+
+		String sql = "SELECT hospital_code FROM bookmark WHERE user_code=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userCode);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String hospitalCode = rs.getString(1);
+				list.add(hospitalCode);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
 	}
 	
 	// Update

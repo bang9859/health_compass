@@ -5,6 +5,7 @@ import java.util.Date;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class User {
+	private int userCode;
 	private String username;
 	private String password;
 	private String email;
@@ -22,7 +23,22 @@ public class User {
 		this.gender = gender;
 		this.tel = tel;
 	}
-
+	
+	public User(int userCode, String username, String password, String email, String name, Date birth, String gender, String tel) {
+		this.userCode = userCode;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.name = name;
+		this.birth = birth;
+		this.gender = gender;
+		this.tel = tel;
+	}
+	
+	public int getUserCode() {
+		return userCode;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
