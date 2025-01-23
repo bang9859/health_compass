@@ -1,39 +1,55 @@
 package hospital.action;
 
-import java.io.IOException;
-import java.util.List;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
+import java.io.*;
+import org.json.JSONObject;
 
 import controller.Action;
-import hospital.model.HospitalDto;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import hospital.model.BookmarkDao;
 
-public class HospitalsListAction implements Action{
-
+public class AddBookmarkAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    // 세션에서 병원 리스트 가져오기
-//	    HttpSession session = request.getSession();
-//	    List<HospitalDto> hospitalList = (List<HospitalDto>) session.getAttribute("hospitalList");
-//
-//	    if (hospitalList == null) {
-//	        System.out.println("병원 리스트가 없습니다.");
-//	    } else {
-//			// 출력
-//			System.out.println("병원 목록:");
-//			for (int i = 0; i < hospitalList.size(); i++) {
-//				System.out.println((i + 1) + " 번");
-//				System.out.println(hospitalList.get(i));
-//				System.out.println("------------------------");
-//			}
-//	    }
+		response.setContentType("application/json");
+		JSONObject jsonResponse = new JSONObject();
 
-//	    // 결과 페이지로 포워딩
-//	    request.setAttribute("hospitalList", hospitalList);
-//	    request.getRequestDispatcher("/hospitals").forward(request, response);
+		try {
+			// 요청 데이터 읽기
+			BufferedReader reader = request.getReader();
+			StringBuilder sb = new StringBuilder();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line);
+			}
+			JSONObject jsonRequest = new JSONObject(sb.toString());
+
+			// 요청 데이터 추출
+			String hospitalCode = jsonRequest.getString("hospitalCode");
+			int userCode = jsonRequest.getInt("userCode");
+
+			// DAO 객체 생성
+			BookmarkDao bookmarkDao = BookmarkDao.getInstance();
+
+			// 중복 확인
+			if (bookmarkDao.isDuplicate(userCode, hospitalCode)) {
+				jsonResponse.put("error", "duplicate");
+				jsonResponse.put("message", "이미 북마크에 추가된 병원입니다.");
+			} else {
+				// 북마크 추가
+				bookmarkDao.createBookMark(userCode, hospitalCode);
+				jsonResponse.put("success", true);
+				jsonResponse.put("message", "북마크가 성공적으로 추가되었습니다!");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			jsonResponse.put("error", "server_error");
+			jsonResponse.put("message", "서버 오류가 발생했습니다.");
+		}
+
+		// 응답 반환
+		PrintWriter out = response.getWriter();
+		out.print(jsonResponse.toString());
 		
 	}
-
 }
