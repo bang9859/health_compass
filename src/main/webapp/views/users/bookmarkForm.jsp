@@ -19,7 +19,7 @@
 			<div id="map-list">
 				<h4>북마크 목록</h4>
 				<ul id="bookmark-list">
-					<li>1. OO병원</li>
+					<li><input type="button" value="${bookmark[1].hospitalName}" onclick="location.href='/service/users?command=search-bookmark'"></li>
 					<li>2. OO병원</li>
 					<li>3. OO병원</li>
 					<li>4. OO병원</li>

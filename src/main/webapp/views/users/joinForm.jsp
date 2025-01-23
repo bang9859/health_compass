@@ -28,6 +28,7 @@
 				<p class="error-msg" id="err-msg-name">사용할 수 없는 이름입니다.</p>
 				<input id="birth" name="birth" type="date">
 				<p class="error-msg" id="err-msg-birth">생년월일을 입력해주세요.</p>
+				<p class="error-msg" id="err-msg-over">잘못된 입력입니다.</p>
 				<div id="select-box">
 					<span>성별</span>
 					<div id="select-gender">
