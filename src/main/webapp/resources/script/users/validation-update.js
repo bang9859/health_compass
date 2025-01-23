@@ -8,7 +8,8 @@ window.onload = () => {
 	const email = document.getElementById("email");
 	const tel = document.getElementById("tel");
 
-	const px = "29.46px";
+	const px = "29.44px";
+	const mb = "10.3px";
 
 	let isValidEmail = validateEmail(email.value);
 	let isValidTel = validateTel(tel.value);
@@ -25,8 +26,8 @@ window.onload = () => {
 
 		if (input === "" || !validatePassword(input)) {
 			errPw.style.display = "block";
-			errPw.style.marginBottom = '15px';
-			password.style.marginBottom = '0';
+			errPw.style.marginBottom = '14.3px';
+			password.style.marginBottom = mb;
 		} else {
 			isPassPassword = true;
 			errPw.style.display = "none";
@@ -45,13 +46,13 @@ window.onload = () => {
 		if (input === "" || !validateEmail(input)) {
 			errEmail.style.display = "block";
 			errDupl.style.display = "none";
-			errEmail.style.marginBottom = '15px';
-			email.style.marginBottom = '0';
+			errEmail.style.marginBottom = '14.3px';
+			email.style.marginBottom = mb;
 		} else if (isValidEmail) {
 			errEmail.style.display = "none";
 			errDupl.style.display = "block";
-			errDupl.style.marginBottom = '15px';
-			email.style.marginBottom = '0';
+			errDupl.style.marginBottom = '14.3px';
+			email.style.marginBottom = mb;
 		} else {
 			isPassEmail = true;
 			errEmail.style.display = "none";
@@ -72,13 +73,13 @@ window.onload = () => {
 		if (input === "" || !validateTel(tel.value)) {
 			errTel.style.display = "block";
 			errDupl.style.display = "none";
-			errTel.style.marginBottom = '15px';
-			tel.style.marginBottom = '0';
+			errTel.style.marginBottom = '14.3px';
+			tel.style.marginBottom = mb;
 		} else if (isValidTel) {
 			errTel.style.display = "none";
 			errDupl.style.display = "block";
-			errDupl.style.marginBottom = '15px';
-			tel.style.marginBottom = '0';
+			errDupl.style.marginBottom = '14.3px';
+			tel.style.marginBottom = mb;
 		} else {
 			isPassTel = true;
 			errTel.style.display = "none";
@@ -94,22 +95,22 @@ window.onload = () => {
 		if (password.value === "") {
 			const errEmpty = document.getElementById("err-msg-pw");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			password.style.marginBottom = "0";
+			errEmpty.style.marginBottom = '14.3px';
+			password.style.marginBottom = mb;
 		}
 
 		if (email.value === "") {
 			const errEmpty = document.getElementById("err-msg-email");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			email.style.marginBottom = "0";
+			errEmpty.style.marginBottom = '14.3px';
+			email.style.marginBottom = mb;
 		}
 
 		if (tel.value === "") {
 			const errEmpty = document.getElementById("err-msg-tel");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			tel.style.marginBottom = "0";
+			errEmpty.style.marginBottom = '14.3px';
+			tel.style.marginBottom = mb;
 		}
 		if (isPassPassword && isPassEmail && isPassTel) {
 			form.submit();

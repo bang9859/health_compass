@@ -10,8 +10,9 @@ window.onload = () => {
 	const birth = document.getElementById("birth");
 	const tel = document.getElementById("tel");
 
-	const px = "29.46px";
-		
+	const px = "29.44px";
+	const mb = "10.3px";
+	
 	let isValidUsername = validateUsername(username.value);
 	let isValidEmail = validateEmail(email.value);
 	let isValidTel = validateTel(tel.value);
@@ -34,13 +35,13 @@ window.onload = () => {
 		if (input === "" || !validateUsername(input)) {
 			errId.style.display = "block";
 			errDupl.style.display = "none";
-			errId.style.marginBottom = '15px';
-			username.style.marginBottom = '10.5px';
+			errId.style.marginBottom = '14.3px';
+			username.style.marginBottom = mb;
 		} else if (isValidUsername) {
 			errId.style.display = "none";
 			errDupl.style.display = "block";
-			errDupl.style.marginBottom = '15px';
-			username.style.marginBottom = '10.5px';
+			errDupl.style.marginBottom = '14.3px';
+			username.style.marginBottom = mb;
 		} else {
 			isPassUsername = true;
 			errDupl.style.display = "none";
@@ -57,8 +58,8 @@ window.onload = () => {
 
 		if (input === "" || !validatePassword(input)) {
 			errPw.style.display = "block";
-			errPw.style.marginBottom = '15px';
-			password.style.marginBottom = '10.5px';
+			errPw.style.marginBottom = '14.3px';
+			password.style.marginBottom = mb;
 		} else {
 			isPassPassword = true;
 			errPw.style.display = "none";
@@ -77,13 +78,13 @@ window.onload = () => {
 		if (input === "" || !validateEmail(input)) {
 			errEmail.style.display = "block";
 			errDupl.style.display = "none";
-			errEmail.style.marginBottom = '15px';
-			email.style.marginBottom = '10.5px';
+			errEmail.style.marginBottom = '14.3px';
+			email.style.marginBottom = mb;
 		} else if (isValidEmail) {
 			errEmail.style.display = "none";
 			errDupl.style.display = "block";
-			errDupl.style.marginBottom = '15px';
-			email.style.marginBottom = '10.5px';
+			errDupl.style.marginBottom = '14.3px';
+			email.style.marginBottom = mb;
 		} else {
 			isPassEmail = true;
 			errEmail.style.display = "none";
@@ -100,8 +101,8 @@ window.onload = () => {
 
 		if (input === "" || !validateName(input)) {
 			errName.style.display = "block";
-			errName.style.marginBottom = '15px';
-			name.style.marginBottom = '10.5px';
+			errName.style.marginBottom = '14.3px';
+			name.style.marginBottom = mb;
 		} else {
 			isPassName = true;
 			errName.style.display = "none";
@@ -117,8 +118,8 @@ window.onload = () => {
 		
 		if (input == "") {
 			errBirth.style.display = "block";
-			errBirth.style.marginBottom = '15px';
-			birth.style.marginBottom = '10.5px';
+			errBirth.style.marginBottom = '14.3px';
+			birth.style.marginBottom = mb;
 		} else {
 			isPassBirth = true;
 			errBirth.style.display = "none";
@@ -139,13 +140,13 @@ window.onload = () => {
 		if (input === "" || !validateTel(tel.value)) {
 			errTel.style.display = "block";
 			errDupl.style.display = "none";
-			errTel.style.marginBottom = '15px';
-			tel.style.marginBottom = '10.5px';
+			errTel.style.marginBottom = '14.3px';
+			tel.style.marginBottom = mb;
 		} else if (isValidTel) {
 			errTel.style.display = "none";
 			errDupl.style.display = "block";
-			errDupl.style.marginBottom = '15px';
-			tel.style.marginBottom = '10.5px';
+			errDupl.style.marginBottom = '14.3px';
+			tel.style.marginBottom = mb;
 		} else {
 			isPassTel = true;
 			errTel.style.display = "none";
@@ -160,42 +161,42 @@ window.onload = () => {
 		if (username.value === "") {
 			const errEmpty = document.getElementById("err-msg-id");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			username.style.marginBottom = "10.5px";
+			errEmpty.style.marginBottom = '14.3px';
+			username.style.marginBottom = mb;
 		}
 		if (password.value === "") {
 			const errEmpty = document.getElementById("err-msg-pw");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			password.style.marginBottom = "10.5px";
+			errEmpty.style.marginBottom = '14.3px';
+			password.style.marginBottom = mb;
 		}
 
 		if (email.value === "") {
 			const errEmpty = document.getElementById("err-msg-email");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			email.style.marginBottom = "10.5px";
+			errEmpty.style.marginBottom = '14.3px';
+			email.style.marginBottom = mb;
 		}
 
 		if (name.value === "") {
 			const errEmpty = document.getElementById("err-msg-name");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			name.style.marginBottom = "10.5px";
+			errEmpty.style.marginBottom = '14.3px';
+			name.style.marginBottom = mb;
 		}
 
 		if (birth.value === "") {
 			const errEmpty = document.getElementById("err-msg-birth");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			birth.style.marginBottom = "10.5px";
+			errEmpty.style.marginBottom = '14.3px';
+			birth.style.marginBottom = mb;
 		}
 
 		if (tel.value === "") {
 			const errEmpty = document.getElementById("err-msg-tel");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			tel.style.marginBottom = "10.5px";
+			errEmpty.style.marginBottom = '14.3px';
+			tel.style.marginBottom = mb;
 		}
 		if (isPassUsername && isPassPassword && isPassEmail && isPassName && isPassBirth && isPassTel) {
 			form.submit();
