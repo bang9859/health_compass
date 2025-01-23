@@ -59,8 +59,8 @@ public class ActionFactory {
 		Action action = null;
 		if (command.equals("search") && method == HttpMethod.POST)
 			return new HospitalsSearchAction();
-		else if (command.equals("list") && method == HttpMethod.GET)
-			return new HospitalsListAction();
+		else if (command.equals("addBookmark") && method == HttpMethod.POST)
+			return new AddBookmarkAction();
 
 		return action;
 	}
