@@ -16,11 +16,13 @@
 		<section id="main">
 			<form id="form-login" method="POST" action="/service/users">
 				<input type="hidden" name="command" value="login">
+				<label for="username">아이디:</label>
 				<input id="username" name="username" type="text" placeholder="아이디 입력" autocomplete="username">
 				<p class="error-msg" id="err-msg-id">아이디를 입력해주세요.</p>
+				<label for="password">비밀번호:</label>
 				<input id="password" name="password" type="password" placeholder="비밀번호 입력" autocomplete="new-password">
 				<p class="error-msg" id="err-msg-pw">비밀번호를 입력해주세요.</p>
-				<input id="form-submit" type="submit">
+				<input id="form-submit" type="submit" value="로그인">
 			</form>
 		</section>
 	</div>
