@@ -1,6 +1,11 @@
+<%@page import="schedule.model.ScheduleRequestDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%
+    // JSON 데이터 가져오기
+    String schListJson = (String) request.getAttribute("scheduleListJson");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +13,13 @@
 <link rel="stylesheet" href="/resources/style/schedule.css">
 <script src = "/resources/script/calendar.js"></script>
 <script src = "/resources/script/schedule.js"></script>
+<script>
+    const scheduleList = JSON.parse('<c:out value="${scheduleListJson}" escapeXml="true" />');
+    scheduleList.forEach(schedule => {
+        console.log("약명: " + schedule.medicineName);
+        console.log("주의사항: " + schedule.depositMethod);
+    });
+</script>
 <title>일정</title>
 </head>
 <c:import url="/header" />
@@ -59,21 +71,14 @@
 			<table border="1" id="schedule-list">
         <thead>
             <tr>
-                <th>약품 코드</th>
+                <th>약품명</th>
+                <th>보관방법</th>                
                 <th>시작일</th>
                 <th>종료일</th>
                 <th>1일 복용 횟수</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="schedule" items="${schedules}">
-                <tr>
-                    <td>${schedule.medicineCode}</td>
-                    <td>${schedule.startDate}</td>
-                    <td>${schedule.endDate}</td>
-                    <td>${schedule.dailyFrequency}</td>
-                </tr>
-            </c:forEach>
         </tbody>
     </table>
 			</div>

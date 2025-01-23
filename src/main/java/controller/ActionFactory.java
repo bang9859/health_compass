@@ -71,7 +71,7 @@ public class ActionFactory {
 		if (command.equals("add") && method == HttpMethod.POST) {
 			return new AddScheduleAction();
 
-		} else if (command.equals("get") && method == HttpMethod.GET) { // 추가
+		} else if (command.equals("search") && method == HttpMethod.GET) { // 추가
 			return new SearchScheduleAction();
 		}
 
