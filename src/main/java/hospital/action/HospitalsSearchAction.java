@@ -7,7 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -28,15 +30,24 @@ public class HospitalsSearchAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userAddress = request.getParameter("address");
-		System.out.println("사용자 주소: " + userAddress);
+
+		String internalCode = request.getParameter("internalCode");
+		String dermatologyCode = request.getParameter("dermatologyCode");
+		String orthopedicCode = request.getParameter("orthopedicCode");
+		String neurosurgeryCode = request.getParameter("neurosurgeryCode");
+		String gynecologyCode = request.getParameter("gynecologyCode");
+		String ophthalmologyCode = request.getParameter("ophthalmologyCode");
+		String otolaryngologyCode = request.getParameter("otolaryngologyCode");
+		String dentistryCode = request.getParameter("dentistryCode");
 
 		// 병원 들고오기
-		List<HospitalDto> hospitalList = HospitalsSearch(userAddress);
+		List<HospitalDto> hospitalList = HospitalsList(userAddress, internalCode, dermatologyCode, orthopedicCode,
+				neurosurgeryCode, gynecologyCode, ophthalmologyCode, otolaryngologyCode, dentistryCode);
 
 		// 병원 리스트가 null이거나 비어 있는지 확인
 		if (hospitalList == null || hospitalList.isEmpty()) {
 			System.out.println("병원 리스트가 비어 있습니다!");
-			request.getRequestDispatcher("/main");
+			request.getRequestDispatcher("/");
 			return;
 		}
 
@@ -55,7 +66,102 @@ public class HospitalsSearchAction implements Action {
 		request.getRequestDispatcher("/hospitalsForm").forward(request, response);
 	}
 
-	public List<HospitalDto> HospitalsSearch(String userAddress) {
+	public List<HospitalDto> HospitalsList(String userAddress, String internalCode, String dermatologyCode,
+			String orthopedicCode, String neurosurgeryCode, String gynecologyCode, String ophthalmologyCode,
+			String otolaryngologyCode, String dentistryCode) {
+		List<HospitalDto> hospitalsList = new ArrayList<>();
+		List<HospitalDto> hospitaInternalList = new ArrayList<>();
+		List<HospitalDto> hospitaDermatologyList = new ArrayList<>();
+		List<HospitalDto> hospitaOrthopedicList = new ArrayList<>();
+		List<HospitalDto> hospitaNeurosurgeryList = new ArrayList<>();
+		List<HospitalDto> hospitaGynecologlList = new ArrayList<>();
+		List<HospitalDto> hospitaOphthalmologyList = new ArrayList<>();
+		List<HospitalDto> hospitaOtolaryngologyList = new ArrayList<>();
+		List<HospitalDto> hospitaDentistryList = new ArrayList<>();
+
+		System.out.println("internalCode " + internalCode);
+		System.out.println("dermatologyCode " + dermatologyCode);
+		System.out.println("orthopedicCode " + orthopedicCode);
+		System.out.println("neurosurgeryCode " + neurosurgeryCode);
+		System.out.println("gynecologyCode " + gynecologyCode);
+		System.out.println("ophthalmologyCode " + ophthalmologyCode);
+		System.out.println("otolaryngologyCode " + otolaryngologyCode);
+		System.out.println("dentistryCode " + dentistryCode);
+
+		if (internalCode.equals("D001")) {
+			hospitaInternalList = HospitalsSearch(userAddress, internalCode, "내과");
+			hospitalsList.addAll(hospitaInternalList);
+		}
+		if (dermatologyCode.equals("D005")) {
+			hospitaDermatologyList = HospitalsSearch(userAddress, dermatologyCode, "피부과");
+			hospitalsList.addAll(hospitaDermatologyList);
+		}
+		if (orthopedicCode.equals("D008")) {
+			hospitaOrthopedicList = HospitalsSearch(userAddress, orthopedicCode, "정형외과");
+			hospitalsList.addAll(hospitaOrthopedicList);
+		}
+		if (neurosurgeryCode.equals("D009")) {
+			hospitaNeurosurgeryList = HospitalsSearch(userAddress, neurosurgeryCode, "신경외과");
+			hospitalsList.addAll(hospitaNeurosurgeryList);
+		}
+		if (gynecologyCode.equals("D011")) {
+			hospitaGynecologlList = HospitalsSearch(userAddress, gynecologyCode, "산부인과");
+			hospitalsList.addAll(hospitaGynecologlList);
+		}
+		if (ophthalmologyCode.equals("D012")) {
+			hospitaOphthalmologyList = HospitalsSearch(userAddress, ophthalmologyCode, "안과");
+			hospitalsList.addAll(hospitaOphthalmologyList);
+		}
+		if (otolaryngologyCode.equals("D013")) {
+			hospitaOtolaryngologyList = HospitalsSearch(userAddress, otolaryngologyCode, "이비인후과");
+			hospitalsList.addAll(hospitaOtolaryngologyList);
+		}
+		if (dentistryCode.equals("D026")) {
+			hospitaDentistryList = HospitalsSearch(userAddress, dentistryCode, "치과");
+			hospitalsList.addAll(hospitaDentistryList);
+		}
+
+		return mergeHospitals(hospitalsList);
+	}
+
+	public List<HospitalDto> mergeHospitals(List<HospitalDto> hospitalsList) {
+		Map<String, HospitalDto> hospitalMap = new LinkedHashMap<>();
+
+		for (HospitalDto hospital : hospitalsList) {
+			String key = hospital.getOperatingHours(); // 병원의 고유 식별자 (기관코드)
+
+			if (hospitalMap.containsKey(key)) {
+				// 이미 존재하는 병원인 경우
+				HospitalDto existingHospital = hospitalMap.get(key);
+
+				// 기존 진료과에 새 진료과 추가
+				String existingDepartments = existingHospital.getTitle();
+				String newDepartment = hospital.getTitle();
+
+				// 중복 방지하며 진료과 추가
+				if (!existingDepartments.contains(newDepartment)) {
+					existingHospital.setTitle(existingDepartments + ", " + newDepartment);
+				}
+			} else {
+				// 새로운 병원인 경우 맵에 추가
+				hospitalMap.put(key, hospital);
+			}
+		}
+
+		// 병합된 병원을 리스트로 변환
+		List<HospitalDto> mergedList = new ArrayList<>(hospitalMap.values());
+
+		// 진료과 개수를 기준으로 정렬 (진료과가 많은 병원이 맨 앞에 오도록)
+		mergedList.sort((h1, h2) -> {
+			int h1Count = h1.getTitle().split(",").length;
+			int h2Count = h2.getTitle().split(",").length;
+			return Integer.compare(h2Count, h1Count); // 내림차순 정렬
+		});
+
+		return mergedList;
+	}
+
+	public List<HospitalDto> HospitalsSearch(String userAddress, String code, String title) {
 		try {
 			String[] address = userAddress.split(" ");
 
@@ -71,8 +177,7 @@ public class HospitalsSearchAction implements Action {
 			// 'H000'
 			// 참조
 			// (B:병원)
-			// urlBuilder.append("&" + URLEncoder.encode("QD", "UTF-8") + "=" +
-			// URLEncoder.encode("D001", "UTF-8")); // CODE_MST의
+			urlBuilder.append("&" + URLEncoder.encode("QD", "UTF-8") + "=" + URLEncoder.encode(code, "UTF-8")); // CODE_MST의
 			// 'D000'
 			// 참조
 			// (D001~D029)
@@ -84,7 +189,7 @@ public class HospitalsSearchAction implements Action {
 			// urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" +
 			// URLEncoder.encode("1", "UTF-8")); // 페이지
 			// 번호
-			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); // 목록건수
+			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("20", "UTF-8")); // 목록건수
 
 			// URL 설정
 			URL url = new URL(urlBuilder.toString());
@@ -109,9 +214,9 @@ public class HospitalsSearchAction implements Action {
 			}
 			rd.close();
 			conn.disconnect();
-
+			System.out.println(sb);
 			// XML 파싱
-			List<HospitalDto> hospitalList = parseXmlResponse(sb.toString());
+			List<HospitalDto> hospitalList = parseXmlResponse(sb.toString(), title);
 			return hospitalList;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,15 +224,13 @@ public class HospitalsSearchAction implements Action {
 		return null;
 	}
 
-	private List<HospitalDto> parseXmlResponse(String xml) {
+	private List<HospitalDto> parseXmlResponse(String xml, String title) {
 		try {
 			// XML 파싱
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document doc = builder.parse(new java.io.ByteArrayInputStream(xml.getBytes("UTF-8")));
+			Document doc = (Document) XMLParser.parseXML(xml);
 
 			// 병원 정보 추출
-			NodeList items = XMLParser.getNodeListByTagName(doc,"item");
+			NodeList items = XMLParser.getNodeListByTagName(doc, "item");
 
 			// 병원 정보를 저장 리스트
 			List<HospitalDto> hospitalList = new ArrayList<>();
@@ -144,8 +247,8 @@ public class HospitalsSearchAction implements Action {
 				double longitude = Double.parseDouble(getNodeValue(nameNode, "wgs84Lon")); // 경도
 				String operatingHours = getOperatingHours(nameNode); // 진료 시간
 
-				HospitalDto hospital = new HospitalDto(name, address, phone, type, emergency, hpid, operatingHours,
-						latitude, longitude);
+				HospitalDto hospital = new HospitalDto(title, name, address, phone, type, emergency, hpid,
+						operatingHours, latitude, longitude);
 
 				hospitalList.add(hospital);
 			}
