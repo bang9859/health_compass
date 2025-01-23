@@ -1,13 +1,11 @@
 package schedule.action;
 
 import java.io.IOException;
-import java.util.Map;
 
 import controller.Action;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import schedule.model.ApiManager;
 import schedule.model.ScheduleDao;
 import schedule.model.ScheduleRequestDto;
 import user.model.UserDao;
