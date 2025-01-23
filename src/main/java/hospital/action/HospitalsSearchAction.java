@@ -28,8 +28,24 @@ public class HospitalsSearchAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userAddress = request.getParameter("address");
-		System.out.println("사용자 주소: " + userAddress);
 
+		String internalCode = request.getParameter("internalCode");
+        String dermatologyCode = request.getParameter("dermatologyCode");
+        String orthopedicCode = request.getParameter("orthopedicCode");
+        String neurosurgeryCode = request.getParameter("neurosurgeryCode");
+        String gynecologyCode = request.getParameter("gynecologyCode");
+        String ophthalmologyCode = request.getParameter("ophthalmologyCode");
+        String otolaryngologyCode = request.getParameter("otolaryngologyCode");
+        String dentistryCode = request.getParameter("dentistryCode");
+        
+        System.out.println("internalCode " + internalCode);
+        System.out.println("dermatologyCode " + dermatologyCode);
+        System.out.println("orthopedicCode " + orthopedicCode);
+        System.out.println("neurosurgeryCode " + neurosurgeryCode);
+        System.out.println("gynecologyCode " + gynecologyCode);
+        System.out.println("ophthalmologyCode " + ophthalmologyCode);
+        System.out.println("otolaryngologyCode " + otolaryngologyCode);
+        System.out.println("dentistryCode " + dentistryCode);
 		// 병원 들고오기
 		List<HospitalDto> hospitalList = HospitalsSearch(userAddress);
 
@@ -71,8 +87,7 @@ public class HospitalsSearchAction implements Action {
 			// 'H000'
 			// 참조
 			// (B:병원)
-			// urlBuilder.append("&" + URLEncoder.encode("QD", "UTF-8") + "=" +
-			// URLEncoder.encode("D001", "UTF-8")); // CODE_MST의
+			urlBuilder.append("&" + URLEncoder.encode("QD", "UTF-8") + "=" + URLEncoder.encode("D001", "UTF-8")); // CODE_MST의
 			// 'D000'
 			// 참조
 			// (D001~D029)
@@ -84,7 +99,7 @@ public class HospitalsSearchAction implements Action {
 			// urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" +
 			// URLEncoder.encode("1", "UTF-8")); // 페이지
 			// 번호
-			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); // 목록건수
+			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("20", "UTF-8")); // 목록건수
 
 			// URL 설정
 			URL url = new URL(urlBuilder.toString());
@@ -125,7 +140,7 @@ public class HospitalsSearchAction implements Action {
 			Document doc = (Document) XMLParser.parseXML(xml);
 
 			// 병원 정보 추출
-			NodeList items = XMLParser.getNodeListByTagName(doc,"item");
+			NodeList items = XMLParser.getNodeListByTagName(doc, "item");
 
 			// 병원 정보를 저장 리스트
 			List<HospitalDto> hospitalList = new ArrayList<>();
