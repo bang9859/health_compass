@@ -122,9 +122,7 @@ public class HospitalsSearchAction implements Action {
 	private List<HospitalDto> parseXmlResponse(String xml) {
 		try {
 			// XML 파싱
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document doc = builder.parse(new java.io.ByteArrayInputStream(xml.getBytes("UTF-8")));
+			Document doc = (Document) XMLParser.parseXML(xml);
 
 			// 병원 정보 추출
 			NodeList items = XMLParser.getNodeListByTagName(doc,"item");
