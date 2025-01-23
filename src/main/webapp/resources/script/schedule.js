@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	let isValidNumber = validateNumber(number.value);
 	let isValidStartDate = validateStartDate(startDate.value, endDate.value);
 
+
 	code.addEventListener("change", (e) => {
 		const input = e.target.value;
 		const errEmpty = document.getElementById("error-msg-name-empty");
