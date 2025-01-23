@@ -113,19 +113,34 @@ window.onload = () => {
 	birth.addEventListener("focusout", async e => {
 		const input = e.target.value;
 		const errBirth = document.getElementById("err-msg-birth");
+		const errOver = document.getElementById("err-msg-over");
 		
+		let today = new Date();   
+
+		let year = today.getFullYear();
+		let month = ('0' + (today.getMonth() + 1)).slice(-2);
+		let day = ('0' + today.getDate()).slice(-2);
+		
+		let date = `${year}-${month}-${day}`;
+		console.log(input)
+		console.log(date)
 		isPassBirth = false;
 		
 		if (input == "") {
 			errBirth.style.display = "block";
 			errBirth.style.marginBottom = '14.3px';
 			birth.style.marginBottom = mb;
+		} else if (date <= input) {
+			errBirth.style.display = "none";
+			errOver.style.display = "block";
+			errOver.style.marginBottom = '14.3px';
+			birth.style.marginBottom = mb;
 		} else {
 			isPassBirth = true;
 			errBirth.style.display = "none";
+			errOver.style.display = "none";
 			birth.style.marginBottom = px;
 		}
-		
 	});
 		
 	tel.addEventListener("focusout", async e => {
