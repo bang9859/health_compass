@@ -19,4 +19,7 @@ public class XMLParser {
     public static NodeList getNodeListByTagName(org.w3c.dom.Document doc, String tagName) {
         return doc.getElementsByTagName(tagName);
     }
+
+
 }
+

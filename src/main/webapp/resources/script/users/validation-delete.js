@@ -2,19 +2,20 @@ window.onload = () => {
 	const form = document.getElementById("form-delete");
 
 	const password = document.getElementById("password");
-
+	
+	const px = "29.44px";
+	const mb = "10.3px";
+			
 	let isPassPassword = false;
 
 	password.addEventListener("focusout", async e => {
 		const input = e.target.value;
 		const errPw = document.getElementById("err-msg-pw");
 
-		const px = "29.46px";
-
 		if (input === "") {
 			errPw.style.display = "block";
-			errPw.style.marginBottom = '15px';
-			password.style.marginBottom = "0";
+			errPw.style.marginBottom = '14.3px';
+			password.style.marginBottom = mb;
 		} else {
 			isPassPassword = true;
 			errPw.style.display = "none";
@@ -27,9 +28,10 @@ window.onload = () => {
 
 		if (password.value === "") {
 			const errEmpty = document.getElementById("err-msg-pw");
+			
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			password.style.marginBottom = "0";
+			errEmpty.style.marginBottom = '14.3px';
+			password.style.marginBottom = mb;
 		}
 
 		if (isPassPassword) {

@@ -4,7 +4,8 @@ window.onload = () => {
 	const username = document.getElementById("username");
 	const password = document.getElementById("password");
 
-	const px = "29.46px";
+	const px = "29.44px";
+	const mb = "10.3px";
 	
 	let isPassUsername = false;
 	let isPassPassword = false;
@@ -17,8 +18,8 @@ window.onload = () => {
 		
 		if (input === "") {
 			errId.style.display = "block";
-			errId.style.marginBottom = '15px';
-			username.style.marginBottom = '10.5px';
+			errId.style.marginBottom = '14.3px';
+			username.style.marginBottom = mb;
 		} else {
 			isPassUsername = true;
 			errId.style.display = "none";
@@ -34,8 +35,8 @@ window.onload = () => {
 		
 		if (input === "") {
 			errPw.style.display = "block";
-			errPw.style.marginBottom = '15px';
-			password.style.marginBottom = '10.5px';
+			errPw.style.marginBottom = '14.3px';
+			password.style.marginBottom = mb;
 		} else {
 			isPassPassword = true;
 			errPw.style.display = "none";
@@ -49,15 +50,15 @@ window.onload = () => {
 		if (username.value === "") {
 			const errEmpty = document.getElementById("err-msg-id");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			username.style.marginBottom = "10.5px";
+			errEmpty.style.marginBottom = '14.3px';
+			username.style.marginBottom = mb;
 		}
 		
 		if (password.value === "") {
 			const errEmpty = document.getElementById("err-msg-pw");
 			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '15px';
-			password.style.marginBottom = "10.5px";
+			errEmpty.style.marginBottom = '14.3px';
+			password.style.marginBottom = mb;
 		}
 		
 		if (isPassUsername && isPassPassword) {
