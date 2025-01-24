@@ -30,9 +30,9 @@ public class SearchScheduleAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 현재 로그인된 사용자 확인
-		String username = (String) request.getSession().getAttribute("username");
+		String username = request.getParameter("usernameForSerachSchedule");
 		if (username == null) {
-			response.sendRedirect("/login.jsp");
+			response.sendRedirect("/login");
 			return;
 		}
 
@@ -42,7 +42,7 @@ public class SearchScheduleAction implements Action {
 
 		if (scheduleList == null || scheduleList.isEmpty()) {
 			request.setAttribute("message", "등록된 일정이 없습니다.");
-			request.getRequestDispatcher("/schedule.jsp").forward(request, response);
+			request.getRequestDispatcher("/schedule").forward(request, response);
 			return;
 		}
 
@@ -55,8 +55,9 @@ public class SearchScheduleAction implements Action {
 
 		// 3. JSON 변환 후 JSP로 전달
 		JSONArray scheduleListJson = new JSONArray(enrichedScheduleList);
+		System.out.println(scheduleListJson);
 		request.setAttribute("scheduleListJson", scheduleListJson.toString());
-		request.getRequestDispatcher("/schedule.jsp").forward(request, response);
+		request.getRequestDispatcher("/schedule").forward(request, response);
 	}
 
 	private ScheduleRequestDto enrichScheduleWithApiData(Schedule schedule) {
