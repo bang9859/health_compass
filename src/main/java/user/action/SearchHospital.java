@@ -26,17 +26,7 @@ import util.XMLParser;
 public class SearchHospital {
 	public Bookmark searchHospital(String hospitalId) {
 		List<Bookmark> bookmarkList2 = new ArrayList<Bookmark>();
-		System.out.println("병원 목록:");
-		for (int i = 0; i < bookmarkList2.size(); i++) {
-			System.out.println((i + 1) + " 번");
-			System.out.println(bookmarkList2.get(i).getHospitalId());
-			System.out.println(bookmarkList2.get(i).getHospitalName());
-			System.out.println(bookmarkList2.get(i).getAddress());
-			System.out.println("------------------------");
-		}
-		
 		JSONArray hospitalListJson = new JSONArray(bookmarkList2);
-		System.out.println(hospitalListJson.toString());
 		try {
 			String serviceKey = "B2QVmFyyb9dQL1IOBqqY6rUoGEALjBoTtsgY5rb9NC4RXVF04Fmww9gPFLyJ22DLnmajbV%2Fq1EPEiRu1EnxtxQ%3D%3D";
 
