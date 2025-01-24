@@ -1,14 +1,12 @@
 package schedule.model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import user.model.User;
 import user.model.UserDao;
 import util.DBManager;
 
@@ -56,15 +54,15 @@ public class ScheduleDao {
 		}
 	}
 
-	// 일정 조회 메서드
-	public List<Schedule> findSchedulesByUserCode(String username) {
+	// 일정 조회 및 출력 메서드
+	public List<Schedule> findSchedulesByUsername(String username) {
 	    List<Schedule> schedules = new ArrayList<>();
 	    conn = DBManager.getConnection();
 	    
-	    String sql = "SELECT * FROM schedule WHERE userCode=?";
 	    UserDao userDao = UserDao.getInstance();
 	    int userCode = userDao.findUserCodeByUsername(username);
 
+	    String sql = "SELECT * FROM schedule WHERE userCode=?";
 	    try {
 	        pstmt = conn.prepareStatement(sql);
 	        pstmt.setInt(1, userCode); 

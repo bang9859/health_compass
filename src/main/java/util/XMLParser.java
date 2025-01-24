@@ -19,4 +19,7 @@ public class XMLParser {
     public static NodeList getNodeListByTagName(Document doc, String tagName) {
         return doc.getElementsByTagName(tagName);
     }
+
+
 }
+

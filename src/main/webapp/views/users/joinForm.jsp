@@ -28,6 +28,7 @@
 				<p class="error-msg" id="err-msg-name">사용할 수 없는 이름입니다.</p>
 				<input id="birth" name="birth" type="date">
 				<p class="error-msg" id="err-msg-birth">생년월일을 입력해주세요.</p>
+				<p class="error-msg" id="err-msg-over">잘못된 입력입니다.</p>
 				<div id="select-box">
 					<span>성별</span>
 					<div id="select-gender">
@@ -44,7 +45,7 @@
 				<input id="tel" name="tel" type="text" placeholder="전화번호 입력">
 				<p class="error-msg" id="err-msg-tel">잘못된 입력입니다.</p>
 				<p class="error-msg" id="err-msg-duplTel">전화번호가 중복됩니다.</p>
-				<input id="form-submit" type="submit">
+				<input id="form-submit" type="submit" value="회원가입">
 			</form>
 		</section>
 	</div>
