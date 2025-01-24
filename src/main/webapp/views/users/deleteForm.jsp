@@ -19,8 +19,10 @@
 		<section id="main">
 			<form id="form-delete" method="POST" action="/service/users">
 				<input type="hidden" name="command" value="delete">
+				<label for="username">아이디:</label>
 				<input type="text" value="${log.username}" disabled>
 				<input id="username" name="username" type="hidden" value="${log.username}" disabled>
+				<label for="password">비밀번호:</label>
 				<input id="password" name="password" type="password" autocomplete="new-password">
 				<p class="error-msg" id="err-msg-pw">비밀번호를 입력해주세요.</p>
 				<input id="form-submit" type="submit" value="회원탈퇴">
