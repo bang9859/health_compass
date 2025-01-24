@@ -43,6 +43,8 @@ public class ActionFactory {
 		else if(command.equals("search-tel") && method == HttpMethod.POST)
 			return new SearchTelAction();
 		
+		else if(command.equals("delete-bookmark") && method == HttpMethod.POST)
+			return new DeleteBookmark();
 		return action;
 	}
 }
