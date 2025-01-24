@@ -284,4 +284,27 @@ public class UserDao {
 			}
 		}
 	}
+	
+	public void deleteBookmarkByHospitalId(String hospitalId) {
+		conn = DBManager.getConnection();
+
+		String sql = "DELETE FROM bookmark WHERE hospital_code=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, hospitalId);
+
+			pstmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
