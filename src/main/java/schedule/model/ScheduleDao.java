@@ -62,17 +62,19 @@ public class ScheduleDao {
 	    UserDao userDao = UserDao.getInstance();
 	    int userCode = userDao.findUserCodeByUsername(username);
 
-	    String sql = "SELECT * FROM schedule WHERE userCode=?";
+	    String sql = "SELECT * FROM schedule WHERE user_code=?";
+	    System.out.println("Schedules found for username " + username + ": " + schedules.size());
+
 	    try {
 	        pstmt = conn.prepareStatement(sql);
 	        pstmt.setInt(1, userCode); 
 	        rs = pstmt.executeQuery();
 
 	        while (rs.next()) {
-	            int medicineCode = rs.getInt("medicineCode");
-	            String startDate = rs.getString("startDate");
-	            String endDate = rs.getString("endDate");
-	            int dailyFrequency = rs.getInt("dailyFrequency");
+	            int medicineCode = rs.getInt("medicine_code");
+	            String startDate = rs.getString("start_date");
+	            String endDate = rs.getString("end_date");
+	            int dailyFrequency = rs.getInt("daily_frequency");
 
 	            Schedule schedule = new Schedule(userCode, medicineCode, startDate, endDate, dailyFrequency);
 	            schedules.add(schedule);
