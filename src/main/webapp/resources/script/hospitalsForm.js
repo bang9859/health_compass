@@ -153,30 +153,35 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	);
 
-	// 이벤트 위임 방식으로 북마크 버튼 이벤트 처리
+	// 북마크 추가 이벤트.
 	document.addEventListener("click", function(event) {
+		// "bookmark-but" 클래스가 있는 버튼 클릭 시
 		if (event.target.classList.contains("bookmark-but")) {
+			// 병원 코드 가져오기
 			const hospitalCode = event.target.parentNode.querySelector(".data-hospital-code").value;
-			const userCode = 1001; // 사용자 코드
 
 			console.log("북마크 클릭됨!");
-			console.log("hospitalCode: " + hospitalCode);
-			console.log("userCode: " + userCode);
-			
-			fetch("/action?command=addBookmark", {
+
+			// 서버로 데이터 전송
+			fetch("/service/hospital?command=addBookmark", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ hospitalCode, userCode }),
+				body: JSON.stringify({ hospitalCode }),
 			})
 				.then((response) => response.json())
 				.then((data) => {
 					if (data.success) {
-						alert("북마크 추가 성공!");
+						alert(data.message);
+					} else if (data.error === "notLog") {
+						alert(data.message);
+					} else if (data.error === "duplicate") {
+						alert(data.message);
 					} else {
-						alert("실패: " + data.message);
+						alert("실패: " + (data.message || "알 수 없는 오류"));
 					}
 				})
 				.catch((error) => console.error("북마크 추가 실패:", error));
 		}
 	});
+
 });

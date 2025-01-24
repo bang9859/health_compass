@@ -2,6 +2,8 @@ package hospital.action;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
+import user.model.User;
+
 import java.io.*;
 import org.json.JSONObject;
 
@@ -14,6 +16,9 @@ public class AddBookmarkAction implements Action {
 		response.setContentType("application/json");
 		JSONObject jsonResponse = new JSONObject();
 
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("log");
+
 		try {
 			// 요청 데이터 읽기
 			BufferedReader reader = request.getReader();
@@ -24,10 +29,17 @@ public class AddBookmarkAction implements Action {
 			}
 			JSONObject jsonRequest = new JSONObject(sb.toString());
 
+			if (user == null) {
+				jsonResponse.put("error", "notLog");
+				jsonResponse.put("message", "로그인 상태가 아닙니다.");
+				PrintWriter out = response.getWriter();
+				out.print(jsonResponse.toString());
+				return;
+			}
+
 			// 요청 데이터 추출
 			String hospitalCode = jsonRequest.getString("hospitalCode");
-			int userCode = jsonRequest.getInt("userCode");
-
+			int userCode = user.getUserCode();
 			// DAO 객체 생성
 			BookmarkDao bookmarkDao = BookmarkDao.getInstance();
 
@@ -50,6 +62,6 @@ public class AddBookmarkAction implements Action {
 		// 응답 반환
 		PrintWriter out = response.getWriter();
 		out.print(jsonResponse.toString());
-		
+
 	}
 }
