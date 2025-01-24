@@ -1,9 +1,11 @@
-@charset "UTF-8";
-
 #main {
 	display: flex;
 	padding: 20px;
 	gap: 30px;
+}
+
+#bookmark-title {
+	margin-bottom: 20px;
 }
 
 #bookmark-list {
@@ -11,19 +13,111 @@
 }
 
 #map {
-	width: 600px;
-	height: 600px;
-    border: 1px solid #ccc; /* 테두리 추가로 시각적 구분 */
-    border-radius: 8px;   /* 부드러운 모서리 */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 박스 그림자 */
-    background-color: #fff; /* 배경색 */
+	width: 1470px;
+	height: 780px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
 }
 
 #map-list {
-	padding: 20px;        /* 내부 여백 추가 */
-    margin: 0;            /* 여백 제거 */
-    border: 1px solid #ccc; /* 테두리 추가로 시각적 구분 */
-    border-radius: 8px;   /* 부드러운 모서리 */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 박스 그림자 */
-    background-color: #fff; /* 배경색 */
+	height: 74	0px; padding : 20px;
+	margin: 0;
+	overflow-y: scroll;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+	padding: 20px;
+}
+
+.bookmark-btn {
+	display: inline-block;
+	width: 250px;
+	padding: 10px 20px;
+	margin-right: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f5f5f5;
+	color: #333;
+	text-align: left;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.bookmark-btn:hover {
+	background-color: #e0e0e0;
+}
+
+.delete-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: #ff4d4d;
+	cursor: pointer;
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}
+
+.delete-btn:hover {
+	background-color: #cc0000;
+}
+
+.delete-btn:before {
+	content: "×";
+}
+
+#bookmark-list li {
+	display: flex;
+	align-items: center;
+	margin-bottom: 13px;
+}
+
+#pagination {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.pagination-btn {
+	display: inline-block;
+	width: 85px; padding : 8px 12px;
+	margin: 0 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	text-decoration: none;
+	color: white;
+	background-color: #004080;
+	padding: 8px 12px;
+}
+
+.pagination-btn.active {
+	font-weight: bold;
+	background-color: #007bff;
+	color: #fff;
+}
+
+.pagination-btn:hover {
+	background-color: #003366;
+}
+
+#map-list::-webkit-scrollbar {
+	width: 12px; /* 스크롤바 두께 */
+}
+
+#map-list::-webkit-scrollbar-thumb {
+	background-color: #888;
+	border-radius: 6px;
+	border: 3px solid #fff;
+}
+
+#map-list::-webkit-scrollbar-track {
+	background-color: #f1f1f1;
+	border-radius: 6px;
 }
