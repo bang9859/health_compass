@@ -51,7 +51,8 @@ public class ActionFactory {
 			return new SearchEmailAction();
 		else if (command.equals("search-tel") && method == HttpMethod.POST)
 			return new SearchTelAction();
-
+		else if (command.equals("delete-bookmark") && method == HttpMethod.POST)
+			return new DeleteBookmark();
 		return action;
 	}
 
@@ -71,7 +72,7 @@ public class ActionFactory {
 		if (command.equals("add") && method == HttpMethod.POST) {
 			return new AddScheduleAction();
 
-		} else if (command.equals("search") && method == HttpMethod.GET) { // 추가
+		} else if (command.equals("search") && method == HttpMethod.POST) { // 추가
 			return new SearchScheduleAction();
 		}
 
