@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	const hospitalList = JSON.parse(hospitalDataElement.getAttribute("data-hospitals"));
 
 	if (typeof hospitalList === "undefined" || hospitalList.length === 0) {
-		console.error("hospitalList가 정의되지 않았거나 비어 있습니다!");
+		alert("해당 진료과 병원이 없습니다!");
 		return;
 	}
 
