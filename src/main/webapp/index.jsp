@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/main.css">
-<script type="text/javascript" src="/resources/script/myAddress.js"></script>
+<script type="text/javascript" src="/resources/script/main.js"></script>
 <title>메인 페이지(증상선택)</title>
 </head>
 <c:import url="/header" />
