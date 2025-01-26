@@ -60,13 +60,6 @@ public class HospitalsSearchAction implements Action {
 //		}
 //		System.out.println("병원 리스트 크기: " + hospitalList.size());
 
-		// 병원 리스트가 null이거나 비어 있는지 확인
-		if (hospitalList == null || hospitalList.isEmpty()) {
-			System.out.println("병원 리스트가 비어 있습니다!");
-			request.getRequestDispatcher("/").forward(request, response);
-			return;
-		}
-
 		// json 변환
 		JSONArray hospitalListJson = new JSONArray(hospitalList);
 		request.setAttribute("hospitalListJson", hospitalListJson.toString());
@@ -87,14 +80,14 @@ public class HospitalsSearchAction implements Action {
 		List<HospitalDto> hospitaDentistryList = new ArrayList<>();
 
 		// 출력
-		System.out.println("internalCode " + internalCode);
-		System.out.println("dermatologyCode " + dermatologyCode);
-		System.out.println("orthopedicCode " + orthopedicCode);
-		System.out.println("neurosurgeryCode " + neurosurgeryCode);
-		System.out.println("gynecologyCode " + gynecologyCode);
-		System.out.println("ophthalmologyCode " + ophthalmologyCode);
-		System.out.println("otolaryngologyCode " + otolaryngologyCode);
-		System.out.println("dentistryCode " + dentistryCode);
+//		System.out.println("internalCode " + internalCode);
+//		System.out.println("dermatologyCode " + dermatologyCode);
+//		System.out.println("orthopedicCode " + orthopedicCode);
+//		System.out.println("neurosurgeryCode " + neurosurgeryCode);
+//		System.out.println("gynecologyCode " + gynecologyCode);
+//		System.out.println("ophthalmologyCode " + ophthalmologyCode);
+//		System.out.println("otolaryngologyCode " + otolaryngologyCode);
+//		System.out.println("dentistryCode " + dentistryCode);
 
 		if (internalCode.equals("D001")) {
 			hospitaInternalList = HospitalsSearch(userAddress, internalCode, "내과");
@@ -191,7 +184,6 @@ public class HospitalsSearchAction implements Action {
 			conn.setRequestProperty("Content-type", "application/json");
 
 			// 응답 코드 확인
-			System.out.println("Response code: " + conn.getResponseCode());
 			BufferedReader rd;
 			if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 				rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
