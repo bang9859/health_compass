@@ -58,6 +58,7 @@ async function deletecheckBookmark(hospitalId) {
 		alert(`삭제 요청: 병원 ID ${hospitalId}`);
 		console.log(hospitalId)
 		await deleteBookmark(hospitalId);
+		window.location.reload();
 	}
 }
 
