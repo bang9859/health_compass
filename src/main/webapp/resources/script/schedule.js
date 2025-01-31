@@ -208,11 +208,12 @@ function searchMedicine() {
 				for (let i = 0; i < items.length; i++) {
 					const itemName = items[i].getElementsByTagName("itemName")[0].textContent;
 					const itemCode = items[i].getElementsByTagName("itemSeq")[0].textContent;
-
+					const itemDeposit = items[i].getElementsByTagName("depositMethodQesitm")[0].textContent;
+			
 					const li = document.createElement('li');
 					li.textContent = itemName;
-					li.onclick = () => selectMedicine(itemCode, itemName);  // 선택 시 처리
-					console.log("itemCode = " + itemCode, itemName);
+					li.onclick = () => selectMedicine(itemCode, itemName,itemDeposit);  // 선택 시 처리
+					console.log("itemCode = " + itemCode, itemName,itemDeposit);
 					resultList.appendChild(li);
 				}
 			} else {
@@ -231,10 +232,12 @@ function toggleMedicineSearchModal() {
 	modal.style.display = modal.style.display === 'block' ? 'none' : 'block';  // 모달 열기/닫기
 }
 
-function selectMedicine(itemCode, itemName) {
+function selectMedicine(itemCode, itemName,itemDeposit) {
 	// 약품 이름과 번호를 UI에 반영
 	document.getElementById('selected-medicine').textContent = itemName;
 	document.getElementById('medicine-code').value = itemCode; // 숨겨진 필드에 코드 저장
+	document.getElementById('medicine-name').value = itemName; // 숨겨진 필드에 코드 저장
+	document.getElementById('medicine-deposit-method').value = itemDeposit; // 숨겨진 필드에 코드 저장
 	console.log("선택된 약품 번호:", itemCode); // 디버깅 로그 추가
 	toggleMedicineSearchModal(); // 모달 닫기
 }
