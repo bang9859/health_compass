@@ -25,6 +25,7 @@
 					<input type="button" id="join" value="회원가입" onclick="location.href='/join'">
 				</c:when>
 				<c:otherwise>
+					<span>사용자 : ${log.username}</span>
 					<input type="button" id="mypage" value="마이페이지" onclick="location.href='/mypage'">
 					<input type="button" id="logout" value="로그아웃" onclick="location.href='/service/users?command=logout'">
 				</c:otherwise>
