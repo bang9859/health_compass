@@ -24,6 +24,7 @@
 
 .symptom-list {
 	padding: 10px;
+	list-style: none;
 }
 
 .symptom-list li {
