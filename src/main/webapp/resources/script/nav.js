@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     let currentImageIndex = 0;
     const images = [
         "https://www.seochonoin.org/data/editor/2110/thumb-1847822453_1635121464.061_1400x1980.jpg",
@@ -12,13 +12,15 @@ window.addEventListener("load", function() {
         return;
     }
 
-    // 이미지 요소들을 동적으로 생성하여 img-box에 추가
+    // 이미지 요소 동적 생성
     images.forEach((src, index) => {
         const img = document.createElement('img');
         img.src = src;
-        img.style.width = '100%';  // 이미지 크기 조정
-        img.style.height = 'auto'; // 높이는 자동으로 조정
-        img.style.display = index === currentImageIndex ? 'none' : 'none';  // 초기에는 첫번째 이미지만 보이게
+		img.style.width = '200px';  // 이미지 크기 조정
+		img.style.height = '250px'; // 높이는 자동으로 조정
+        img.style.display = index === currentImageIndex ? 'block' : 'none';
+        img.style.cursor = 'pointer'; // 클릭 가능하게 설정
+        img.addEventListener('click', () => openModal(src)); // 클릭 이벤트 추가
         imgBox.appendChild(img);
     });
 
@@ -29,14 +31,33 @@ window.addEventListener("load", function() {
     }
 
     function changeImage() {
-        imgElements[currentImageIndex].style.display = 'none';  // 현재 이미지 숨기기
-
-        // 이미지 인덱스 변경 (순환)
+        imgElements[currentImageIndex].style.display = 'none';
         currentImageIndex = (currentImageIndex + 1) % images.length;
-
-        imgElements[currentImageIndex].style.display = 'block';  // 새로운 이미지 보이게 하기
+        imgElements[currentImageIndex].style.display = 'block';
     }
 
-    // 5초마다 이미지 변경
     setInterval(changeImage, 5000);
+
+    // 모달 관련 요소 가져오기
+    const modal = document.getElementById('modal');
+    const modalImg = modal.querySelector('img');
+    const closeModalBtn = modal.querySelector('.close');
+
+    // 모달 열기
+    function openModal(src) {
+        modalImg.src = src;
+        modal.style.display = 'flex';
+    }
+
+    // 모달 닫기
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // 모달 배경 클릭 시 닫기
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 });

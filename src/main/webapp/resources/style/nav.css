@@ -32,7 +32,7 @@ nav {
 }
 
 #menu-list {
-	margin-bottom: 100px;
+	margin-bottom: 300px;
 }
 
 #img-box {
@@ -40,14 +40,41 @@ nav {
 	margin-top: auto;
 }
 
-#img1 {
-	display: block;
+/* 이미지 박스 스타일 */
+#img-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-#img2 {
-	display: none;
+/* 모달 배경 스타일 */
+#modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-#img3 {
-	display: none;
+/* 모달 내부 이미지 스타일 */
+#modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+/* 닫기 버튼 스타일 */
+#modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
 }
