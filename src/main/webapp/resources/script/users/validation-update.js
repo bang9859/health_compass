@@ -99,19 +99,44 @@ window.onload = () => {
 			password.style.marginBottom = mb;
 		}
 
-		if (email.value === "") {
-			const errEmpty = document.getElementById("err-msg-email");
-			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '14.3px';
+		const errEmail = document.getElementById("err-msg-email");
+		const errDuplEmail = document.getElementById("err-msg-duplEmail");
+		isValidEmail = await checkDuplEmail2(username.value, email.value);
+		if (email.value === "" || !validateEmail(email.value)) {
+			errEmail.style.display = "block";
+			errEmail.style.marginBottom = '14.3px';
 			email.style.marginBottom = mb;
+		} else if (isValidEmail) {
+			errEmail.style.display = "none";
+			errDuplEmail.style.display = "block";
+			errDuplEmail.style.marginBottom = '14.3px';
+			email.style.marginBottom = mb;
+		} else {
+			isPassEmail = true;
+			errEmail.style.display = "none";
+			errDuplEmail.style.display = "none";
+			email.style.marginBottom = px;
 		}
-
-		if (tel.value === "") {
-			const errEmpty = document.getElementById("err-msg-tel");
-			errEmpty.style.display = "block";
-			errEmpty.style.marginBottom = '14.3px';
+		
+		const errTel = document.getElementById("err-msg-tel");
+		const errDuplTel = document.getElementById("err-msg-duplTel");
+		isValidTel = await checkDuplTel2(username.value, tel.value);
+		if (tel.value === "" || !validateTel(tel.value)) {
+			errTel.style.display = "block";
+			errTel.style.marginBottom = '14.3px';
 			tel.style.marginBottom = mb;
+		} else if (isValidTel) {
+			errTel.style.display = "none";
+			errDuplTel.style.display = "block";
+			errDuplTel.style.marginBottom = '14.3px';
+			tel.style.marginBottom = mb;
+		} else {
+			isPassTel = true;
+			errTel.style.display = "none";
+			errDuplTel.style.display = "none";
+			tel.style.marginBottom = px;
 		}
+				
 		if (isPassPassword && isPassEmail && isPassTel) {
 			form.submit();
 		}
