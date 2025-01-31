@@ -30,7 +30,8 @@ public class ScheduleDao {
 	public void addSchedule(ScheduleRequestDto scheduleDto) {
 		conn = DBManager.getConnection();
 
-		String sql = "INSERT INTO schedule (user_code, medicine_code,medicine_name,deposit_method, start_date, end_date, daily_frequency) VALUES (?,?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO schedule (user_code, medicine_code,medicine_name,deposit_method, start_date, end_date, daily_frequency)"
+				+ "VALUES (?,?, ?, ?, ?, ?, ?)";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -136,6 +137,9 @@ public class ScheduleDao {
 			}
 		}
 		return schedule;
+		
+		
+		
 	}
 
 }
