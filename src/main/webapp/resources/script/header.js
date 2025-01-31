@@ -19,7 +19,7 @@ window.addEventListener('load', function() {
 		titleElement.textContent = "일정";
 	} else if (path == "bookmark") {
 		titleElement.textContent = "북마크";
-	} else if (path == "hospitals") {
+	} else if (path == "service/hospital") {
 		titleElement.textContent = "병원 목록 페이지";
 	}
 }); 
