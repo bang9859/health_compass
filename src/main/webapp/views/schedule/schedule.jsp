@@ -71,7 +71,7 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 					<h1>일정 목록</h1>
 					<!-- GET 요청을 통해 일정 데이터 가져오기 -->
 					<form id="form-schedule-list" method="POST"
-						action="service/schedule">
+						action="/service/schedule">
 						<input type="hidden" name="command" value="search">
 						<input type="hidden" name="usernameForSerachSchedule" value="${log.username}">
 						<!-- 폼을 자동 제출하여 페이지 접근 시 일정 목록 로드 -->

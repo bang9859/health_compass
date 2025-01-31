@@ -4,38 +4,80 @@ window.addEventListener("load", function() {
 	initializeMap();
 });
 
-// 지도 초기화 함수
+// 지도 초기화 함수 (Promise 기반)
 function initializeMap() {
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-        mapOption = {
-            center: new kakao.maps.LatLng(37.4947129029365, 127.03009668045205), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
-        };
+	return new Promise((resolve, reject) => {
+		navigator.geolocation.getCurrentPosition(
+			function (position) {
+				const userLat = position.coords.latitude;
+				const userLon = position.coords.longitude;
 
-    // 지도를 표시할 div와 지도 옵션으로 지도를 생성합니다
-    return new kakao.maps.Map(mapContainer, mapOption);
+				const mapContainer = document.getElementById('map'); // 지도를 표시할 div
+				const mapOption = {
+					center: new kakao.maps.LatLng(userLat, userLon), // 지도의 중심좌표
+					level: 3, // 지도의 확대 레벨
+				};
+
+				// 지도를 생성하고 resolve로 반환
+				const map = new kakao.maps.Map(mapContainer, mapOption);
+				resolve(map);
+			},
+			function (error) {
+				// 위치 정보 가져오기 실패 시 reject 호출
+				reject(`위치 정보를 가져오지 못했습니다. 에러 코드: ${error.code}`);
+			}
+		);
+	});
 }
 
 // 주소로 좌표를 변환하여 지도를 이동하는 함수
 function moveToAddress(address, name, map) {
-    var geocoder = new kakao.maps.services.Geocoder();
+    const geocoder = new kakao.maps.services.Geocoder();
 
     // 주소로 좌표를 검색합니다
     geocoder.addressSearch(address, function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
             // 결과값으로 받은 위치를 마커로 표시합니다
-            var marker = new kakao.maps.Marker({
+            const marker = new kakao.maps.Marker({
                 map: map,
                 position: coords
             });
 
-            // 인포윈도우로 장소에 대한 설명을 표시합니다
-            var infowindow = new kakao.maps.InfoWindow({
-                content: `<div style="width:150px;text-align:center;padding:6px 0;">${name}</div>`
-            });
-            infowindow.open(map, marker);
+			// 인포윈도우에 표시할 HTML 콘텐츠
+			const infowindowContent = `
+			    <div style="
+			        border-radius: 8px; 
+					border: 1px solid black;
+			        overflow: hidden; 
+			        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			        font-family: Arial, sans-serif; 
+			        max-width: 250px;">
+			        <div style="
+			            background-color: #2C3E50; 
+			            color: white; 
+			            text-align: center; 
+			            padding: 8px 12px; 
+			            font-size: 16px; 
+			            font-weight: bold;">
+			            ${name}
+			        </div>
+			        <div style="
+			            padding: 10px; 
+			            font-size: 14px; 
+			            line-height: 1.5; 
+			            color: #333;">
+			            <p style="margin: 0 0 8px;"><strong>주소:</strong> ${address}</p>
+			        </div>
+			    </div>
+			`;
+
+			// 인포윈도우로 장소에 대한 설명을 표시합니다
+			const infowindow = new kakao.maps.InfoWindow({
+			    content: infowindowContent
+			});
+			infowindow.open(map, marker);
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
@@ -45,10 +87,10 @@ function moveToAddress(address, name, map) {
 }
 
 // 북마크 클릭 처리
-function handleBookmarkClick(address, name) {
+async function handleBookmarkClick(address, name) {
 	alert(`병원 주소: ${address}`);
 	
-	var map = initializeMap();
+	let map = await initializeMap();
 	moveToAddress(address, name, map);
 }
 
