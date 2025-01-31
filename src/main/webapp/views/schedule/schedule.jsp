@@ -17,7 +17,7 @@
 <c:if test="${empty log}">
 	<c:redirect url="/login" />
 </c:if>
-	<!-- 약품 검색 모달 -->
+
 	<!-- 배경 오버레이 -->
 	<div id="modal-overlay" onclick="toggleMedicineSearchModal()"></div>
 
