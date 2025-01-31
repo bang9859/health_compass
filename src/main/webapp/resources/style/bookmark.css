@@ -13,7 +13,7 @@
 }
 
 #map {
-	width: 1470px;
+	width: 1400px;
 	height: 780px;
 	border: 1px solid #ccc;
 	border-radius: 8px;
@@ -105,6 +105,10 @@
 
 .pagination-btn:hover {
 	background-color: #003366;
+}
+
+#map>div>div>div>div {
+	border: none !important;
 }
 
 #map-list::-webkit-scrollbar {
