@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/main.css">
 <script type="text/javascript" src="/resources/script/main.js"></script>
-<title>메인 페이지(증상선택)</title>
+<title>건강나침반</title>
 </head>
 <c:import url="/header" />
 <body>
