@@ -92,15 +92,7 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="ScheduleRequestDto" items="${scheduleListJson}">
-								<tr>
-									<td>${ScheduleRequestDto.medicineName}</td>
-									<td>${ScheduleRequestDto.depositMethod}</td>
-									<td>${ScheduleRequestDto.startDate}</td>
-									<td>${ScheduleRequestDto.endDate}</td>
-									<td>${ScheduleRequestDto.dailyFrequency}</td>
-								</tr>
-							</c:forEach>
+							
 						</tbody>
 					</table>
 				</div>
@@ -145,7 +137,37 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 		</section>
 	</div>
 
+<script>
+    // JSP에서 JSON 데이터를 JavaScript 객체로 변환
+    var scheduleListJson = '<%= scheduleListJson %>'; 
 
+    // JSON 형식이 올바르지 않을 경우 예외 방지
+    try {
+        var scheduleList = JSON.parse(scheduleListJson);
+    } catch (e) {
+        var scheduleList = []; // 오류 발생 시 기본값 빈 배열
+    }
+
+    console.log(scheduleList);  // 콘솔에서 데이터 확인
+
+    function renderScheduleList() {
+        let tbody = document.getElementById("schedule-list").getElementsByTagName("tbody")[0];
+        tbody.innerHTML = "";  // 기존 데이터 초기화
+
+        scheduleList.forEach(schedule => {
+            let row = `<tr>
+                <td>${scheduleList.medicineName}</td>
+                <td>${scheduleList.depositMethod}</td>
+                <td>${scheduleList.startDate}</td>
+                <td>${scheduleList.endDate}</td>
+                <td>${scheduleList.dailyFrequency}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", renderScheduleList);
+</script>
 </body>
 <c:import url="/footer" />
 </html>

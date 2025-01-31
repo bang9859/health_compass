@@ -57,20 +57,20 @@ public class ScheduleDao {
 	// 일정 조회 및 출력 메서드
 	public List<Schedule> findSchedulesByUsername(String username) {
 	    List<Schedule> schedules = new ArrayList<>();
-	    conn = DBManager.getConnection();
-	    
-	    UserDao userDao = UserDao.getInstance();
-	    int userCode = userDao.findUserCodeByUsername(username);
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
 
-	    String sql = "SELECT * FROM schedule WHERE user_code=?";
-	    System.out.println("Schedules found for username " + username + ": " + schedules.size());
+	    String sql = "SELECT s.* FROM schedule s JOIN users u ON s.user_code = u.user_code WHERE u.username = ?";
 
 	    try {
+	        conn = DBManager.getConnection();
 	        pstmt = conn.prepareStatement(sql);
-	        pstmt.setInt(1, userCode); 
+	        pstmt.setString(1, username); // username 파라미터 설정
 	        rs = pstmt.executeQuery();
 
 	        while (rs.next()) {
+	            int userCode = rs.getInt("user_code");
 	            int medicineCode = rs.getInt("medicine_code");
 	            String startDate = rs.getString("start_date");
 	            String endDate = rs.getString("end_date");
@@ -85,10 +85,12 @@ public class ScheduleDao {
 	        try {
 	            if (rs != null) rs.close();
 	            if (pstmt != null) pstmt.close();
+	            if (conn != null) conn.close();
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
 	    }
+	    System.out.println(schedules);
 	    return schedules;
 	}
 

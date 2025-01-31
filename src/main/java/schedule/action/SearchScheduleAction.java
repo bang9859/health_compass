@@ -8,11 +8,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.gson.Gson;
+
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.json.JSONArray;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -54,9 +55,9 @@ public class SearchScheduleAction implements Action {
 		}
 
 		// 3. JSON 변환 후 JSP로 전달
-		JSONArray scheduleListJson = new JSONArray(enrichedScheduleList);
-		System.out.println(scheduleListJson);
-		request.setAttribute("scheduleListJson", scheduleListJson.toString());
+		Gson gson = new Gson();
+		String scheduleListJson = gson.toJson(enrichedScheduleList); // JSON 변환
+		request.setAttribute("scheduleListJson", scheduleListJson);
 		request.getRequestDispatcher("/schedule").forward(request, response);
 	}
 
