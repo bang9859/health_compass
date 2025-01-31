@@ -43,8 +43,9 @@ public class AuthFilter extends HttpFilter implements Filter {
 				bookmarkList.add(sh.searchHospital(list.get(i)));
 			}
 			session.setAttribute("bookmark", bookmarkList);
+		} else if (user == null && (uri.equals("/mypage") || uri.equals("/delete") || uri.equals("/bookmark"))) {
+			res.sendRedirect("/login");
 		}
-		
 		// 인증이 필요없는 것들은 제외
 		
 		chain.doFilter(request, response);
