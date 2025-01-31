@@ -11,9 +11,6 @@
 </head>
 <c:import url="/header" />
 <body>
-<c:if test="${empty log}">
-	<c:redirect url="/login" />
-</c:if>
 	<div id="content-box">
 		<c:import url="/nav" />
 		<section id="main">
