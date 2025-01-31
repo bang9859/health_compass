@@ -1,17 +1,7 @@
-<%@page import="schedule.model.ScheduleRequestDto"%>
-<%@page import="util.DBManager"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<%
-// JSON 데이터 가져오기
-String scheduleListJson = (String) request.getAttribute("scheduleListJson");
-if (scheduleListJson == null || scheduleListJson.isEmpty()) {
-	scheduleListJson = "[]"; // 기본값으로 빈 배열
-}
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +14,9 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 </head>
 <c:import url="/header" />
 <body>
+<c:if test="${empty log}">
+	<c:redirect url="/login" />
+</c:if>
 	<!-- 약품 검색 모달 -->
 	<!-- 배경 오버레이 -->
 	<div id="modal-overlay" onclick="toggleMedicineSearchModal()"></div>
@@ -69,6 +62,7 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 			<div class="calander-foot">
 				<div class="schedule-list-container">
 					<h1>일정 목록</h1>
+
 					<table border="1" id="schedule-list">
 						<thead>
 							<tr>
