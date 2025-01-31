@@ -6,6 +6,7 @@ import controller.Action;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import user.model.User;
 import user.model.UserDao;
 import user.model.UserRequestDto;
@@ -22,7 +23,10 @@ public class UpdateFormAction implements Action {
 		if (user != null) {
 			UserRequestDto info = new UserRequestDto(username, password, email, tel);
 			userDao.updateUser(info);
-			response.sendRedirect("/");
+			ResponseAlert.alertMsg(response, "회원정보가 수정되었습니다. 재로그인 하주세요.");
+			HttpSession session = request.getSession();
+			session.removeAttribute("log");
+			session.invalidate();
 			System.err.println("수정이 완료되었습니다.");
 		} else {
 			response.sendRedirect("/mypage");

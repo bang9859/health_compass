@@ -34,10 +34,10 @@
 						onclick="location.href='/join'">
 				</c:when>
 				<c:otherwise>
-					<input type="button" id="mypage" value="마이페이지"
-						onclick="location.href='/mypage'">
-					<input type="button" id="logout" value="로그아웃"
-						onclick="location.href='/service/users?command=logout'">
+
+					<span>사용자 : ${log.username}</span>
+					<input type="button" id="mypage" value="마이페이지" onclick="location.href='/mypage'">
+					<input type="button" id="logout" value="로그아웃" onclick="location.href='/service/users?command=logout'">
 				</c:otherwise>
 			</c:choose>
 		</div>
