@@ -69,30 +69,24 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 			<div class="calander-foot">
 				<div class="schedule-list-container">
 					<h1>일정 목록</h1>
-					<!-- GET 요청을 통해 일정 데이터 가져오기 -->
-					<form id="form-schedule-list" method="POST"
-						action="/service/schedule">
-						<input type="hidden" name="command" value="search">
-						<input type="hidden" name="usernameForSerachSchedule" value="${log.username}">
-						<!-- 폼을 자동 제출하여 페이지 접근 시 일정 목록 로드 -->
-						<script>
-                        document.getElementById("form-schedule-list").submit();
-                    </script>
-					</form>
-
-					<!-- 일정 데이터를 표시하는 테이블 -->
 					<table border="1" id="schedule-list">
 						<thead>
 							<tr>
 								<th>약품명</th>
 								<th>보관방법</th>
-								<th>시작일</th>
-								<th>종료일</th>
+								<th>기간</th>
 								<th>1일 복용 횟수</th>
 							</tr>
 						</thead>
 						<tbody>
-							
+							<c:forEach var="schedule" items="${schedule}">
+								<tr>
+									<td>${schedule.medicineName}</td>
+									<td>${schedule.depositMethod}</td>
+									<td>${schedule.startDate} ~ ${schedule.endDate}</td>
+									<td>${schedule.dailyFrequency}</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -107,6 +101,8 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 							선택된 약품: <span id="selected-medicine">없음</span>
 						</p>
 						<input type="hidden" id="medicine-code" name="medicine-code">
+						<input type="hidden" id="medicine-name" name="medicine-name">
+						<input type="hidden" id="medicine-deposit-method" name="medicine-deposit-method">
 						<button type="button" id="modal-btn"
 							onclick="toggleMedicineSearchModal()">🔍</button>
 					</div>
@@ -137,37 +133,6 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 		</section>
 	</div>
 
-<script>
-    // JSP에서 JSON 데이터를 JavaScript 객체로 변환
-    var scheduleListJson = '<%= scheduleListJson %>'; 
-
-    // JSON 형식이 올바르지 않을 경우 예외 방지
-    try {
-        var scheduleList = JSON.parse(scheduleListJson);
-    } catch (e) {
-        var scheduleList = []; // 오류 발생 시 기본값 빈 배열
-    }
-
-    console.log(scheduleList);  // 콘솔에서 데이터 확인
-
-    function renderScheduleList() {
-        let tbody = document.getElementById("schedule-list").getElementsByTagName("tbody")[0];
-        tbody.innerHTML = "";  // 기존 데이터 초기화
-
-        scheduleList.forEach(schedule => {
-            let row = `<tr>
-                <td>${scheduleList.medicineName}</td>
-                <td>${scheduleList.depositMethod}</td>
-                <td>${scheduleList.startDate}</td>
-                <td>${scheduleList.endDate}</td>
-                <td>${scheduleList.dailyFrequency}</td>
-            </tr>`;
-            tbody.innerHTML += row;
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", renderScheduleList);
-</script>
 </body>
 <c:import url="/footer" />
 </html>

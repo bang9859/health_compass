@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
 		const month = date.getMonth(); // 0부터 시작 (0: 1월, 1: 2월, ...)
 		const firstDayOfMonth = new Date(year, month, 1); // 이번 달의 첫 번째 날
 		const lastDayOfMonth = new Date(year, month + 1, 0); // 이번 달의 마지막 날
+		const today = new Date();
+		const todayDate = today.getDate();
+		const todayMonth = today.getMonth();
+		const todayYear = today.getFullYear();
 
 		// 달 이름 업데이트
 		const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
@@ -32,6 +36,14 @@ document.addEventListener("DOMContentLoaded", function() {
 		for (let day = 1; day <= lastDayOfMonth.getDate(); day++) {
 			const cell = document.createElement("td");
 			cell.textContent = day;
+			if (day === todayDate && month === todayMonth && year === todayYear) {
+				cell.style.backgroundColor = "#ffcccb"; // 연한 빨간색 배경
+				cell.style.borderRadius = "50%"; // 동그랗게 표시
+				cell.style.color = "white"; // 글씨색 흰색
+				cell.style.fontWeight = "bold"; // 글씨 강조
+				cell.style.textAlign = "center"; // 중앙 정렬
+			}
+
 			row.appendChild(cell);
 
 			// 한 주(7일)가 끝나면 새로운 행 추가
