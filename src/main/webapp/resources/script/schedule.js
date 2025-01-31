@@ -233,7 +233,7 @@ function toggleMedicineSearchModal() {
 }
 
 function selectMedicine(itemCode, itemName,itemDeposit) {
-	// 약품 이름과 번호를 UI에 반영
+	// 약품 이름과 번호 보관방법을 UI에 반영
 	document.getElementById('selected-medicine').textContent = itemName;
 	document.getElementById('medicine-code').value = itemCode; // 숨겨진 필드에 코드 저장
 	document.getElementById('medicine-name').value = itemName; // 숨겨진 필드에 코드 저장
