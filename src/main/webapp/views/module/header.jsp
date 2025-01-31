@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/header.css">
+<script type="text/javascript" src="/resources/script/header.js"></script>
 <!-- favicon image -->
 	<link rel="shortcut icon" href="파비콘이미지.png">
 
