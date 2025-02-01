@@ -2,6 +2,7 @@ package controller;
 
 import hospital.action.*;
 import schedule.action.AddScheduleAction;
+import schedule.action.DeleteScheduleAction;
 import user.action.*;
 import util.HttpMethod;
 
@@ -71,6 +72,8 @@ public class ActionFactory {
 		if (command.equals("add") && method == HttpMethod.POST) {
 			return new AddScheduleAction();
 		}
+		else if (command.equals("delete") && method == HttpMethod.POST)
+			return new DeleteScheduleAction();
 
 		return action;
 	}

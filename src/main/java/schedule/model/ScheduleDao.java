@@ -99,7 +99,7 @@ public class ScheduleDao {
 	    System.out.println(schedules);
 	    return schedules;
 	}
-	
+	// 스케줄코드로 일정 찾기
 	public Schedule findScheduleByScheduleCode(int scheduleCode) {
 		Schedule schedule = null;
 		
@@ -141,5 +141,30 @@ public class ScheduleDao {
 		
 		
 	}
+	
+	public void deleteSchedule(int scheduleCode) {
+		conn = DBManager.getConnection();
+
+		 String sql = "DELETE FROM schedule WHERE schedule_code = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, scheduleCode);
+
+			pstmt.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }
+
+
