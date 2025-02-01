@@ -69,7 +69,8 @@
 								<th>약품명</th>
 								<th>보관방법</th>
 								<th>기간</th>
-								<th>1일 복용 횟수</th>
+								<th>복용횟수</th>
+								<th>일정삭제</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -79,6 +80,14 @@
 									<td>${schedule.depositMethod}</td>
 									<td>${schedule.startDate} ~ ${schedule.endDate}</td>
 									<td>${schedule.dailyFrequency}</td>
+									<td>
+										<form method="POST" action="service/schedule">
+											<input type="hidden" name="command" value="delete"> 
+											<input type="hidden" name="schedule-code" value="${schedule.scheduleCode}"> 
+												<input type="hidden" name="username" value="${log.username}">
+											<button type="submit" class="delete-btn">x</button>
+										</form>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -86,9 +95,8 @@
 				</div>
 				<form id="form-schedule" class="schedule-add-container"
 					method="POST" action="service/schedule">
-					<input type="hidden" name="command" value="add"> <input
-						type="hidden" id="username" name="username"
-						value="${log.username}">
+					<input type="hidden" name="command" value="add"> 
+					<input type="hidden" id="username" name="username" value="${log.username}">
 					<h1>일정 등록</h1>
 					<div class="medicine-search-group">
 						<p>
