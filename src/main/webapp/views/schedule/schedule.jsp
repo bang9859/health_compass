@@ -1,17 +1,7 @@
-<%@page import="schedule.model.ScheduleRequestDto"%>
-<%@page import="util.DBManager"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<%
-// JSON 데이터 가져오기
-String scheduleListJson = (String) request.getAttribute("scheduleListJson");
-if (scheduleListJson == null || scheduleListJson.isEmpty()) {
-	scheduleListJson = "[]"; // 기본값으로 빈 배열
-}
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +14,10 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 </head>
 <c:import url="/header" />
 <body>
-	<!-- 약품 검색 모달 -->
+<c:if test="${empty log}">
+	<c:redirect url="/login" />
+</c:if>
+
 	<!-- 배경 오버레이 -->
 	<div id="modal-overlay" onclick="toggleMedicineSearchModal()"></div>
 
@@ -69,13 +62,15 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 			<div class="calander-foot">
 				<div class="schedule-list-container">
 					<h1>일정 목록</h1>
+
 					<table border="1" id="schedule-list">
 						<thead>
 							<tr>
 								<th>약품명</th>
 								<th>보관방법</th>
 								<th>기간</th>
-								<th>1일 복용 횟수</th>
+								<th>복용횟수</th>
+								<th>일정삭제</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -85,6 +80,14 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 									<td>${schedule.depositMethod}</td>
 									<td>${schedule.startDate} ~ ${schedule.endDate}</td>
 									<td>${schedule.dailyFrequency}</td>
+									<td>
+										<form method="POST" action="service/schedule">
+											<input type="hidden" name="command" value="delete"> 
+											<input type="hidden" name="schedule-code" value="${schedule.scheduleCode}"> 
+												<input type="hidden" name="username" value="${log.username}">
+											<button type="submit" class="delete-btn">x</button>
+										</form>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -92,9 +95,8 @@ if (scheduleListJson == null || scheduleListJson.isEmpty()) {
 				</div>
 				<form id="form-schedule" class="schedule-add-container"
 					method="POST" action="service/schedule">
-					<input type="hidden" name="command" value="add"> <input
-						type="hidden" id="username" name="username"
-						value="${log.username}">
+					<input type="hidden" name="command" value="add"> 
+					<input type="hidden" id="username" name="username" value="${log.username}">
 					<h1>일정 등록</h1>
 					<div class="medicine-search-group">
 						<p>

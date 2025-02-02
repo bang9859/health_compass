@@ -37,11 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			const cell = document.createElement("td");
 			cell.textContent = day;
 			if (day === todayDate && month === todayMonth && year === todayYear) {
-				cell.style.backgroundColor = "#ffcccb"; // 연한 빨간색 배경
-				cell.style.borderRadius = "50%"; // 동그랗게 표시
-				cell.style.color = "white"; // 글씨색 흰색
-				cell.style.fontWeight = "bold"; // 글씨 강조
-				cell.style.textAlign = "center"; // 중앙 정렬
+			    cell.classList.add("today");
 			}
 
 			row.appendChild(cell);

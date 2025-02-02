@@ -23,7 +23,7 @@
 			<h4>Health Compass</h4>
 		</div>
 		<div class="page-name">
-			<h1 id=title>메인페이지</h1>
+			<h1 id=title>증상선택</h1>
 		</div>
 
 		<div class="log">

@@ -15,7 +15,7 @@ String hospitalListJson = (String) request.getAttribute("hospitalListJson");
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/style/hospitalsForm.css">
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa5282a38622982d20efb6e4e5a4b894"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9106e9e2b71925e379208a30b9d98ed5"></script>
 <script src="/resources/script/hospitalsForm.js"></script>
 <title>병원 목록 페이지</title>
 </head>

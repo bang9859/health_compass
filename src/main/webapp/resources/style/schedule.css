@@ -64,7 +64,7 @@
 
 /* 목록 섹션 스타일 */
 .schedule-list-container {
-	width: 48.5%;
+	width: 60%;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	padding: 10px;
@@ -81,7 +81,7 @@
 
 /* 일정 등록 폼 스타일 */
 .schedule-add-container {
-	width: 48.5%;
+	width: 35.5%;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	padding: 10px;
@@ -121,54 +121,53 @@
 	cursor: pointer;
 }
 
-.schedule-add-container input[type="submit"]:hover ,
-#medicine-search-modal button:hover,
-#medicine-search-group button:hover
-{
+.schedule-add-container input[type="submit"]:hover,
+	#medicine-search-modal button:hover, #medicine-search-group button:hover
+	{
 	background-color: #004080;
 }
 
-.error-msg-group>li, .error-msg  {
-    list-style: none;
-    margin-top: 10px;
-    color: red;
-    font-size: 13px;
-    display:none;
+.error-msg-group>li, .error-msg {
+	list-style: none;
+	margin-top: 10px;
+	color: red;
+	font-size: 13px;
+	display: none;
 }
 
 /* 모달의 기본 스타일 */
 #medicine-search-modal {
-    display: none;  /* 초기에는 숨김 */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    z-index: 1000;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 8px;
+	display: none; /* 초기에는 숨김 */
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+	z-index: 1000;
+	width: 80%;
+	max-width: 500px;
+	border-radius: 8px;
 }
 
 /* 배경을 흐리게 만들어주는 오버레이 */
 #modal-overlay {
-    display: none; /* 초기에는 숨김 */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+	display: none; /* 초기에는 숨김 */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
 }
 
 /* 모달 내 검색창 스타일 */
 #medicine-search-modal input[type="text"] {
-    width: calc(100% - 90px);
-    padding: 8px;
-    margin-bottom: 10px;
+	width: calc(100% - 90px);
+	padding: 8px;
+	margin-bottom: 10px;
 }
 
 #medicine-search-modal button {
@@ -177,7 +176,7 @@
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-	padding:8px;
+	padding: 8px;
 }
 
 #modal-btn {
@@ -189,60 +188,86 @@
 
 /* 결과 목록 스타일 */
 #medicine-result-list {
-    list-style-type: none;
-    padding: 0;
+	list-style-type: none;
+	padding: 0;
 }
 
 #medicine-result-list li {
-    padding: 8px;
-    cursor: pointer;
-    color: #000000;
+	padding: 8px;
+	cursor: pointer;
+	color: #000000;
 }
 
 #medicine-result-list li:hover {
-    background-color: #f0f0f0;
+	background-color: #f0f0f0;
 }
 
 /* 닫기 버튼 스타일 */
 #medicine-search-modal .close-btn {
-    position: absolute;
-    top: 2px;
-    right: 10px;
-   color: #4A628A;
-   background-color:#fff;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+	position: absolute;
+	top: 2px;
+	right: 10px;
+	color: #4A628A;
+	background-color: #fff;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
 }
 
 #calendar-date td {
-    text-align: right;
-    vertical-align: top;
-    padding: 10px;
-    border: 1px solid #ccc;
-    width: 50px;
-    height: 50px;
-    font-size: 15px;
-    position: relative;
+	text-align: right;
+	vertical-align: top;
+	padding: 10px;
+	border: 1px solid #ccc;
+	width: 50px;
+	height: 50px;
+	font-size: 15px;
+	position: relative;
 }
+
+#calendar-date td.today {
+	font-weight: bold;
+	color: black;
+	position: relative;
+}
+
+#calendar-date td.today::after {
+	content: "";
+	position: absolute;
+	bottom: 40px;
+	right: 5px;
+	width: 20px;
+	height: 20px;
+	background-color: red;
+	border-radius: 50%;
+	opacity: 0.5;
+}
+
 /* 일정 목록 테이블 스타일 */
 #schedule-list {
-    width: 100%;
-    border-collapse: collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
 
 #schedule-list th, #schedule-list td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ccc;
+	padding: 10px;
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+	font-size: 8px;
 }
 
 #schedule-list th {
-    background-color: #4A628A;
-    color: white;
+	background-color: #4A628A;
+	color: white;
 }
 
 #schedule-list tbody tr:hover {
-    background-color: #f0f0f0;
+	background-color: #f0f0f0;
 }
 
+.delete-btn {
+	background-color: #f9f9f9;
+	border: none;
+	color: #ff0000;
+	cursor: pointer;
+}
