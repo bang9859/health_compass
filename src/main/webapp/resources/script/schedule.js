@@ -189,7 +189,7 @@ function searchMedicine() {
 	const drugName = searchInput.value;
 	const serviceKey = 'oruvbo%2BL%2B8mY49TbDDPKgBJmt8%2BaC4EPCinp%2FKfYxFIgRIp7iRMVQoqyWxZle%2FBv%2B22H%2BLJTKBTKU02ylL3ZJg%3D%3D';
 
-	const url = `http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=${serviceKey}&itemName=${encodeURIComponent(drugName)}`;
+	const url = `https://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList?serviceKey=${serviceKey}&itemName=${encodeURIComponent(drugName)}`;
 
 	fetch(url)
 		.then(response => response.text())  // 응답을 텍스트로 받기 
