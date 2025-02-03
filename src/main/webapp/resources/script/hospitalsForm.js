@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <label for="operatingHours-${i}"><strong>진료시간:</strong></label>
                         <select id="operatingHours-${i}" class="operating-hours">
                             ${hospital.operatingHours
-							.split("\n")
+							.split("\\n")
 							.map((time) => `<option>${time || "정보 없음"}</option>`)
 							.join("")}
                         </select>
