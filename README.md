@@ -89,18 +89,19 @@
 - **현재 위치 이동** | 현재 위치 버튼 클릭 시, **지도 중앙에 현재 위치로 이동**합니다.
 - **북마크 제한** | ❌ 로그인하지 않으면 북마크 추가 불가능합니다.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CLtKzUFtxn4" frameborder="0" allowfullscreen></iframe>
+![로그인 X](https://github.com/user-attachments/assets/cc3e36db-e363-4704-b7e3-bc1cb150e459)
+
 
 ### [병원 찾기 로그인 ✅]
 - **북마크 추가 가능** | ✅ 로그인 후 북마크 추가 가능합니다.
 - **중복 북마크 방지** | ❌ 같은 병원 중복 추가 불가능합니다.
  
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_8TyHDnu_Z4" frameborder="0" allowfullscreen></iframe>
+![로그인 O](https://github.com/user-attachments/assets/ad2ef8da-44d0-4180-bd6d-5763c89576b3)
 
 ### [6시 이후 응급실 진료 가능한 병원만 표시]
 - **응급실 병원 검색** |  **오후 6시 이후** 병원 찾기 실행 시, **응급실 운영 병원만 표시**합니다.
   
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IxPY-lip8UY" frameborder="0" allowfullscreen></iframe>
+![6시 이후 응급실](https://github.com/user-attachments/assets/6ff407b5-0923-46ad-aa21-1d3aef604893)
 
 ### 6. 발표 영상
 - https://www.youtube.com/watch?v=ZctVnA1C72I
