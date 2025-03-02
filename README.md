@@ -1,5 +1,3 @@
-
-https://github.com/user-attachments/assets/8cf8ce0f-872a-4165-b814-0a2276f69a68
 # 🧭건강나침반 (증상에 따른 병원 위치 검색) 
 
 
