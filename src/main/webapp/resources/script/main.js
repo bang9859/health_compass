@@ -19,14 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 
-		if (!response.ok) {
-			console.error('주소 정보를 가져오지 못했습니다:', response.status);
-			return;
-		}
-
 		const data = await response.json();
 
 		const address = data.documents[0].address.address_name;
+		
 		console.log(`주소: ${address}`);
 		console.log(data);
 
@@ -91,4 +87,3 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 });
-
