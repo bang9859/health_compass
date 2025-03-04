@@ -28,7 +28,6 @@ public class HospitalsSearchAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userAddress = request.getParameter("address");
-
 		LocalTime currentTime = LocalTime.now();
 
 		List<HospitalDto> hospitalList = null;
@@ -165,6 +164,10 @@ public class HospitalsSearchAction implements Action {
 	// 6시 이전
 	public List<HospitalDto> HospitalsSearch(String userAddress, String code, String title) {
 		try {
+			System.out.println("userAddress " + userAddress);
+			System.out.println("code " + code);
+			System.out.println("title " + title);
+			
 			String[] address = userAddress.split(" ");
 
 			String serviceKey = "%2BVuLyglK6Y6SHbveZuAdhvqRGwAEh7ozSxVRDMiZZdoIPDLEKkEVf0lYD7egwi%2FIHsaJmiMlIZjCECfdJeSd0w%3D%3D";
