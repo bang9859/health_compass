@@ -13,8 +13,8 @@
 }
 
 #map {
-	width: 1400px;
-	height: 780px;
+	width: 67vw;
+	height: 70vh;
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);

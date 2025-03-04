@@ -69,8 +69,8 @@
 								<th>약품명</th>
 								<th>보관방법</th>
 								<th>기간</th>
-								<th>복용횟수</th>
-								<th>일정삭제</th>
+								<th>복용 횟수</th>
+								<th>일정 삭제</th>
 							</tr>
 						</thead>
 						<tbody>
