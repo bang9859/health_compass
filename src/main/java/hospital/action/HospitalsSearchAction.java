@@ -30,20 +30,22 @@ public class HospitalsSearchAction implements Action {
 		String userAddress = request.getParameter("address");
 		LocalTime currentTime = LocalTime.now();
 
-		List<HospitalDto> hospitalList = null;
+		List<HospitalDto> hospitalList = new ArrayList<>();
+		
 		if (currentTime.isAfter(LocalTime.of(18, 0))) {
 			// 18시 이후
 			hospitalList = HospitalsEmergencySearch(userAddress);
 		} else {
 			// 18시 이전
-			String internalCode = request.getParameter("internalCode");
-			String dermatologyCode = request.getParameter("dermatologyCode");
-			String orthopedicCode = request.getParameter("orthopedicCode");
-			String neurosurgeryCode = request.getParameter("neurosurgeryCode");
-			String gynecologyCode = request.getParameter("gynecologyCode");
-			String ophthalmologyCode = request.getParameter("ophthalmologyCode");
-			String otolaryngologyCode = request.getParameter("otolaryngologyCode");
-			String dentistryCode = request.getParameter("dentistryCode");
+			String internalCode = request.getParameter("internalCode") != null ? request.getParameter("internalCode") : "";
+			String dermatologyCode = request.getParameter("dermatologyCode") != null ? request.getParameter("dermatologyCode") : "";
+			String orthopedicCode = request.getParameter("orthopedicCode") != null ? request.getParameter("orthopedicCode") : "";
+			String neurosurgeryCode = request.getParameter("neurosurgeryCode") != null ? request.getParameter("neurosurgeryCode") : "";
+			String gynecologyCode = request.getParameter("gynecologyCode") != null ? request.getParameter("gynecologyCode") : "";
+			String ophthalmologyCode = request.getParameter("ophthalmologyCode") != null ? request.getParameter("ophthalmologyCode") : "";
+			String otolaryngologyCode = request.getParameter("otolaryngologyCode") != null ? request.getParameter("otolaryngologyCode") : "";
+			String dentistryCode = request.getParameter("dentistryCode") != null ? request.getParameter("dentistryCode") : "";
+
 
 			// 병원 들고오기
 			hospitalList = HospitalsList(userAddress, internalCode, dermatologyCode, orthopedicCode, neurosurgeryCode,
@@ -57,7 +59,7 @@ public class HospitalsSearchAction implements Action {
 //			System.out.println(hospitalList.get(i));
 //			System.out.println("------------------------");
 //		}
-//		System.out.println("병원 리스트 크기: " + hospitalList.size());
+		System.out.println("병원 리스트 크기: " + hospitalList.size());
 
 		// json 변환
 		JSONArray hospitalListJson = new JSONArray(hospitalList);
@@ -79,47 +81,48 @@ public class HospitalsSearchAction implements Action {
 		List<HospitalDto> hospitaDentistryList = new ArrayList<>();
 
 		// 출력
-//		System.out.println("internalCode " + internalCode);
-//		System.out.println("dermatologyCode " + dermatologyCode);
-//		System.out.println("orthopedicCode " + orthopedicCode);
-//		System.out.println("neurosurgeryCode " + neurosurgeryCode);
-//		System.out.println("gynecologyCode " + gynecologyCode);
-//		System.out.println("ophthalmologyCode " + ophthalmologyCode);
-//		System.out.println("otolaryngologyCode " + otolaryngologyCode);
-//		System.out.println("dentistryCode " + dentistryCode);
+		System.out.println("internalCode " + internalCode);
+		System.out.println("dermatologyCode " + dermatologyCode);
+		System.out.println("orthopedicCode " + orthopedicCode);
+		System.out.println("neurosurgeryCode " + neurosurgeryCode);
+		System.out.println("gynecologyCode " + gynecologyCode);
+		System.out.println("ophthalmologyCode " + ophthalmologyCode);
+		System.out.println("otolaryngologyCode " + otolaryngologyCode);
+		System.out.println("dentistryCode " + dentistryCode);
 
-		if (internalCode != null && internalCode.equals("D001")) { 
+		if (!internalCode.isEmpty() && internalCode.equals("D001")) { 
 		    hospitaInternalList = HospitalsSearch(userAddress, internalCode, "내과");
 		    hospitalsList.addAll(hospitaInternalList);
 		}
-		if (dermatologyCode != null && dermatologyCode.equals("D005")) {
+		if (!dermatologyCode.isEmpty() && dermatologyCode.equals("D005")) {
 		    hospitaDermatologyList = HospitalsSearch(userAddress, dermatologyCode, "피부과");
 		    hospitalsList.addAll(hospitaDermatologyList);
 		}
-		if (orthopedicCode != null && orthopedicCode.equals("D008")) { 
+		if (!orthopedicCode.isEmpty() && orthopedicCode.equals("D008")) { 
 		    hospitaOrthopedicList = HospitalsSearch(userAddress, orthopedicCode, "정형외과");
 		    hospitalsList.addAll(hospitaOrthopedicList);
 		}
-		if (neurosurgeryCode != null && neurosurgeryCode.equals("D009")) { 
+		if (!neurosurgeryCode.isEmpty() && neurosurgeryCode.equals("D009")) { 
 		    hospitaNeurosurgeryList = HospitalsSearch(userAddress, neurosurgeryCode, "신경외과");
 		    hospitalsList.addAll(hospitaNeurosurgeryList);
 		}
-		if (gynecologyCode != null && gynecologyCode.equals("D011")) { 
+		if (!gynecologyCode.isEmpty() && gynecologyCode.equals("D011")) { 
 		    hospitaGynecologlList = HospitalsSearch(userAddress, gynecologyCode, "산부인과");
 		    hospitalsList.addAll(hospitaGynecologlList);
 		}
-		if (ophthalmologyCode != null && ophthalmologyCode.equals("D012")) { 
+		if (!ophthalmologyCode.isEmpty() && ophthalmologyCode.equals("D012")) { 
 		    hospitaOphthalmologyList = HospitalsSearch(userAddress, ophthalmologyCode, "안과");
 		    hospitalsList.addAll(hospitaOphthalmologyList);
 		}
-		if (otolaryngologyCode != null && otolaryngologyCode.equals("D013")) { 
+		if (!otolaryngologyCode.isEmpty() && otolaryngologyCode.equals("D013")) { 
 		    hospitaOtolaryngologyList = HospitalsSearch(userAddress, otolaryngologyCode, "이비인후과");
 		    hospitalsList.addAll(hospitaOtolaryngologyList);
 		}
-		if (dentistryCode != null && dentistryCode.equals("D026")) { 
+		if (!dentistryCode.isEmpty() && dentistryCode.equals("D026")) { 
 		    hospitaDentistryList = HospitalsSearch(userAddress, dentistryCode, "치과");
 		    hospitalsList.addAll(hospitaDentistryList);
 		}
+
 
 
 
@@ -207,11 +210,11 @@ public class HospitalsSearchAction implements Action {
 
 			// XML 파싱
 			List<HospitalDto> hospitalList = parseXmlResponse(sb.toString(), title);
-			return hospitalList;
+			 return hospitalList != null ? hospitalList : new ArrayList<>();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return new ArrayList<>();
 	}
 
 	private List<HospitalDto> parseXmlResponse(String xml, String title) {
