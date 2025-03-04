@@ -88,38 +88,40 @@ public class HospitalsSearchAction implements Action {
 //		System.out.println("otolaryngologyCode " + otolaryngologyCode);
 //		System.out.println("dentistryCode " + dentistryCode);
 
-		if (internalCode.equals("D001")) {
-			hospitaInternalList = HospitalsSearch(userAddress, internalCode, "내과");
-			hospitalsList.addAll(hospitaInternalList);
+		if (internalCode != null && internalCode.equals("D001")) { 
+		    hospitaInternalList = HospitalsSearch(userAddress, internalCode, "내과");
+		    hospitalsList.addAll(hospitaInternalList);
 		}
-		if (dermatologyCode.equals("D005")) {
-			hospitaDermatologyList = HospitalsSearch(userAddress, dermatologyCode, "피부과");
-			hospitalsList.addAll(hospitaDermatologyList);
+		if (dermatologyCode != null && dermatologyCode.equals("D005")) {
+		    hospitaDermatologyList = HospitalsSearch(userAddress, dermatologyCode, "피부과");
+		    hospitalsList.addAll(hospitaDermatologyList);
 		}
-		if (orthopedicCode.equals("D008")) {
-			hospitaOrthopedicList = HospitalsSearch(userAddress, orthopedicCode, "정형외과");
-			hospitalsList.addAll(hospitaOrthopedicList);
+		if (orthopedicCode != null && orthopedicCode.equals("D008")) { 
+		    hospitaOrthopedicList = HospitalsSearch(userAddress, orthopedicCode, "정형외과");
+		    hospitalsList.addAll(hospitaOrthopedicList);
 		}
-		if (neurosurgeryCode.equals("D009")) {
-			hospitaNeurosurgeryList = HospitalsSearch(userAddress, neurosurgeryCode, "신경외과");
-			hospitalsList.addAll(hospitaNeurosurgeryList);
+		if (neurosurgeryCode != null && neurosurgeryCode.equals("D009")) { 
+		    hospitaNeurosurgeryList = HospitalsSearch(userAddress, neurosurgeryCode, "신경외과");
+		    hospitalsList.addAll(hospitaNeurosurgeryList);
 		}
-		if (gynecologyCode.equals("D011")) {
-			hospitaGynecologlList = HospitalsSearch(userAddress, gynecologyCode, "산부인과");
-			hospitalsList.addAll(hospitaGynecologlList);
+		if (gynecologyCode != null && gynecologyCode.equals("D011")) { 
+		    hospitaGynecologlList = HospitalsSearch(userAddress, gynecologyCode, "산부인과");
+		    hospitalsList.addAll(hospitaGynecologlList);
 		}
-		if (ophthalmologyCode.equals("D012")) {
-			hospitaOphthalmologyList = HospitalsSearch(userAddress, ophthalmologyCode, "안과");
-			hospitalsList.addAll(hospitaOphthalmologyList);
+		if (ophthalmologyCode != null && ophthalmologyCode.equals("D012")) { 
+		    hospitaOphthalmologyList = HospitalsSearch(userAddress, ophthalmologyCode, "안과");
+		    hospitalsList.addAll(hospitaOphthalmologyList);
 		}
-		if (otolaryngologyCode.equals("D013")) {
-			hospitaOtolaryngologyList = HospitalsSearch(userAddress, otolaryngologyCode, "이비인후과");
-			hospitalsList.addAll(hospitaOtolaryngologyList);
+		if (otolaryngologyCode != null && otolaryngologyCode.equals("D013")) { 
+		    hospitaOtolaryngologyList = HospitalsSearch(userAddress, otolaryngologyCode, "이비인후과");
+		    hospitalsList.addAll(hospitaOtolaryngologyList);
 		}
-		if (dentistryCode.equals("D026")) {
-			hospitaDentistryList = HospitalsSearch(userAddress, dentistryCode, "치과");
-			hospitalsList.addAll(hospitaDentistryList);
+		if (dentistryCode != null && dentistryCode.equals("D026")) { 
+		    hospitaDentistryList = HospitalsSearch(userAddress, dentistryCode, "치과");
+		    hospitalsList.addAll(hospitaDentistryList);
 		}
+
+
 
 		return mergeHospitals(hospitalsList);
 	}
